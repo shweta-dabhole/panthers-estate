@@ -19,6 +19,7 @@ export default function Home() {
   const menuPreviewImgRef = useRef(null);
   const heroTextLinesRef = useRef([]);
   const aboutSectionRef = useRef(null);
+  const parallaxImagesRef = useRef([]);
   const aboutTextRefs = useRef([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuAnimating, setIsMenuAnimating] = useState(false);
@@ -126,7 +127,27 @@ export default function Home() {
 
     // Text animation is now handled completely independently above to prevent timeline clipping bugs!
 
-    // 3. (Image animation removed as requested)
+    // 3. Setup ScrollTrigger for About section Parallax Images
+    if (parallaxImagesRef.current.length > 0 && aboutSectionRef.current) {
+      const validImgs = parallaxImagesRef.current.filter(Boolean);
+      validImgs.forEach((img, index) => {
+        // Tie trigger to the image itself so it animates precisely when it enters the viewport
+        gsap.fromTo(
+          img,
+          { y: 150 },
+          {
+            y: -350,
+            ease: "none",
+            scrollTrigger: {
+              trigger: img,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1.5, // High smooth value for buttery scrolling
+            },
+          }
+        );
+      });
+    }
 
     // 4. Text Reveal Scroll Animation
     if (aboutTextRefs.current.length > 0) {
@@ -154,6 +175,19 @@ export default function Home() {
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
+
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    if (isMenuOpen && !isMenuAnimating) {
+      toggleMenu();
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 800);
+    }
+  };
 
   const toggleMenu = () => {
     if (isMenuAnimating) return;
@@ -320,10 +354,10 @@ export default function Home() {
             <div className="col-sm">
               <div className="menu-links">
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%202.jpg')}>
-                  <a href="#">Home</a>
+                  <a href="#hero" onClick={(e) => handleNavClick(e, 'hero')}>Home</a>
                 </div>
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%205.jpg')}>
-                  <a href="#">About Us</a>
+                  <a href="#about" onClick={(e) => handleNavClick(e, 'about')}>About Us</a>
                 </div>
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%207.jpg')}>
                   <a href="#">Portfolio</a>
@@ -353,11 +387,11 @@ export default function Home() {
 
       {/* 3. Main Hero Website Section Wrapped in Container for Rotation */}
       <div className="app-container" ref={containerRef}>
-        <section className="hero relative w-full h-full">
+        <section id="hero" className="hero relative w-full h-screen">
           <div ref={heroImgsRef} className="hero-imgs relative w-full h-full">
             <img className="absolute inset-0 w-full h-full object-cover" src="/assets/home%202.jpg" alt="Panthers Home 2" style={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} />
             <img className="absolute inset-0 w-full h-full object-cover" src="/assets/home%207.jpg" alt="Panthers Home 7" style={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} />
-            <video className="absolute inset-0 w-full h-full object-cover" src="/assets/home%20video%201.mp4" autoPlay loop muted playsInline style={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} />
+            <img className="absolute inset-0 w-full h-full object-cover" src="/assets/home%20img.png" alt="Panthers Home Img" style={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} />
           </div>
 
           {/* Text Overlay */}
@@ -385,17 +419,48 @@ export default function Home() {
 
         {/* 4. About Us Section */}
         <section 
+          id="about"
           ref={aboutSectionRef}
-          className="relative w-full min-h-[150vh] mt-0 pt-16 pb-32 px-4 md:px-16 lg:px-32 flex flex-col justify-start items-center bg-white text-black overflow-hidden"
+          className="relative w-full flex flex-col justify-start items-center bg-white text-black overflow-hidden"
+          style={{ paddingTop: '6rem', paddingBottom: '12rem', paddingLeft: '5%', paddingRight: '5%' }}
         >
           {/* Text Content */}
-          <div className="relative z-10 w-full font-medium tracking-tight" style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: 'clamp(1.8rem, 4vw, 4rem)', lineHeight: '1.3' }}>
-            <p ref={el => aboutTextRefs.current[0] = el} className="mb-12">This is PANTHERS ESTATE.</p>
-            <p ref={el => aboutTextRefs.current[1] = el} className="mb-12">Built with vision. Designed for modern living.</p>
-            <p ref={el => aboutTextRefs.current[2] = el} className="mb-12">Panthers Estate creates spaces that go beyond property — spaces shaped by quality, purpose, and timeless design. Every residence is thoughtfully planned to bring together comfort, elegance, and long-term value.</p>
-            <p ref={el => aboutTextRefs.current[3] = el} className="mb-12">We believe a home is more than walls and architecture. It is where life grows, memories are built, and aspirations find their place.</p>
-            <p ref={el => aboutTextRefs.current[4] = el} className="mb-12">From carefully selected locations to refined design and premium living experiences, Panthers Estate is committed to delivering homes that reflect contemporary lifestyles and lasting trust.</p>
-            <p ref={el => aboutTextRefs.current[5] = el}>Discover spaces created for today and designed for tomorrow.</p>
+          <div className="relative z-10 w-full font-medium tracking-tight mt-8" style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: 'clamp(1.8rem, 4vw, 4rem)', lineHeight: '1.3' }}>
+            <h2 ref={el => aboutTextRefs.current[0] = el} className="text-center text-[clamp(2.5rem,5vw,5rem)] tracking-[0.1em] uppercase text-[#315C8B] font-bold" style={{ fontFamily: 'var(--font-poppins), sans-serif', marginBottom: '8rem' }}>About Us</h2>
+            <p ref={el => aboutTextRefs.current[1] = el} className="mb-24">This is PANTHERS ESTATE.</p>
+            <p ref={el => aboutTextRefs.current[2] = el} className="mb-24">Built with vision. Designed for modern living.</p>
+            <p ref={el => aboutTextRefs.current[3] = el} className="mb-24">Panthers Estate creates spaces that go beyond property — spaces shaped by quality, purpose, and timeless design. Every residence is thoughtfully planned to bring together comfort, elegance, and long-term value.</p>
+            <p ref={el => aboutTextRefs.current[4] = el} className="mb-24">We believe a home is more than walls and architecture. It is where life grows, memories are built, and aspirations find their place.</p>
+            <p ref={el => aboutTextRefs.current[5] = el} className="mb-24">From carefully selected locations to refined design and premium living experiences, Panthers Estate is committed to delivering homes that reflect contemporary lifestyles and lasting trust.</p>
+            <p ref={el => aboutTextRefs.current[6] = el} className="mb-24">Discover spaces created for today and designed for tomorrow.</p>
+          </div>
+
+          {/* Floating Parallax Images */}
+          <div className="absolute inset-0 pointer-events-none z-20">
+            <img 
+              ref={el => parallaxImagesRef.current[0] = el}
+              src="/assets/about%201.jpg" 
+              className="absolute top-[20%] right-[15%] w-[15vw] max-w-[200px] h-auto aspect-[3/4] object-cover shadow-2xl rounded-sm"
+              alt="Floating 1"
+            />
+            <img 
+              ref={el => parallaxImagesRef.current[1] = el}
+              src="/assets/about%202.jpg" 
+              className="absolute top-[35%] left-[15%] w-[15vw] max-w-[200px] h-auto aspect-[3/4] object-cover shadow-2xl rounded-sm"
+              alt="Floating 2"
+            />
+            <img 
+              ref={el => parallaxImagesRef.current[2] = el}
+              src="/assets/about%205.jpg" 
+              className="absolute top-[50%] right-[10%] w-[15vw] max-w-[200px] h-auto aspect-[3/4] object-cover shadow-2xl rounded-sm"
+              alt="Floating 3"
+            />
+            <img 
+              ref={el => parallaxImagesRef.current[3] = el}
+              src="/assets/about%203.jpg" 
+              className="absolute top-[65%] left-[10%] w-[15vw] max-w-[200px] h-auto aspect-[3/4] object-cover shadow-2xl rounded-sm"
+              alt="Floating 4"
+            />
           </div>
         </section>
 

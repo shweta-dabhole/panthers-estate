@@ -185,7 +185,7 @@ nav p {
   letter-spacing: -0.02em;
   color: #f2f2f2;
   transition: opacity 0.3s ease;
-  font-family: var(--font-montserrat), sans-serif;
+  font-family: var(--font-poppins), sans-serif;
 }
 
 .menu {
@@ -307,7 +307,7 @@ nav p {
   width: 4rem;
   height: 1.5rem;
   cursor: pointer;
-  font-family: var(--font-montserrat), sans-serif;
+  font-family: var(--font-poppins), sans-serif;
 }
 
 #menu-open,
@@ -320,7 +320,7 @@ nav p {
   margin: 0;
   line-height: 1.5rem;
   letter-spacing: 0.05em; /* Add slight tracking for Montserrat */
-  font-family: var(--font-montserrat), sans-serif;
+  font-family: var(--font-poppins), sans-serif;
 }
 
 .menu-toggle p {
@@ -335,7 +335,7 @@ nav p {
 .menu-toggle p#menu-close {
   opacity: 0;
   transform: translateX(-5px) translateY(10px) rotate(5deg);
-  font-family: var(--font-montserrat), sans-serif;
+  font-family: var(--font-poppins), sans-serif;
 }
 
 .menu-overlay {
@@ -344,7 +344,7 @@ nav p {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #0f0f0f;
+  background-color: #315C8B;
   z-index: 15; /* Below nav (20) but above everything else */
   clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
   color: #fff;
