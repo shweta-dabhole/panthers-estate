@@ -20,18 +20,16 @@
 html,
 body {
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   background-color: var(--bg-light);
   font-family: var(--font-sans);
   color: var(--text-dark);
+  overflow-x: hidden;
 }
 
 /* Image reveal container and images */
 .hero {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100vw;
   height: 100vh;
   padding: 0;
@@ -79,8 +77,8 @@ body {
   gap: 1rem;
   overflow: hidden;
   z-index: 50;
-  background-color: #ffffff; /* WHITE BACKGROUND */
-  color: var(--primary-purple); /* PURPLE TEXT */
+  background-color: #0f0f0f; /* Dark background */
+  color: #ffffff; /* White text */
   will-change: transform;
 }
 
@@ -113,7 +111,7 @@ body {
 .progress-bar {
   width: 0%;
   height: 100%;
-  background-color: var(--primary-purple); /* Purple progress fill */
+  background-color: #ffffff; /* White progress fill */
   will-change: width;
 }
 
@@ -135,25 +133,23 @@ nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2.5rem;
-  background-color: var(--bg-light);
-  z-index: 20;
-  pointer-events: auto;
+  align-items: center; /* Flawless automatic alignment */
+  padding: 0 4rem; /* Zero top padding, flush to the screen edge */
+  background-color: transparent;
+  z-index: 100;
+  will-change: transform;
 }
 
 nav > div {
-  flex: 1;
   font-size: 1.1rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  color: #000000; /* PURE BLACK */
   text-transform: uppercase;
 }
 
 nav,
 nav p {
-  color: #000000 !important;
+  color: #ffffff;
 }
 
 .logo {
@@ -163,8 +159,9 @@ nav p {
 }
 
 .logo img {
-  height: 2.8rem;
+  height: 6rem; /* Dramatically increased pure text size for desktop */
   width: auto;
+  max-width: none;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
@@ -179,6 +176,16 @@ nav p {
   font-weight: 400;
   text-transform: none;
   opacity: 0.9;
+}
+
+.menu-links a {
+  text-decoration: none;
+  font-size: 5vw;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: #f2f2f2;
+  transition: opacity 0.3s ease;
+  font-family: var(--font-montserrat), sans-serif;
 }
 
 .menu {
@@ -201,41 +208,18 @@ nav p {
   padding: 0 1rem;
 }
 
-h1 {
-  text-transform: uppercase;
-  font-family: var(--font-serif);
-  font-size: 18vw;
-  font-weight: 400;
-  line-height: 0.85;
-  color: var(--primary-purple);
-  text-shadow: 0 2px 5px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.6);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-}
-
-h1 span {
-  display: inline-block;
-  position: relative;
-  transform: translateY(105%);
-  will-change: transform;
-}
 
 /* Responsiveness adjustments */
 @media (max-width: 1024px) {
-  /* removed hero padding for edge-to-edge design */
   nav {
-    padding: 1.5rem;
+    padding: 0 3rem;
   }
   nav > div {
     font-size: 1rem;
-  }
-  .site-info {
     display: none; /* Hide site info on smaller tablets and mobile */
   }
   .logo img {
-    height: 2.4rem;
+    height: 4.5rem;
   }
 }
 
@@ -254,12 +238,17 @@ h1 span {
     font-size: 3.5rem;
   }
 
-  h1 {
-    font-size: 22vw;
+
+  nav {
+    padding: 0 2rem;
+  }
+  nav > div:first-child {
+    display: flex;
+    justify-content: flex-start;
   }
 
   .logo img {
-    height: 2.2rem;
+    height: 3.5rem;
   }
 }
 
@@ -278,15 +267,21 @@ h1 span {
   }
 
   nav {
-    padding: 1.2rem;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
   }
 
   nav > div {
     font-size: 0.9rem;
   }
+  
+  .logo {
+    justify-content: flex-start;
+  }
 
   .logo img {
-    height: 1.8rem;
+    height: 2.5rem;
   }
 }
 
@@ -304,4 +299,222 @@ h1 span {
 
 .loader-logo-blink {
   animation: loader-blink 1.8s ease-in-out infinite;
+}
+
+/* ExoApe Menu Overlay Styles */
+.menu-toggle {
+  position: relative;
+  width: 4rem;
+  height: 1.5rem;
+  cursor: pointer;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+#menu-open,
+#menu-close {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: right;
+  margin: 0;
+  line-height: 1.5rem;
+  letter-spacing: 0.05em; /* Add slight tracking for Montserrat */
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.menu-toggle p {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+  will-change: transform, opacity;
+  margin: 0;
+}
+
+.menu-toggle p#menu-close {
+  opacity: 0;
+  transform: translateX(-5px) translateY(10px) rotate(5deg);
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f0f0f;
+  z-index: 15; /* Below nav (20) but above everything else */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+  color: #fff;
+  pointer-events: none;
+}
+
+.menu-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: left bottom;
+  will-change: opacity, transform;
+  transform: translateX(-100px) translateY(-100px) scale(1.5) rotate(-15deg);
+  opacity: 0.25;
+}
+
+.menu-items,
+.menu-footer {
+  width: 100%;
+  padding: 2.5em;
+  display: flex;
+  gap: 2.5em;
+}
+
+.menu-items .col-lg {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-items .col-sm {
+  flex: 2;
+  padding: 2.5em 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5em;
+}
+
+.menu-preview-img {
+  position: relative;
+  width: 45%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.menu-preview-img img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform, opacity;
+}
+
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.menu-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  align-items: flex-start;
+}
+
+.menu-links .link,
+.menu-socials .social {
+  padding-bottom: 6px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.menu-links .link a,
+.menu-socials .social a,
+.menu-footer a {
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 300;
+  user-select: none;
+}
+
+.menu-links .link a,
+.menu-socials .social a {
+  display: inline-block;
+  will-change: transform;
+  transition: color 0.5s;
+  transform: translateY(120%);
+  opacity: 0.25;
+}
+
+.menu-links .link a {
+  font-size: 3.5rem;
+  font-family: var(--font-serif);
+  letter-spacing: -0.02rem;
+}
+
+.menu-socials .social a {
+  color: #8f8f8f;
+  font-size: 1rem;
+}
+
+.menu-socials .social a:hover {
+  color: #fff;
+}
+
+.menu-footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.menu-footer .col-sm {
+  flex: 2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-footer .col-lg {
+  flex: 3;
+}
+
+.menu-footer a {
+  font-size: 1rem;
+}
+
+.menu-links .link a::after,
+.menu-socials .social a::after,
+.menu-footer a::after {
+  position: absolute;
+  content: "";
+  top: 102.5%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.6, 0, 0.4, 1);
+}
+
+.menu-links .link a:hover::after,
+.menu-socials .social a:hover::after,
+.menu-footer a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Transform for container to animate */
+.app-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  transform-origin: right top;
+}
+
+@media (max-width: 900px) {
+  .menu-items .col-lg {
+    display: none;
+  }
+  .menu-links .link a::after,
+  .menu-socials .social a::after,
+  .menu-footer a::after {
+    display: none;
+  }
+  .menu-links .link a {
+    font-size: 2.8rem;
+  }
 }
