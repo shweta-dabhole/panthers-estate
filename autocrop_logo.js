@@ -1,7 +1,7 @@
 const { Jimp } = require('jimp');
 
-const inputPath = 'public/assets/panthers logo transparent.png';
-const outputPath = 'public/assets/panthers logo transparent.png';
+const inputPath = 'public/assets/panthers logo new.png';
+const outputPath = 'public/assets/panthers logo new.png';
 
 async function cropImage() {
   try {

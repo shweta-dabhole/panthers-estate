@@ -548,24 +548,28 @@ export default function Home() {
       <div ref={preLoaderRef} className="pre-loader">
         <div 
           ref={loaderImgRef}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-full max-w-[400px] sm:max-w-[500px] md:max-w-[600px] px-4 opacity-0"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-full max-w-[600px] sm:max-w-[800px] md:max-w-[1000px] px-4 opacity-0"
         >
           <img 
-            src="/assets/panthers%20logo%20transparent.png" 
+            src="/assets/panthers%20logo%20new.png" 
             alt="Panthers Estate Logo" 
-            className="h-auto max-h-[35vh] w-full object-contain loader-logo-blink"
+            className="h-auto max-h-[50vh] w-full object-contain loader-logo-blink"
           />
         </div>
       </div>
 
-      {/* 2. Navbar (Now outside hero, at the top) */}
-      <nav ref={navRef}>
-        <div className="logo">
-          <img src="/assets/panthers%20logo%20transparent.png" alt="Panthers Estate" />
+      {/* 2. Navigation Bar (Always on top) */}
+      <nav ref={navRef} className="opacity-0 fixed top-0 left-0 w-full pt-16 pb-4 px-6 md:pt-16 md:pb-6 md:px-8 flex justify-between items-center z-[100] bg-transparent">
+        <div className="logo cursor-pointer z-[110]">
+          <img src="/assets/panthers%20logo%20new.png" alt="Panthers Estate" />
         </div>
-        <div className="menu-toggle" onClick={toggleMenu}>
-          <p id="menu-open">Menu</p>
-          <p id="menu-close">Close</p>
+        <div className="menu-toggle cursor-pointer z-[110]" onClick={toggleMenu}>
+          <p 
+            className="font-medium tracking-wide text-white mix-blend-difference hover:opacity-70 transition-opacity"
+            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.25)' }}
+          >
+            {isMenuOpen ? "CLOSE" : "MENU"}
+          </p>
         </div>
       </nav>
 
@@ -618,28 +622,38 @@ export default function Home() {
           <div ref={heroImgsRef} className="hero-imgs relative w-full h-full">
             <img className="absolute inset-0 w-full h-full object-cover" src="/assets/home%202.jpg" alt="Panthers Home 2" style={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} />
             <img className="absolute inset-0 w-full h-full object-cover" src="/assets/home%207.jpg" alt="Panthers Home 7" style={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} />
-            <img className="absolute inset-0 w-full h-full object-cover" src="/assets/home%20img.png" alt="Panthers Home Img" style={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} />
+            <img className="absolute inset-0 w-full h-full object-cover" src="/assets/home%20img%201.png" alt="Panthers Home Img 1" style={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} />
           </div>
 
           {/* Text Overlay */}
-          <div className="absolute bottom-8 left-4 md:bottom-16 md:left-12 z-50 pointer-events-none flex flex-col">
-            <div className="overflow-hidden pb-2">
+          <div className="absolute top-[35%] left-1/2 -translate-x-1/2 md:top-[40%] z-50 pointer-events-none flex flex-col items-center text-center w-full">
+            <div className="overflow-hidden pb-4">
               <h1 
                 ref={el => heroTextLinesRef.current[0] = el}
-                className="text-white font-bold tracking-tighter drop-shadow-xl" 
-                style={{ fontSize: 'clamp(4rem, 10vw, 9rem)', lineHeight: '1' }}
+                className="text-white font-medium tracking-tighter drop-shadow-xl" 
+                style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)', lineHeight: '0.85' }}
               >
                 Find Your
               </h1>
             </div>
-            <div className="overflow-hidden pb-2">
+            <div className="overflow-hidden pb-2 -mt-6 md:-mt-8">
               <h1 
                 ref={el => heroTextLinesRef.current[1] = el}
-                className="text-white font-bold tracking-tighter drop-shadow-xl" 
-                style={{ fontSize: 'clamp(4rem, 10vw, 9rem)', lineHeight: '1' }}
+                className="text-white font-medium tracking-tighter drop-shadow-xl" 
+                style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)', lineHeight: '0.85' }}
               >
                 Dream Home
               </h1>
+            </div>
+            {/* Hard spacer to forcefully push the subtitle down */}
+            <div style={{ height: '16px', width: '100%' }}></div>
+            <div className="overflow-hidden max-w-2xl">
+              <p 
+                ref={el => heroTextLinesRef.current[2] = el}
+                className="text-white text-base md:text-lg font-light opacity-90 drop-shadow-md tracking-wide"
+              >
+                Discover exceptional residences where thoughtful design, modern comfort, and timeless elegance come together. Explore spaces created to complement your lifestyle and inspire every day.
+              </p>
             </div>
           </div>
         </section>
@@ -652,42 +666,22 @@ export default function Home() {
           style={{ paddingTop: '6rem', paddingBottom: '12rem', paddingLeft: '5%', paddingRight: '5%' }}
         >
           {/* Text Content */}
-          <div className="relative z-10 w-full font-medium tracking-tight mt-8" style={{ fontFamily: 'var(--font-montserrat), sans-serif', fontSize: 'clamp(1.8rem, 4vw, 4rem)', lineHeight: '1.3' }}>
-            <h2 ref={el => aboutTextRefs.current[0] = el} className="text-center text-[clamp(2.5rem,5vw,5rem)] tracking-[0.1em] uppercase text-[#315C8B] font-bold" style={{ marginBottom: '8rem' }}>About Us</h2>
-            <p ref={el => aboutTextRefs.current[1] = el} className="mb-24">This is PANTHERS ESTATE.</p>
-            <p ref={el => aboutTextRefs.current[2] = el} className="mb-24">Built with vision. Designed for modern living.</p>
-            <p ref={el => aboutTextRefs.current[3] = el} className="mb-24">Panthers Estate creates spaces that go beyond property — spaces shaped by quality, purpose, and timeless design. Every residence is thoughtfully planned to bring together comfort, elegance, and long-term value.</p>
-            <p ref={el => aboutTextRefs.current[4] = el} className="mb-24">We believe a home is more than walls and architecture. It is where life grows, memories are built, and aspirations find their place.</p>
-            <p ref={el => aboutTextRefs.current[5] = el} className="mb-24">From carefully selected locations to refined design and premium living experiences, Panthers Estate is committed to delivering homes that reflect contemporary lifestyles and lasting trust.</p>
-            <p ref={el => aboutTextRefs.current[6] = el} className="mb-24">Discover spaces created for today and designed for tomorrow.</p>
-          </div>
-
-          {/* Floating Parallax Images */}
-          <div className="absolute inset-0 pointer-events-none z-20">
-            <img 
-              ref={el => parallaxImagesRef.current[0] = el}
-              src="/assets/about%201.jpg" 
-              className="absolute top-[20%] right-[15%] w-[15vw] max-w-[200px] h-auto aspect-[3/4] object-cover shadow-2xl rounded-sm"
-              alt="Floating 1"
-            />
-            <img 
-              ref={el => parallaxImagesRef.current[1] = el}
-              src="/assets/about%202.jpg" 
-              className="absolute top-[35%] left-[15%] w-[15vw] max-w-[200px] h-auto aspect-[3/4] object-cover shadow-2xl rounded-sm"
-              alt="Floating 2"
-            />
-            <img 
-              ref={el => parallaxImagesRef.current[2] = el}
-              src="/assets/about%205.jpg" 
-              className="absolute top-[50%] right-[10%] w-[15vw] max-w-[200px] h-auto aspect-[3/4] object-cover shadow-2xl rounded-sm"
-              alt="Floating 3"
-            />
-            <img 
-              ref={el => parallaxImagesRef.current[3] = el}
-              src="/assets/about%203.jpg" 
-              className="absolute top-[65%] left-[10%] w-[15vw] max-w-[200px] h-auto aspect-[3/4] object-cover shadow-2xl rounded-sm"
-              alt="Floating 4"
-            />
+          <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mt-8" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
+            <div className="w-full md:col-span-1">
+              <h3 className="text-3xl font-bold tracking-wider text-[#315C8B]" style={{ fontFamily: 'var(--font-poppins), sans-serif', lineHeight: '1.2' }}>
+                Why Panthers
+              </h3>
+            </div>
+            
+            <div className="w-full md:col-span-2 font-medium tracking-tight" style={{ fontSize: '1.3rem', lineHeight: '1.6' }}>
+              <h2 className="text-2xl md:text-3xl font-bold text-black" style={{ fontFamily: 'var(--font-poppins), sans-serif', marginBottom: '1.2rem' }}>
+                Find Your Place. Build Your Future.
+              </h2>
+              <p ref={el => aboutTextRefs.current[0] = el} style={{ opacity: 0.85 }}>
+                <span className="text-black">At Panthers Estate, we believe great spaces shape great futures. Like the Panther, we move with purpose, confidence, and precision, ensuring every home we present and every investment we recommend creates lasting value. </span>
+                <span className="text-black">Because finding the right property isn't just about where you are today—it's about where you're going next. We are committed to turning aspirations into addresses, helping you discover new possibilities and create a future built on confidence, growth, and opportunity.</span>
+              </p>
+            </div>
           </div>
         </section>
 
