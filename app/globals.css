@@ -79,7 +79,7 @@ body {
   gap: 1rem;
   overflow: hidden;
   z-index: 50;
-  background-color: #315C8B; /* Dark background */
+  background-color: #000000; /* Dark background */
   color: #ffffff; /* White text */
   will-change: transform;
 }
@@ -368,7 +368,7 @@ nav p {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #315C8B;
+  background-color: #000000;
   z-index: 15; /* Below nav (20) but above everything else */
   clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
   color: #fff;
@@ -546,7 +546,7 @@ nav p {
 .capsule-cards-section {
   position: relative;
   width: 100vw;
-  background-color: #315C8B;
+  background-color: #000000;
   color: #fff;
   overflow-x: hidden;
   font-family: var(--font-sans);
@@ -702,4 +702,12 @@ nav p {
   .card-content .card-description {
     width: 90%;
   }
+}
+
+
+/* Lock the nav to prevent Webflow animation */
+nav#panthers-nav-locked {
+  transform: none !important;
+  transition: none !important;
+  will-change: auto !important;
 }
