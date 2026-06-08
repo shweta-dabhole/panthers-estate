@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import gsap from 'gsap';
 
 export default function MenuOverlay({ containerRef, navRef, isBlackText = false }) {
@@ -14,6 +16,7 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
   const menuOverlayRef = useRef(null);
   const menuContentRef = useRef(null);
   const menuPreviewImgRef = useRef(null);
+  const router = useRouter();
 
   const toggleMenu = () => {
     if (isMenuAnimating) return;
@@ -213,16 +216,16 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
             <div className="col-sm">
               <div className="menu-links">
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%202.jpg')}>
-                  <a href="/#hero" onClick={(e) => handleNavClick(e, 'hero')}>Home</a>
+                  <Link data-taxi-ignore href="/#hero" onClick={(e) => handleNavClick(e, 'hero')}>Home</Link>
                 </div>
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%205.jpg')}>
-                  <a href="/about-us" onClick={(e) => { e.preventDefault(); if (window.location.pathname !== '/about-us') window.location.href = '/about-us'; toggleMenu(); }}>About Us</a>
+                  <Link data-taxi-ignore href="/about-us" onClick={toggleMenu}>About Us</Link>
                 </div>
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%207.jpg')}>
-                  <a href="/projects" onClick={(e) => { e.preventDefault(); if (window.location.pathname !== '/projects') window.location.href = '/projects'; toggleMenu(); }}>Projects</a>
+                  <Link data-taxi-ignore href="/projects" onClick={toggleMenu}>Projects</Link>
                 </div>
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/menu%20img1.jpg')}>
-                  <a href="#">Process</a>
+                  <Link data-taxi-ignore href="/process" onClick={toggleMenu}>Process</Link>
                 </div>
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%201.jpg')}>
                   <a href="#">Connect</a>
