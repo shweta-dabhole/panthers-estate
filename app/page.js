@@ -142,6 +142,124 @@ const featuresList = [
   }
 ];
 
+
+const PropertyCard = ({ property, index }) => {
+  const cardRef = useRef(null);
+  const cursorRef = useRef(null);
+  const imageWrapperRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      cardRef.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: index * 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none"
+        }
+      }
+    );
+  }, [index]);
+
+  const handleMouseMove = (e) => {
+    if (!imageWrapperRef.current || !cursorRef.current) return;
+    const rect = imageWrapperRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    gsap.to(cursorRef.current, {
+      x: x,
+      y: y,
+      duration: 0.3,
+      ease: "power2.out",
+      overwrite: "auto"
+    });
+  };
+
+  const handleMouseEnter = () => {
+    gsap.to(cursorRef.current, { 
+      scale: 1, 
+      opacity: 1, 
+      duration: 0.3, 
+      ease: "back.out(1.5)" 
+    });
+  };
+
+  const handleMouseLeave = () => {
+    gsap.to(cursorRef.current, { 
+      scale: 0.5, 
+      opacity: 0, 
+      duration: 0.3, 
+      ease: "power2.in" 
+    });
+  };
+
+  return (
+    <div ref={cardRef} className="flex flex-col w-full" style={{ gap: '24px' }}>
+      <div 
+        ref={imageWrapperRef}
+        className="relative w-full overflow-hidden rounded-[15px] cursor-none group"
+        style={{ aspectRatio: '1.5', backgroundColor: '#e3e3e3' }}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <img 
+          src={property.image} 
+          alt={property.title} 
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]" 
+        />
+        
+        {/* Custom Pill Cursor */}
+        <div 
+          ref={cursorRef}
+          className="absolute pointer-events-none z-10 flex items-center justify-center bg-white shadow-lg"
+          style={{ 
+            top: '-24px', 
+            left: '-60px', 
+            width: '120px', 
+            height: '48px', 
+            borderRadius: '100px',
+            opacity: 0,
+            transform: 'scale(0.5)'
+          }}
+        >
+          <span style={{ fontSize: '15px', fontWeight: 500, color: '#111' }}>View Details</span>
+        </div>
+      </div>
+      
+      <div className="flex flex-col" style={{ gap: '10px' }}>
+        <div className="flex justify-between items-center w-full">
+          <h3 style={{ fontSize: '20px', fontWeight: 600, color: '#191919', margin: 0 }}>{property.title}</h3>
+          <h3 style={{ fontSize: '20px', fontWeight: 600, color: '#191919', margin: 0 }}>{property.price}</h3>
+        </div>
+        <div className="flex items-center" style={{ fontSize: '15px', gap: '8px' }}>
+          <div className="flex gap-1 items-center">
+            <span style={{ color: '#757575' }}>{property.beds.split(' ')[0]}</span>
+            <span style={{ color: '#4d4d4d' }}>{property.beds.split(' ')[1]}</span>
+          </div>
+          <span style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: '#d1d1d1' }}></span>
+          <div className="flex gap-1 items-center">
+            <span style={{ color: '#757575' }}>{property.baths.split(' ')[0]}</span>
+            <span style={{ color: '#4d4d4d' }}>{property.baths.split(' ')[1]}</span>
+          </div>
+          <span style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: '#d1d1d1' }}></span>
+          <div className="flex gap-1 items-center">
+            <span style={{ color: '#757575' }}>{property.sqft.split(' ')[0]}</span>
+            <span style={{ color: '#4d4d4d' }}>{property.sqft.split(' ')[1]}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function Home() {
   const [activeFeature, setActiveFeature] = useState(0);
   const [openFaq, setOpenFaq] = useState(null);
@@ -651,6 +769,52 @@ export default function Home() {
                 <p style={{ fontSize: '15px', fontWeight: 400, color: '#333', lineHeight: '1.2em', margin: 0 }}>Years of expereince</p>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* 5. Explore Properties Section */}
+        <section 
+          id="properties"
+          ref={featuredSectionRef}
+          className="relative w-full flex flex-col items-center overflow-hidden"
+          style={{ paddingBottom: '100px', paddingTop: '40px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
+        >
+          <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end" style={{ maxWidth: '1200px', marginBottom: '80px' }}>
+            
+            {/* Left Text Block */}
+            <div className="flex flex-col items-start featured-header" style={{ maxWidth: '600px' }}>
+              <div className="flex items-center" style={{ gap: '10px', marginBottom: '20px' }}>
+                <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#b85300' }}></div>
+                <h3 style={{ fontSize: '17px', fontWeight: 400, letterSpacing: '-0.4px', color: '#333', margin: 0 }}>
+                  Listings
+                </h3>
+              </div>
+              <h2 style={{ fontSize: '44px', fontWeight: 500, color: '#191919', letterSpacing: '-0.5px', lineHeight: '1.1em', margin: '0 0 16px 0' }}>
+                Explore Properties
+              </h2>
+              <p style={{ fontSize: '16px', color: '#666', lineHeight: '1.5em', margin: 0, maxWidth: '345px' }}>
+                Luxury villas, smart apartments, commercial spaces. All verified and ready for you.
+              </p>
+            </div>
+
+            {/* Right Button */}
+            <div className="featured-header mt-8 md:mt-0 flex-none cursor-pointer group">
+              <div className="flex items-center justify-between transition-all duration-300 hover:bg-[#ebebeb]" style={{ height: '48px', padding: '6px 6px 6px 24px', borderRadius: '229px', border: '1px solid #191919', backgroundColor: 'transparent' }}>
+                <span style={{ fontSize: '15px', fontWeight: 500, color: '#191919', marginRight: '20px' }}>View All</span>
+                <div className="flex items-center justify-center bg-[#191919] transition-colors duration-300" style={{ width: '36px', height: '36px', borderRadius: '50%' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="#fff">
+                    <path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Cards Grid Wrapper */}
+          <div className="w-full grid grid-cols-1 md:grid-cols-2" style={{ maxWidth: '1200px', gap: '40px' }}>
+            {propertiesList.map((property, idx) => (
+              <PropertyCard key={idx} property={property} index={idx} />
+            ))}
           </div>
         </section>
 
