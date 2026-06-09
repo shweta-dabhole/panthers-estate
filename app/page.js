@@ -362,8 +362,8 @@ const DiscoverSpacesSection = () => {
   }, [isHovering]);
 
   return (
-    <section ref={sectionRef} className="relative w-full overflow-hidden" style={{ height: "400vh", backgroundColor: "#fff" }}>
-      <div ref={containerRef} className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden">
+    <section ref={sectionRef} className="relative w-full overflow-hidden h-screen" style={{ backgroundColor: "#fff" }}>
+      <div ref={containerRef} className="w-full h-full flex items-center justify-center overflow-hidden">
         
         {/* Texts */}
         <div className="absolute z-10 w-full flex flex-col items-center justify-center pointer-events-none" style={{ gap: '10px' }}>
@@ -381,10 +381,10 @@ const DiscoverSpacesSection = () => {
         </div>
 
         {/* Small Images */}
-        <img ref={img1Ref} src="/realtora-real-estate/public/images/BM5DJRZcwLRhIfqMFOK4GeI.webp" className="absolute object-cover shadow-xl" style={{ top: '15%', left: '15%', width: '220px', height: '140px', borderRadius: '16px' }} />
-        <img ref={img2Ref} src="/realtora-real-estate/public/images/hoMkKeDJp1rMS99FfvGiuFk8Vsc.webp" className="absolute object-cover shadow-xl" style={{ bottom: '15%', left: '10%', width: '240px', height: '180px', borderRadius: '16px' }} />
-        <img ref={img3Ref} src="/realtora-real-estate/public/images/hhMQHZPK2Han8nGE8ZGJzzB2Mo.webp" className="absolute object-cover shadow-xl" style={{ top: '15%', right: '15%', width: '240px', height: '140px', borderRadius: '16px' }} />
-        <img ref={img4Ref} src="/realtora-real-estate/public/images/QHrU5R2YxV6j0vFGDThc7hSgGKw.webp" className="absolute object-cover shadow-xl" style={{ bottom: '15%', right: '10%', width: '220px', height: '140px', borderRadius: '16px' }} />
+        <img ref={img1Ref} src="/realtora-real-estate/public/images/BM5DJRZcwLRhIfqMFOK4GeI.webp" className="absolute object-cover shadow-xl" style={{ top: '15%', left: '15%', width: '220px', height: '140px', borderRadius: '0px' }} />
+        <img ref={img2Ref} src="/realtora-real-estate/public/images/hoMkKeDJp1rMS99FfvGiuFk8Vsc.webp" className="absolute object-cover shadow-xl" style={{ bottom: '15%', left: '10%', width: '240px', height: '180px', borderRadius: '0px' }} />
+        <img ref={img3Ref} src="/realtora-real-estate/public/images/hhMQHZPK2Han8nGE8ZGJzzB2Mo.webp" className="absolute object-cover shadow-xl" style={{ top: '15%', right: '15%', width: '240px', height: '140px', borderRadius: '0px' }} />
+        <img ref={img4Ref} src="/realtora-real-estate/public/images/QHrU5R2YxV6j0vFGDThc7hSgGKw.webp" className="absolute object-cover shadow-xl" style={{ bottom: '15%', right: '10%', width: '220px', height: '140px', borderRadius: '0px' }} />
 
         {/* Center Reveal Image */}
         <div 
@@ -424,6 +424,631 @@ const DiscoverSpacesSection = () => {
     </section>
   );
 }
+
+const FeaturesSection = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const features = [
+    {
+      title: "Lifestyle-Centric Living",
+      image: "/realtora-real-estate/public/images/jFZ7UpAtLOeVJGXeZX6K072gE.png",
+      description: "Thoughtfully planned spaces that fit the pace of real life, with room to grow, recharge, and gather."
+    },
+    {
+      title: "Prime & Promising Locations",
+      image: "/realtora-real-estate/public/images/j8wE7PNwqxKHejAbpdrhyVl79s8.webp",
+      description: "From upscale neighborhoods to emerging hotspots, each address is chosen for its value and vibrance."
+    },
+    {
+      title: "Smart, Sustainable Features",
+      image: "/realtora-real-estate/public/images/ZpjnjMU3ELZv5AhKRQMj99dRIk.png",
+      description: "Enjoy future-ready homes equipped with eco-conscious technology and intelligent design."
+    },
+    {
+      title: "End-to-End Support",
+      image: "/realtora-real-estate/public/images/bJ5HA9CE0X9HXUh4sJsZJh6xb40.png",
+      description: "From discovery to handover, our experts guide you through every step for a smooth, stress-free journey."
+    }
+  ];
+
+  return (
+    <section id="features" className="w-full flex flex-col items-center" style={{ backgroundColor: '#f9f9f9', padding: '120px 5%' }}>
+      {/* Header */}
+      <div className="flex flex-col items-center text-center" style={{ maxWidth: '800px', marginBottom: '80px' }}>
+        {/* Badge */}
+        <div className="flex items-center" style={{ backgroundColor: '#fff', padding: '8px 20px', borderRadius: '30px', marginBottom: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
+          <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d96a29', marginRight: '10px' }} />
+          <span style={{ fontSize: '14px', fontWeight: 500, color: '#191919', fontFamily: '"Inter", sans-serif' }}>Features</span>
+        </div>
+        
+        <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '24px' }}>
+          Why Thousands Trust Us to Find Their Next Home
+        </h2>
+        
+        <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, textAlign: 'center' }}>
+          More than listing, we deliver peace of mind,<br />smarter decisions, and smoother experiences.
+        </p>
+      </div>
+
+      {/* Main Content: 2 Columns */}
+      <div className="w-full max-w-[1200px] flex flex-col md:flex-row items-center justify-between" style={{ gap: '60px' }}>
+        
+        {/* Left: Tabs */}
+        <div className="w-full md:w-[40%] flex flex-col">
+          {features.map((feature, idx) => {
+            const isActive = activeTab === idx;
+            return (
+              <div 
+                key={idx}
+                onClick={() => setActiveTab(idx)}
+                className="w-full flex items-center cursor-pointer transition-all duration-300"
+                style={{
+                  padding: '32px 0',
+                  borderBottom: '1px solid #e6e6e6',
+                  opacity: isActive ? 1 : 0.6
+                }}
+              >
+                {/* Dot */}
+                <div style={{ 
+                  width: '6px', height: '6px', borderRadius: '50%', 
+                  backgroundColor: isActive ? '#191919' : 'transparent',
+                  marginRight: '20px',
+                  transition: 'background-color 0.3s'
+                }} />
+                
+                <h3 style={{ 
+                  fontSize: '24px', 
+                  fontWeight: isActive ? 600 : 500, 
+                  color: isActive ? '#191919' : '#9e9e9e',
+                  fontFamily: '"Outfit", sans-serif',
+                  margin: 0,
+                  transition: 'color 0.3s'
+                }}>
+                  {feature.title}
+                </h3>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Right: Image */}
+        <div className="w-full md:w-[55%] flex flex-col">
+          <div className="relative w-full" style={{ height: '400px', borderRadius: '16px', overflow: 'hidden', marginBottom: '24px' }}>
+            {features.map((feature, idx) => (
+              <img 
+                key={idx}
+                src={feature.image} 
+                alt={feature.title}
+                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+                style={{ opacity: activeTab === idx ? 1 : 0 }}
+              />
+            ))}
+          </div>
+          <div className="relative w-full h-[60px]">
+            {features.map((feature, idx) => (
+              <p 
+                key={idx}
+                className="absolute top-0 left-0 transition-opacity duration-500"
+                style={{ 
+                  opacity: activeTab === idx ? 1 : 0, 
+                  fontSize: '18px', 
+                  color: '#191919', 
+                  fontFamily: '"Inter", sans-serif',
+                  lineHeight: 1.5,
+                  maxWidth: '90%'
+                }}
+              >
+                {feature.description}
+              </p>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+const BlogsSection = () => {
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const card1Ref = useRef(null);
+  const card2Ref = useRef(null);
+
+  const blogs = [
+    {
+      title: "Your Luxury Sanctuary: Quick Home Design Tips",
+      date: "Dec 7, 2024",
+      readTime: "7 min read",
+      image: "/realtora-real-estate/public/images/CR9WCJs8QkwyR05G5BzUHipBX8.webp"
+    },
+    {
+      title: "How to Choose the Perfect Home for Your Family",
+      date: "Sep 3, 2025",
+      readTime: "10 min read",
+      image: "/realtora-real-estate/public/images/sTu9AUvn0LRJMxRSYiuilf4brfc.webp"
+    }
+  ];
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      // Fade in header elements
+      gsap.fromTo(headerRef.current.children, 
+        { opacity: 0, y: 30 },
+        { 
+          opacity: 1, y: 0, 
+          duration: 0.8, 
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%"
+          }
+        }
+      );
+
+      // Fade in cards
+      gsap.fromTo([card1Ref.current, card2Ref.current],
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 70%"
+          }
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={sectionRef} id="blog" className="w-full flex flex-col items-center" style={{ backgroundColor: '#f9f9f9', padding: '120px 5%' }}>
+      
+      {/* Header Container */}
+      <div ref={headerRef} className="w-full max-w-[1200px] flex flex-col relative" style={{ marginBottom: '80px' }}>
+        
+        {/* Badge */}
+        <div className="flex items-center self-start" style={{ marginBottom: '16px' }}>
+          <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d96a29', marginRight: '10px' }} />
+          <span style={{ fontSize: '16px', fontWeight: 500, color: '#191919', fontFamily: '"Inter", sans-serif' }}>Blogs</span>
+        </div>
+        
+        {/* Title & Subtitle vs Button layout */}
+        <div className="w-full flex flex-col md:flex-row justify-between items-end">
+          
+          <div className="flex flex-col" style={{ maxWidth: '600px' }}>
+            <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '16px' }}>
+              Your Guide to Smart Home Buying
+            </h2>
+            <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6 }}>
+              Read our latest articles on market trends,<br />financing tips, and home improvement ideas.
+            </p>
+          </div>
+
+          {/* View All Button */}
+          <button 
+            className="group flex items-center justify-center transition-all duration-300 hover:bg-black hover:text-white"
+            style={{ 
+              padding: '12px 24px', 
+              borderRadius: '30px', 
+              border: '1px solid #191919',
+              backgroundColor: 'transparent',
+              marginTop: '24px'
+            }}
+          >
+            <span style={{ fontSize: '16px', fontWeight: 500, color: '#191919', fontFamily: '"Inter", sans-serif', marginRight: '12px' }}>View All</span>
+            <div className="flex items-center justify-center bg-black group-hover:bg-white text-white group-hover:text-black transition-colors duration-300" style={{ width: '28px', height: '28px', borderRadius: '50%' }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </button>
+
+        </div>
+      </div>
+
+      {/* Cards Grid */}
+      <div className="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-2" style={{ gap: '40px' }}>
+        
+        {/* Card 1 */}
+        <div ref={card1Ref} className="group cursor-pointer flex flex-col">
+          <div className="w-full overflow-hidden" style={{ borderRadius: '16px', height: '400px', marginBottom: '24px' }}>
+            <img 
+              src={blogs[0].image} 
+              alt={blogs[0].title}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+          <div className="flex flex-col px-2">
+            <h3 className="transition-colors duration-300 group-hover:text-gray-600" style={{ fontSize: '32px', fontWeight: 500, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.2, letterSpacing: '-0.5px', marginBottom: '16px' }}>
+              {blogs[0].title}
+            </h3>
+            <div className="flex items-center" style={{ fontSize: '14px', color: '#757575', fontFamily: '"Inter", sans-serif' }}>
+              <span>{blogs[0].date}</span>
+              <span className="mx-3" style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: '#d96a29' }}></span>
+              <span>{blogs[0].readTime}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 2 */}
+        <div ref={card2Ref} className="group cursor-pointer flex flex-col">
+          <div className="w-full overflow-hidden" style={{ borderRadius: '16px', height: '400px', marginBottom: '24px' }}>
+            <img 
+              src={blogs[1].image} 
+              alt={blogs[1].title}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+          <div className="flex flex-col px-2">
+            <h3 className="transition-colors duration-300 group-hover:text-gray-600" style={{ fontSize: '32px', fontWeight: 500, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.2, letterSpacing: '-0.5px', marginBottom: '16px' }}>
+              {blogs[1].title}
+            </h3>
+            <div className="flex items-center" style={{ fontSize: '14px', color: '#757575', fontFamily: '"Inter", sans-serif' }}>
+              <span>{blogs[1].date}</span>
+              <span className="mx-3" style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: '#d96a29' }}></span>
+              <span>{blogs[1].readTime}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+  );
+};
+
+const TestimonialsSection = () => {
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const contentRef = useRef(null);
+  const sliderRef = useRef(null);
+  const imageSliderRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const testimonials = [
+    {
+      name: "Charlotte Bennett",
+      avatar: "/realtora-real-estate/public/images/z576pxgMO7uqozxes3YJljpu2s.webp",
+      text: "“Exceptional service from start to finish. We found the perfect apartment that truly feels like home.”",
+      image: "/realtora-real-estate/public/images/KYjiPvPFQrnxGJ1Rl36Vgqtiw.png"
+    },
+    {
+      name: "Emily John",
+      avatar: "/realtora-real-estate/public/images/V09GjbzLmn3SKxc0QOInwAHfw.webp",
+      text: "“We couldn’t have asked for a better experience! From the moment we reached out, the team went above and beyond to find us the perfect home. Highly recommend!”",
+      image: "/realtora-real-estate/public/images/CR9WCJs8QkwyR05G5BzUHipBX8.webp"
+    },
+    {
+      name: "Henry Caldwell",
+      avatar: "/realtora-real-estate/public/images/A2jIeSLi2HTwjLhzSESMxp3rd1c.webp",
+      text: "“From virtual tours to final signing, the process was seamless. We couldn’t be happier with our new home.”",
+      image: "/realtora-real-estate/public/images/wJUahXSEUzCrb6zS2SKNWdm2S0.png"
+    }
+  ];
+
+  const slideTo = (index) => {
+    setCurrentIndex(index);
+    gsap.to(imageSliderRef.current, {
+      xPercent: -(100 / testimonials.length) * index,
+      duration: 0.6,
+      ease: "power2.inOut"
+    });
+  };
+
+  const handleNext = () => {
+    slideTo((currentIndex + 1) % testimonials.length);
+  };
+
+  const handlePrev = () => {
+    slideTo(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1);
+  };
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.fromTo(headerRef.current.children, 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out", scrollTrigger: { trigger: sectionRef.current, start: "top 80%" } }
+      );
+      gsap.fromTo(contentRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", scrollTrigger: { trigger: sectionRef.current, start: "top 70%" } }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="w-full flex flex-col items-center overflow-hidden" style={{ backgroundColor: '#f9f9f9', padding: '120px 5%' }}>
+      <div ref={headerRef} className="w-full max-w-[1200px] flex flex-col mb-[80px] relative">
+        <div className="flex items-center self-start" style={{ marginBottom: '16px' }}>
+          <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d96a29', marginRight: '10px' }} />
+          <span style={{ fontSize: '16px', fontWeight: 500, color: '#191919', fontFamily: '"Inter", sans-serif' }}>Testimonials</span>
+        </div>
+        <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '16px' }}>What Our Clients says</h2>
+        <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, maxWidth: '500px' }}>More than listing, we deliver peace of mind,<br />smarter decisions, and smoother experiences.</p>
+      </div>
+
+      <div ref={contentRef} className="w-full max-w-[1200px] flex flex-col md:flex-row items-stretch justify-between" style={{ gap: '60px' }}>
+        
+        <div className="w-full md:w-[40%] flex flex-col justify-end pb-2">
+          <div className="w-full relative" style={{ height: '240px' }}>
+            {testimonials.map((t, idx) => (
+              <div 
+                key={idx} 
+                className="absolute inset-0 flex flex-col justify-end h-full transition-all duration-500" 
+                style={{ 
+                  opacity: idx === currentIndex ? 1 : 0, 
+                  transform: `translateX(${idx === currentIndex ? 0 : (idx < currentIndex ? -20 : 20)}px)`,
+                  pointerEvents: idx === currentIndex ? 'auto' : 'none' 
+                }}
+              >
+                <div className="flex items-center" style={{ marginBottom: '24px' }}>
+                  <div style={{ width: '60px', height: '60px', borderRadius: '8px', overflow: 'hidden', marginRight: '20px' }}>
+                    <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" />
+                  </div>
+                  <h3 style={{ fontSize: '24px', fontWeight: 600, color: '#191919', fontFamily: '"Outfit", sans-serif', margin: 0 }}>
+                    {t.name}
+                  </h3>
+                </div>
+                <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, paddingRight: '20px' }}>
+                  {t.text}
+                </p>
+              </div>
+            ))}
+          </div>
+          
+          <div className="flex items-center" style={{ gap: '16px', marginTop: '32px' }}>
+            <button onClick={handlePrev} className="flex items-center justify-center bg-[#191919] text-white hover:bg-black transition-colors" style={{ width: '48px', height: '48px', borderRadius: '50%' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+            </button>
+            <button onClick={handleNext} className="flex items-center justify-center bg-[#191919] text-white hover:bg-black transition-colors" style={{ width: '48px', height: '48px', borderRadius: '50%' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <div className="w-full md:w-[60%] overflow-hidden relative" style={{ height: '440px', borderRadius: '16px' }}>
+           <div ref={imageSliderRef} className="flex h-full w-[300%] absolute left-0 top-0">
+             {testimonials.map((t, idx) => (
+                <div key={idx} className="h-full p-0" style={{ width: '33.333%' }}>
+                  <img 
+                    src={t.image} 
+                    alt="Property"
+                    className="w-full h-full object-cover"
+                    style={{ borderRadius: '16px' }}
+                  />
+                </div>
+             ))}
+           </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+
+const FaqsSection = () => {
+  const sectionRef = useRef(null);
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const faqs = [
+    {
+      question: "Can I get help with paperwork and registration?",
+      answer: "Yes, our expert team provides full assistance with all legal paperwork, registration processes, and documentation to ensure a seamless and hassle-free experience."
+    },
+    {
+      question: "What if I'm looking for a home loan?",
+      answer: "We partner with leading banks and financial institutions to help you secure the best home loan options with attractive interest rates and quick processing."
+    },
+    {
+      question: "How quickly can I schedule a property visit?",
+      answer: "You can schedule a property visit within 24 hours. Our agents are flexible and will coordinate a time that best suits your convenience."
+    },
+    {
+      question: "Are your listings updated regularly?",
+      answer: "Absolutely! We update our property listings daily to ensure you have access to the latest available homes, apartments, and commercial spaces."
+    },
+    {
+      question: "Can I sell my property here?",
+      answer: "Yes, you can list your property with us. Our marketing experts will ensure your listing reaches the right buyers for a quick and profitable sale."
+    }
+  ];
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.fromTo(leftRef.current.children,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out", scrollTrigger: { trigger: sectionRef.current, start: "top 80%" } }
+      );
+      gsap.fromTo(rightRef.current.children,
+        { opacity: 0, x: 30 },
+        { opacity: 1, x: 0, duration: 0.8, stagger: 0.1, ease: "power2.out", scrollTrigger: { trigger: sectionRef.current, start: "top 75%" } }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="w-full flex flex-col items-center" style={{ backgroundColor: '#f9f9f9', padding: '120px 5%' }}>
+      <div className="w-full max-w-[1200px] flex flex-col md:flex-row items-start justify-between" style={{ gap: '80px' }}>
+        
+        {/* Left Column */}
+        <div ref={leftRef} className="w-full md:w-[45%] flex flex-col">
+          <div className="flex items-center self-start" style={{ marginBottom: '24px' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d96a29', marginRight: '10px' }} />
+            <span style={{ fontSize: '16px', fontWeight: 500, color: '#191919', fontFamily: '"Inter", sans-serif' }}>FAQs</span>
+          </div>
+          
+          <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '24px' }}>
+            Got Questions?<br />We've Got Answers
+          </h2>
+          
+          <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px' }}>
+            Everything you need to know about buying, selling, and renting with confidence.
+          </p>
+
+          <button className="flex items-center justify-between self-start transition-all hover:bg-[#333]" style={{ backgroundColor: '#000000', color: '#fff', padding: '10px 10px 10px 32px', borderRadius: '50px', fontSize: '18px', fontWeight: 500, fontFamily: '"Inter", sans-serif' }}>
+            <span style={{ marginRight: '16px' }}>Get in Touch</span>
+            <div className="flex items-center justify-center bg-white text-black" style={{ width: '44px', height: '44px', borderRadius: '50%' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+          </button>
+        </div>
+
+        {/* Right Column: Accordion */}
+        <div ref={rightRef} className="w-full md:w-[55%] flex flex-col" style={{ marginTop: '20px' }}>
+          {faqs.map((faq, idx) => (
+            <div key={idx} className="w-full flex flex-col cursor-pointer border-b border-[#e5e5e5] transition-colors" onClick={() => toggleFaq(idx)} style={{ padding: '24px 0' }}>
+              <div className="w-full flex items-center justify-between">
+                <h3 style={{ fontSize: '20px', fontWeight: 500, color: '#191919', fontFamily: '"Inter", sans-serif', margin: 0, paddingRight: '20px' }}>
+                  {faq.question}
+                </h3>
+                <div className="flex items-center justify-center transition-transform duration-300" style={{ transform: openFaq === idx ? 'rotate(45deg)' : 'rotate(0deg)', minWidth: '24px' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#191919" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </div>
+              </div>
+              <div className="overflow-hidden transition-all duration-500" style={{ maxHeight: openFaq === idx ? '200px' : '0px', opacity: openFaq === idx ? 1 : 0 }}>
+                <p style={{ fontSize: '16px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, marginTop: '16px', paddingRight: '40px' }}>
+                  {faq.answer}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+const FooterSection = () => {
+  const sectionRef = useRef(null);
+  const topRef = useRef(null);
+  const bottomRef = useRef(null);
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.fromTo(topRef.current.children,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out", scrollTrigger: { trigger: sectionRef.current, start: "top 75%" } }
+      );
+      gsap.fromTo(bottomRef.current.children,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out", scrollTrigger: { trigger: sectionRef.current, start: "top 50%" } }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <footer ref={sectionRef} className="w-full relative flex flex-col items-center overflow-hidden" style={{ minHeight: '700px', padding: '100px 5% 60px 5%' }}>
+      
+      {/* Background Image */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <img src="/realtora-real-estate/public/images/BBK7G2W0GpZei2zukI6jNqEI6X4.jpeg" alt="Footer Background" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#0a0a0a]"></div>
+      </div>
+
+      {/* Top: Newsletter */}
+      <div ref={topRef} className="relative z-10 w-full max-w-[800px] flex flex-col items-center text-center" style={{ marginTop: '40px' }}>
+        <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#ffffff', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '20px' }}>
+          Join Our News Letter
+        </h2>
+        <p style={{ fontSize: '18px', color: '#e5e5e5', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px' }}>
+          Stay informed. Get the best local<br />real estate updates without the fluff.
+        </p>
+
+        {/* Form Container */}
+        <div className="flex items-center" style={{ gap: '16px' }}>
+          <input 
+            type="email" 
+            placeholder="Enter Your Email"
+            className="outline-none placeholder-gray-300"
+            style={{ 
+              backgroundColor: 'rgba(0, 0, 0, 0.4)', 
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              color: '#ffffff',
+              padding: '16px 24px',
+              borderRadius: '40px',
+              width: '340px',
+              fontSize: '16px',
+              fontFamily: '"Inter", sans-serif'
+            }}
+          />
+          <button className="transition-transform hover:scale-105" style={{ backgroundColor: '#ffffff', color: '#191919', padding: '16px 36px', borderRadius: '40px', fontSize: '16px', fontWeight: 600, fontFamily: '"Inter", sans-serif' }}>
+            Subscribe
+          </button>
+        </div>
+      </div>
+
+      {/* Bottom: Footer Links */}
+      <div ref={bottomRef} className="relative z-10 w-full max-w-[1200px] flex flex-col md:flex-row justify-between items-start" style={{ marginTop: 'auto', paddingTop: '120px' }}>
+        
+        {/* Left Side */}
+        <div className="flex flex-col" style={{ maxWidth: '300px' }}>
+          <h3 style={{ fontSize: '32px', fontWeight: 600, color: '#ffffff', fontFamily: '"Outfit", sans-serif', marginBottom: '16px' }}>
+            Panthers
+          </h3>
+          <p style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Inter", sans-serif', lineHeight: 1.6 }}>
+            Start your exciting journey to<br />homeownership right here.
+          </p>
+        </div>
+
+        {/* Right Side Links */}
+        <div className="flex" style={{ gap: '120px' }}>
+          
+          <div className="flex flex-col">
+            <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', fontFamily: '"Inter", sans-serif', marginBottom: '32px' }}>
+              Main Pages
+            </h4>
+            <div className="flex flex-col" style={{ gap: '20px' }}>
+              {['Home', 'Projects', 'About', 'Blogs'].map(link => (
+                <a key={link} href="#" style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Inter", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
+                  {link}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col">
+            <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', fontFamily: '"Inter", sans-serif', marginBottom: '32px' }}>
+              Other pages
+            </h4>
+            <div className="flex flex-col" style={{ gap: '20px' }}>
+              {['404', 'Privacy Policy', 'Terms & Conditions'].map(link => (
+                <a key={link} href="#" style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Inter", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
+                  {link}
+                </a>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 export default function Home() {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -854,7 +1479,7 @@ export default function Home() {
           {/* Centered Large Text */}
           <div style={{ maxWidth: '760px', textAlign: 'center', marginBottom: '100px' }} ref={el => aboutTextRefs.current[1] = el}>
             <p style={{ fontSize: '24px', fontWeight: 400, color: '#191919', lineHeight: '1.5', margin: 0 }}>
-              At Realtora, we believe a home is life's most important foundation. Our mission is to find your perfect habitat so you can comfortably build your future and best life.
+              At Panthers, we believe a home is life's most important foundation. Our mission is to find your perfect habitat so you can comfortably build your future and best life.
             </p>
           </div>
 
@@ -985,6 +1610,11 @@ export default function Home() {
         
         {/* 6. Discover Spaces Section */}
         <DiscoverSpacesSection />
+        <FeaturesSection />
+        <BlogsSection />
+        <TestimonialsSection />
+        <FaqsSection />
+        <FooterSection />
 
               </div>
     </div>
