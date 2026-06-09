@@ -80,7 +80,71 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const propertiesList = [
+  {
+    title: "Cedarwood Estates",
+    price: "$1,600,000",
+    beds: "5 Bedrooms",
+    baths: "5 Bathrooms",
+    sqft: "4,500 SQ.FT",
+    image: "/realtora-real-estate/public/images/BM5DJRZcwLRhIfqMFOK4GeI.webp",
+    badge: "FOR SALE"
+  },
+  {
+    title: "Goldencrest Villas",
+    price: "$1,875,000",
+    beds: "6 Bedrooms",
+    baths: "8 Bathrooms",
+    sqft: "3,800 SQ.FT",
+    image: "/realtora-real-estate/public/images/QHrU5R2YxV6j0vFGDThc7hSgGKw.webp",
+    badge: "FOR SALE"
+  },
+  {
+    title: "Silverstone Manor",
+    price: "$2,250,000",
+    beds: "5 Bedrooms",
+    baths: "5 Bathrooms",
+    sqft: "4,000 SQ.FT",
+    image: "/realtora-real-estate/public/images/p36i3IJiJzBK4cHjJGtkOkx4M.jpeg",
+    badge: "NEW"
+  },
+  {
+    title: "Serenity Villas",
+    price: "$2,500,000",
+    beds: "4 Bedrooms",
+    baths: "3 Bathrooms",
+    sqft: "3,200 SQ.FT",
+    image: "/realtora-real-estate/public/images/A2jIeSLi2HTwjLhzSESMxp3rd1c.webp",
+    badge: "FOR SALE"
+  }
+];
+
+const featuresList = [
+  {
+    title: "Lifestyle-Centric Living",
+    description: "Thoughtfully planned spaces that fit the pace of real life, with room to grow, recharge, and gather.",
+    image: "/realtora-real-estate/public/images/BM5DJRZcwLRhIfqMFOK4GeI.webp"
+  },
+  {
+    title: "Prime & Promising Locations",
+    description: "From upscale neighborhoods to emerging hotspots, each address is chosen for its value and vibrance.",
+    image: "/realtora-real-estate/public/images/A2jIeSLi2HTwjLhzSESMxp3rd1c.webp"
+  },
+  {
+    title: "Smart, Sustainable Features",
+    description: "Enjoy future-ready homes equipped with eco-conscious technology and intelligent design.",
+    image: "/realtora-real-estate/public/images/QHrU5R2YxV6j0vFGDThc7hSgGKw.webp"
+  },
+  {
+    title: "End-to-End Support",
+    description: "We handle the complexities of buying, selling, and renting, giving you peace of mind at every step.",
+    image: "/realtora-real-estate/public/images/hoMkKeDJp1rMS99FfvGiuFk8Vsc.webp"
+  }
+];
+
 export default function Home() {
+  const [activeFeature, setActiveFeature] = useState(0);
+  const [openFaq, setOpenFaq] = useState(null);
   const preLoaderRef = useRef(null);
   const loaderImgRef = useRef(null);
   const heroImgsRef = useRef(null);
@@ -94,6 +158,12 @@ export default function Home() {
   const parallaxImagesRef = useRef([]);
   const aboutTextRefs = useRef([]);
   const cardsSectionRef = useRef(null);
+  const featuredSectionRef = useRef(null);
+  const discoverSectionRef = useRef(null);
+  const discoverParallaxRef = useRef([]);
+  const discoverCenterRef = useRef(null);
+  const featuresSectionRef = useRef(null);
+  const horizonVillaRef = useRef(null);
   useEffect(() => {
     // Initialize Lenis Smooth Scrolling
     const lenis = new Lenis();
@@ -228,25 +298,191 @@ export default function Home() {
     // 4. Text Reveal Scroll Animation
     if (aboutTextRefs.current.length > 0) {
       aboutTextRefs.current.forEach((textEl) => {
-        gsap.fromTo(
-          textEl,
-          { opacity: 0.15, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            ease: "none",
-            scrollTrigger: {
-              trigger: textEl,
-              start: "top 85%",
-              end: "top 45%",
-              scrub: true,
-            },
-          }
-        );
+        if (textEl) {
+          gsap.fromTo(
+            textEl,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: textEl,
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+              },
+            }
+          );
+        }
       });
     }
 
+    // Cards Animation
+    if (cardsSectionRef.current) {
+      const cards = cardsSectionRef.current.querySelectorAll('.stat-card');
+      if (cards.length > 0) {
+        gsap.fromTo(
+          cards,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: cardsSectionRef.current,
+              start: "top 80%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      }
+    }
 
+    // Infinite Loop Horizontal Marquee for Explore Properties
+    if (featuredSectionRef.current) {
+      const headerElements = featuredSectionRef.current.querySelectorAll('.featured-header');
+      const cards = featuredSectionRef.current.querySelectorAll('.property-card');
+      
+      if (headerElements.length > 0) {
+        gsap.fromTo(
+          headerElements,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: featuredSectionRef.current,
+              start: "top 80%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      }
+
+      if (cards.length > 0) {
+        const loop = horizontalLoop(gsap.utils.toArray(cards), {
+          repeat: -1,
+          speed: 0.5,
+          paddingRight: 32 // matching gap-8
+        });
+
+        // Pause loop on hover
+        const wrapper = featuredSectionRef.current.querySelector(".property-cards-wrapper");
+        if (wrapper) {
+          const onEnter = () => loop.pause();
+          const onLeave = () => loop.play();
+          wrapper.addEventListener("mouseenter", onEnter);
+          wrapper.addEventListener("mouseleave", onLeave);
+
+          // Save cleanup handler
+          wrapper._cleanup = () => {
+            wrapper.removeEventListener("mouseenter", onEnter);
+            wrapper.removeEventListener("mouseleave", onLeave);
+            loop.kill();
+          };
+        }
+
+        // Fade in the cards wrapper
+        gsap.fromTo(
+          ".property-cards-wrapper",
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.0,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: featuredSectionRef.current,
+              start: "top 70%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      }
+    }
+
+    // Discover Parallax Animation (4 corner images)
+    if (discoverParallaxRef.current.length > 0 && discoverSectionRef.current) {
+      discoverParallaxRef.current.forEach((img, index) => {
+        if (img) {
+          const yStart = [300, -300, 350, -280][index] || 300;
+          const yEnd = [-300, 300, -350, 280][index] || -300;
+          gsap.fromTo(
+            img,
+            { y: yStart },
+            {
+              y: yEnd,
+              ease: "none",
+              scrollTrigger: {
+                trigger: discoverSectionRef.current,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1.5,
+              },
+            }
+          );
+        }
+      });
+    }
+
+    // Center image in Discover section - subtle float
+    if (discoverCenterRef.current && discoverSectionRef.current) {
+      gsap.fromTo(
+        discoverCenterRef.current,
+        { y: 80, scale: 0.95 },
+        {
+          y: -80,
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: discoverSectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 2,
+          },
+        }
+      );
+    }
+
+    // Horizon Villa Scroll Reveal - scales from rounded card to full bleed
+    if (horizonVillaRef.current) {
+      gsap.fromTo(
+        horizonVillaRef.current,
+        { borderRadius: '3rem', scale: 0.88, margin: '0 3rem' },
+        {
+          borderRadius: '0rem',
+          scale: 1,
+          margin: '0 0',
+          ease: "none",
+          scrollTrigger: {
+            trigger: horizonVillaRef.current,
+            start: "top 85%",
+            end: "top 20%",
+            scrub: 1.5,
+          },
+        }
+      );
+    }
+
+    // Features Scroll Linked Tabs
+    if (featuresSectionRef.current) {
+      ScrollTrigger.create({
+        trigger: featuresSectionRef.current,
+        start: "top top",
+        end: "bottom bottom",
+        onUpdate: (self) => {
+          let index = Math.floor(self.progress * featuresList.length);
+          if (index >= featuresList.length) index = featuresList.length - 1;
+          setActiveFeature(index);
+        }
+      });
+    }
 
     return () => {
       tl.kill();
@@ -289,7 +525,7 @@ export default function Home() {
             <div className="overflow-hidden pb-4">
               <h1 
                 ref={el => heroTextLinesRef.current[0] = el}
-                className="text-white font-medium tracking-tighter drop-shadow-xl" 
+                className="text-white font-medium tracking-tighter drop-shadow-xl font-poppins" 
                 style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)', lineHeight: '0.85' }}
               >
                 Find Your
@@ -298,7 +534,7 @@ export default function Home() {
             <div className="overflow-hidden pb-2 -mt-6 md:-mt-8">
               <h1 
                 ref={el => heroTextLinesRef.current[1] = el}
-                className="text-white font-medium tracking-tighter drop-shadow-xl" 
+                className="text-white font-medium tracking-tighter drop-shadow-xl font-poppins" 
                 style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)', lineHeight: '0.85' }}
               >
                 Dream Home
@@ -309,7 +545,7 @@ export default function Home() {
             <div className="overflow-hidden max-w-2xl">
               <p 
                 ref={el => heroTextLinesRef.current[2] = el}
-                className="text-white text-base md:text-lg font-light opacity-90 drop-shadow-md tracking-wide"
+                className="text-white text-base md:text-lg font-light opacity-90 drop-shadow-md tracking-wide font-poppins"
               >
                 Discover exceptional residences where thoughtful design, modern comfort, and timeless elegance come together. Explore spaces created to complement your lifestyle and inspire every day.
               </p>
@@ -317,36 +553,109 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 4. About Us Section */}
+                {/* 4. About Us Section (Who Are We) */}
         <section 
           id="about"
           ref={aboutSectionRef}
-          className="relative w-full flex flex-col justify-start items-center bg-white text-black overflow-hidden"
-          style={{ paddingTop: '6rem', paddingBottom: '12rem', paddingLeft: '5%', paddingRight: '5%' }}
+          className="relative w-full flex flex-col items-center overflow-hidden"
+          style={{ paddingTop: '100px', paddingBottom: '100px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
         >
-          {/* Text Content */}
-          <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 mt-8" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
-            <div className="w-full md:col-span-1">
-              <h3 className="text-3xl font-bold tracking-wider text-[#000000]" style={{ fontFamily: 'var(--font-poppins), sans-serif', lineHeight: '1.2' }}>
-                Why Panthers
-              </h3>
+          {/* Centered Heading with Dot */}
+          <div className="flex items-center" style={{ gap: '10px', marginBottom: '32px' }} ref={el => aboutTextRefs.current[0] = el}>
+            <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#b85300' }}></div>
+            <h3 style={{ fontSize: '17px', fontWeight: 400, letterSpacing: '-0.4px', color: '#191919', margin: 0 }}>
+              Who Are We?
+            </h3>
+          </div>
+
+          {/* Centered Large Text */}
+          <div style={{ maxWidth: '760px', textAlign: 'center', marginBottom: '100px' }} ref={el => aboutTextRefs.current[1] = el}>
+            <p style={{ fontSize: '24px', fontWeight: 400, color: '#191919', lineHeight: '1.5', margin: 0 }}>
+              At Realtora, we believe a home is life's most important foundation. Our mission is to find your perfect habitat so you can comfortably build your future and best life.
+            </p>
+          </div>
+
+          {/* Cards Section */}
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style={{ gap: '24px', maxWidth: '1200px' }} ref={cardsSectionRef}>
+            {/* Card 1 */}
+            <div className="flex flex-col justify-between" style={{ height: '212px', padding: '32px', borderRadius: '15px', borderWidth: '1.3px', borderStyle: 'solid', borderColor: '#e6e6e6', backgroundColor: '#f9f9f9' }}>
+              <div style={{ width: '32px', height: '32px', color: '#666', flex: 'none' }}>
+                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 0 6 L 0 0 L 10.5 0 L 10.5 6 Z" fillOpacity="0" fill="currentColor" transform="translate(6.75 12)"/>
+                  <path d="M 0 6 L 0 0 L 10.5 0 L 10.5 6" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(6.75 12)"/>
+                  <path d="M 0 0 L 10.5 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(6.75 15)"/>
+                  <path d="M 0 0 L 21 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(1.5 18)"/>
+                  <path d="M 21 0 L 0 4.5" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(1.5 4.5)"/>
+                  <path d="M 0 0 L 0 9.322" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(3 8.678)"/>
+                  <path d="M 0 0 L 0 13.178" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(21 4.822)"/>
+                </svg>
+              </div>
+              <div className="flex flex-col" style={{ gap: '16px' }}>
+                <h4 style={{ fontSize: '40px', fontWeight: 600, color: '#111', lineHeight: '1em', letterSpacing: '-0.04em', margin: 0 }}>5000+</h4>
+                <p style={{ fontSize: '15px', fontWeight: 400, color: '#333', lineHeight: '1.2em', margin: 0 }}>Property deliverd</p>
+              </div>
             </div>
-            
-            <div className="w-full md:col-span-2 font-medium tracking-tight" style={{ fontSize: '1.3rem', lineHeight: '1.6' }}>
-              <h2 className="text-2xl md:text-3xl font-bold text-black" style={{ fontFamily: 'var(--font-poppins), sans-serif', marginBottom: '1.2rem' }}>
-                Find Your Place. Build Your Future.
-              </h2>
-              <p ref={el => aboutTextRefs.current[0] = el} style={{ opacity: 0.85 }}>
-                <span className="text-black">At Panthers Estate, we believe great spaces shape great futures. Like the Panther, we move with purpose, confidence, and precision, ensuring every home we present and every investment we recommend creates lasting value. </span>
-                <span className="text-black">Because finding the right property isn't just about where you are today—it's about where you're going next. We are committed to turning aspirations into addresses, helping you discover new possibilities and create a future built on confidence, growth, and opportunity.</span>
-              </p>
+
+            {/* Card 2 */}
+            <div className="flex flex-col justify-between" style={{ height: '212px', padding: '32px', borderRadius: '15px', borderWidth: '1.3px', borderStyle: 'solid', borderColor: '#e6e6e6', backgroundColor: '#f9f9f9' }}>
+              <div style={{ width: '32px', height: '32px', color: '#666', flex: 'none' }}>
+                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 0 3.75 C 0 1.679 1.679 0 3.75 0 C 5.821 0 7.5 1.679 7.5 3.75 C 7.5 5.821 5.821 7.5 3.75 7.5 C 1.679 7.5 0 5.821 0 3.75 Z" fillOpacity="0" fill="currentColor" transform="translate(8.25 9.75)"/>
+                  <path d="M 0 3 C 0 1.343 1.343 0 3 0 C 4.657 0 6 1.343 6 3 C 6 4.657 4.657 6 3 6 C 1.343 6 0 4.657 0 3 Z" fillOpacity="0" fill="currentColor" transform="translate(3 5.25)"/>
+                  <path d="M 0 3 C 0 1.343 1.343 0 3 0 C 4.657 0 6 1.343 6 3 C 6 4.657 4.657 6 3 6 C 1.343 6 0 4.657 0 3 Z" fillOpacity="0" fill="currentColor" transform="translate(15 5.25)"/>
+                  <path d="M 0 0 C 1.771 -0.001 3.439 0.833 4.5 2.25" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(18 11.25)"/>
+                  <path d="M 0 2.25 C 1.061 0.833 2.729 -0.001 4.5 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(1.5 11.25)"/>
+                  <path d="M 0 3.75 C 0 1.679 1.679 0 3.75 0 C 5.821 0 7.5 1.679 7.5 3.75 C 7.5 5.821 5.821 7.5 3.75 7.5 C 1.679 7.5 0 5.821 0 3.75 Z" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(8.25 9.75)"/>
+                  <path d="M 0 3 C 1.095 1.141 3.092 0 5.25 0 C 7.408 0 9.405 1.141 10.5 3" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(6.75 17.25)"/>
+                  <path d="M 0 2.25 C 0.39 0.741 1.87 -0.218 3.407 0.043 C 4.944 0.304 6.025 1.698 5.894 3.252 C 5.764 4.805 4.465 6 2.906 6" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(15.094 5.25)"/>
+                  <path d="M 2.999 6 C 1.44 6 0.141 4.805 0.011 3.252 C -0.12 1.698 0.961 0.304 2.498 0.043 C 4.034 -0.218 5.515 0.741 5.905 2.25" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(3.001 5.25)"/>
+                </svg>
+              </div>
+              <div className="flex flex-col" style={{ gap: '16px' }}>
+                <h4 style={{ fontSize: '40px', fontWeight: 600, color: '#111', lineHeight: '1em', letterSpacing: '-0.04em', margin: 0 }}>2000+</h4>
+                <p style={{ fontSize: '15px', fontWeight: 400, color: '#333', lineHeight: '1.2em', margin: 0 }}>Client served worldwide</p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="flex flex-col justify-between" style={{ height: '212px', padding: '32px', borderRadius: '15px', borderWidth: '1.3px', borderStyle: 'solid', borderColor: '#e6e6e6', backgroundColor: '#f9f9f9' }}>
+              <div style={{ width: '32px', height: '32px', color: '#666', flex: 'none' }}>
+                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 0 0 L 13.5 0 L 13.5 5.916 C 13.5 9.638 10.523 12.722 6.802 12.75 C 5.002 12.764 3.272 12.059 1.995 10.791 C 0.718 9.524 0 7.799 0 6 Z" fillOpacity="0" fill="currentColor" transform="translate(5.25 4.5)"/>
+                  <path d="M 0 0 L 6 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(9 21)"/>
+                  <path d="M 0 0 L 0 3.75" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(12 17.25)"/>
+                  <path d="M 3.938 5.25 L 3 5.25 C 1.343 5.25 0 3.907 0 2.25 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 3.75 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(1.5 6.75)"/>
+                  <path d="M 0 5.25 L 0.938 5.25 C 2.594 5.25 3.938 3.907 3.938 2.25 L 3.938 0.75 C 3.938 0.336 3.602 0 3.188 0 L 0.188 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(18.563 6.75)"/>
+                  <path d="M 0 0 L 13.5 0 L 13.5 5.916 C 13.5 9.638 10.523 12.722 6.802 12.75 C 5.002 12.764 3.272 12.059 1.995 10.791 C 0.718 9.524 0 7.799 0 6 Z" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(5.25 4.5)"/>
+                </svg>
+              </div>
+              <div className="flex flex-col" style={{ gap: '16px' }}>
+                <h4 style={{ fontSize: '40px', fontWeight: 600, color: '#111', lineHeight: '1em', letterSpacing: '-0.04em', margin: 0 }}>100+</h4>
+                <p style={{ fontSize: '15px', fontWeight: 400, color: '#333', lineHeight: '1.2em', margin: 0 }}>Awards</p>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="flex flex-col justify-between" style={{ height: '212px', padding: '32px', borderRadius: '15px', borderWidth: '1.3px', borderStyle: 'solid', borderColor: '#e6e6e6', backgroundColor: '#f9f9f9' }}>
+              <div style={{ width: '32px', height: '32px', color: '#666', flex: 'none' }}>
+                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 0.75 3.75 C 0.336 3.75 0 3.414 0 3 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 11.25 0 C 11.664 0 12 0.336 12 0.75 L 12 3 C 12 3.414 11.664 3.75 11.25 3.75 Z" fillOpacity="0" fill="currentColor" transform="translate(6 3)"/>
+                  <path d="M 0.75 3.75 C 0.336 3.75 0 3.414 0 3 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 11.25 0 C 11.664 0 12 0.336 12 0.75 L 12 3 C 12 3.414 11.664 3.75 11.25 3.75 Z" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(6 3)"/>
+                  <path d="M 0 0 L 2.25 14.25" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(15.75 6.75)"/>
+                  <path d="M 0 14.25 L 2.25 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(6 6.75)"/>
+                  <path d="M 0 0 L 10.343 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(6.829 15.75)"/>
+                </svg>
+              </div>
+              <div className="flex flex-col" style={{ gap: '16px' }}>
+                <h4 style={{ fontSize: '40px', fontWeight: 600, color: '#111', lineHeight: '1em', letterSpacing: '-0.04em', margin: 0 }}>12+</h4>
+                <p style={{ fontSize: '15px', fontWeight: 400, color: '#333', lineHeight: '1.2em', margin: 0 }}>Years of expereince</p>
+              </div>
             </div>
           </div>
         </section>
 
 
-
-      </div>
+              </div>
     </div>
   );
 }
