@@ -1,4 +1,5 @@
 "use client";
+import P10HeroSection from '../components/P10HeroSection';
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
@@ -1050,6 +1051,252 @@ const FooterSection = () => {
   );
 };
 
+
+// --- NEW HERO SECTION --- //
+const SplitTextWrapper = ({ text, type = "words", addFirstCharClass = false }) => {
+  if (type === "words") {
+    return text.split(" ").map((word, wIdx) => (
+      <span key={wIdx} className="word inline-block relative overflow-hidden" style={{ marginRight: '0.25em' }}>
+        <span className="inline-block translate-y-full will-change-transform">{word}</span>
+      </span>
+    ));
+  } else if (type === "words, chars") {
+    return text.split(" ").map((word, wIdx) => (
+      <span key={wIdx} className="word inline-block" style={{ marginRight: '0.25em' }}>
+        {word.split("").map((char, cIdx) => (
+          <span key={cIdx} className={`char inline-block relative overflow-hidden ${addFirstCharClass && wIdx === 0 && cIdx === 0 ? 'first-char origin-top-left' : ''}`} style={{ marginTop: '0.75rem' }}>
+            <span className="inline-block -translate-y-full will-change-transform">{char}</span>
+          </span>
+        ))}
+      </span>
+    ));
+  }
+};
+
+const HeroSection = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      if (!gsap.parseEase("hop")) {
+        CustomEase.create("hop", ".8, 0, .3, 1");
+      }
+
+      const isMobile = window.innerWidth <= 1000;
+
+      gsap.set(
+        [
+          ".split-overlay .intro-title .first-char span",
+          ".split-overlay .outro-title .char span",
+        ],
+        { y: "0%" }
+      );
+
+      gsap.set(".split-overlay .intro-title .first-char", {
+        x: isMobile ? "7.5rem" : "18rem",
+        y: isMobile ? "-1rem" : "-2.75rem",
+        fontWeight: "900",
+        scale: 0.75,
+      });
+
+      gsap.set(".split-overlay .outro-title .char", {
+        x: isMobile ? "-3rem" : "-8rem",
+        fontSize: isMobile ? "6rem" : "14rem",
+        fontWeight: "500",
+      });
+
+      const tl = gsap.timeline({ defaults: { ease: "hop" } });
+      const tags = gsap.utils.toArray(".tag");
+
+      tags.forEach((tag, index) => {
+        tl.to(
+          tag.querySelectorAll(".word span"),
+          {
+            y: "0%",
+            duration: 0.75,
+          },
+          0.5 + index * 0.1
+        );
+      });
+
+      tl.to(
+        ".preloader .intro-title .char span",
+        {
+          y: "0%",
+          duration: 0.75,
+          stagger: 0.05,
+        },
+        0.5
+      )
+        .to(
+          ".preloader .intro-title .char:not(.first-char) span",
+          {
+            y: "100%",
+            duration: 0.75,
+            stagger: 0.05,
+          },
+          2
+        )
+        .to(
+          ".preloader .outro-title .char span",
+          {
+            y: "0%",
+            duration: 0.75,
+            stagger: 0.075,
+          },
+          2.5
+        )
+        .to(
+          ".preloader .intro-title .first-char",
+          {
+            x: isMobile ? "9rem" : "21.25rem",
+            duration: 1,
+          },
+          3.5
+        )
+        .to(
+          ".preloader .outro-title .char",
+          {
+            x: isMobile ? "-3rem" : "-8rem",
+            duration: 1,
+          },
+          3.5
+        )
+        .to(
+          ".preloader .intro-title .first-char",
+          {
+            x: isMobile ? "7.5rem" : "18rem",
+            y: isMobile ? "-1rem" : "-2.75rem",
+            fontWeight: "900",
+            scale: 0.75,
+            duration: 0.75,
+          },
+          4.5
+        )
+        .to(
+          ".preloader .outro-title .char",
+          {
+            x: isMobile ? "-3rem" : "-8rem",
+            fontSize: isMobile ? "6rem" : "14rem",
+            fontWeight: "500",
+            duration: 0.75,
+            onComplete: () => {
+              gsap.set(".preloader", {
+                clipPath: "polygon(0 0, 100% 0, 100% 50%, 0 50%)",
+              });
+              gsap.set(".split-overlay", {
+                clipPath: "polygon(0 50%, 100% 50%, 100% 100%, 0 100%)",
+              });
+            },
+          },
+          4.5
+        )
+        .to(
+          ".hero-container",
+          {
+            clipPath: "polygon(0% 48%, 100% 48%, 100% 52%, 0% 52%)",
+            duration: 1,
+          },
+          5
+        );
+
+      tags.forEach((tag, index) => {
+        tl.to(
+          tag.querySelectorAll(".word span"),
+          {
+            y: "100%",
+            duration: 0.75,
+          },
+          5.5 + index * 0.1
+        );
+      });
+
+      tl.to(
+        [".preloader", ".split-overlay"],
+        {
+          y: (i) => (i === 0 ? "-50%" : "50%"),
+          duration: 1,
+        },
+        6
+      )
+        .to(
+          ".hero-container",
+          {
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+            duration: 1,
+          },
+          6
+        )
+        .to(
+          ".hero-container .card",
+          {
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+            duration: 0.75,
+          },
+          6.25
+        )
+        .to(
+          ".hero-container .card h1 .char span",
+          {
+            y: "0%",
+            duration: 0.75,
+            stagger: 0.05,
+          },
+          6.5
+        )
+        .to([".preloader", ".split-overlay", ".tags-overlay"], {
+          display: "none"
+        });
+
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div ref={containerRef} className="w-full relative h-screen">
+      <div className="preloader">
+        <div className="intro-title">
+          <h1 className="uppercase text-6xl font-semibold leading-none"><SplitTextWrapper text="Panthers Estate" type="words, chars" addFirstCharClass={true} /></h1>
+        </div>
+        <div className="outro-title">
+          <h1 className="uppercase text-6xl font-semibold leading-none"><SplitTextWrapper text="PE" type="words, chars" /></h1>
+        </div>
+      </div>
+      <div className="split-overlay">
+        <div className="intro-title">
+          <h1 className="uppercase text-6xl font-semibold leading-none"><SplitTextWrapper text="Panthers Estate" type="words, chars" addFirstCharClass={true} /></h1>
+        </div>
+        <div className="outro-title">
+          <h1 className="uppercase text-6xl font-semibold leading-none"><SplitTextWrapper text="PE" type="words, chars" /></h1>
+        </div>
+      </div>
+      <div className="tags-overlay">
+        <div className="tag tag-1 uppercase font-medium"><SplitTextWrapper text="Luxury Living" type="words" /></div>
+        <div className="tag tag-2 uppercase font-medium"><SplitTextWrapper text="Modern Architecture" type="words" /></div>
+        <div className="tag tag-3 uppercase font-medium"><SplitTextWrapper text="Prime Locations" type="words" /></div>
+      </div>
+      <div className="hero-container container">
+        <nav className="absolute top-0 left-0 w-full z-10 text-white flex justify-between p-8">
+          <p id="logo" className="font-semibold text-xl">Panthers</p>
+          <p>Menu</p>
+        </nav>
+        <div className="hero-img absolute w-full h-full inset-0">
+          <img src="/realtora-real-estate/public/images/BBK7G2W0GpZei2zukI6jNqEI6X4.jpeg" alt="Panthers Hero" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        </div>
+        <div className="card text-black z-10 flex items-center justify-center" style={{ backgroundColor: '#fff', padding: '2rem' }}>
+          <h1 className="uppercase text-5xl font-semibold leading-none"><SplitTextWrapper text="Panthers" type="words, chars" addFirstCharClass={true} /></h1>
+        </div>
+        <footer className="absolute bottom-0 left-0 w-full z-10 text-white flex justify-between p-8">
+          <p className="uppercase font-medium text-sm">Scroll Down</p>
+        </footer>
+      </div>
+    </div>
+  );
+};
+// --- END NEW HERO SECTION --- //
+
 export default function Home() {
   const [activeFeature, setActiveFeature] = useState(0);
   const [openFaq, setOpenFaq] = useState(null);
@@ -1393,7 +1640,7 @@ export default function Home() {
     }
 
     return () => {
-      tl.kill();
+      // tl.kill();
       ScrollTrigger.getAll().forEach(t => t.kill());
       lenis.destroy();
       gsap.ticker.remove((time) => lenis.raf(time * 1000));
@@ -1402,178 +1649,15 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen w-full flex flex-col bg-[#000000] text-[#f2f2f2] select-none overflow-x-hidden">
-      {/* 1. Pre-loader Section (Minimalist Logo Only) */}
-      <div ref={preLoaderRef} className="pre-loader">
-        <div 
-          ref={loaderImgRef}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-full max-w-[600px] sm:max-w-[800px] md:max-w-[1000px] px-4 opacity-0"
-        >
-          <img 
-            src="/assets/panthers%20logo%20new.png" 
-            alt="Panthers Estate Logo" 
-            className="h-auto max-h-[50vh] w-full object-contain loader-logo-blink"
-          />
-        </div>
-      </div>
+      <P10HeroSection />
 
       {/* 2. Navigation & Full Screen Menu Overlay */}
       <MenuOverlay containerRef={containerRef} navRef={navRef} />
 
       {/* 3. Main Hero Website Section Wrapped in Container for Rotation */}
       <div className="app-container" ref={containerRef}>
-        <section id="hero" className="hero relative w-full h-screen">
-          <div ref={heroImgsRef} className="hero-imgs relative w-full h-full">
-            <img className="absolute inset-0 w-full h-full object-cover" src="/assets/home%202.jpg" alt="Panthers Home 2" style={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} />
-            <img className="absolute inset-0 w-full h-full object-cover" src="/assets/home%207.jpg" alt="Panthers Home 7" style={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} />
-            <img className="absolute inset-0 w-full h-full object-cover" src="/assets/home%20img%201.png" alt="Panthers Home Img 1" style={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }} />
-          </div>
+        
 
-          {/* Text Overlay */}
-          <div className="absolute top-[35%] left-1/2 -translate-x-1/2 md:top-[40%] z-50 pointer-events-none flex flex-col items-center text-center w-full">
-            <div className="overflow-hidden pb-4">
-              <h1 
-                ref={el => heroTextLinesRef.current[0] = el}
-                className="text-white font-medium tracking-tighter drop-shadow-xl font-poppins" 
-                style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)', lineHeight: '0.85' }}
-              >
-                Find Your
-              </h1>
-            </div>
-            <div className="overflow-hidden pb-2 -mt-6 md:-mt-8">
-              <h1 
-                ref={el => heroTextLinesRef.current[1] = el}
-                className="text-white font-medium tracking-tighter drop-shadow-xl font-poppins" 
-                style={{ fontSize: 'clamp(3rem, 6vw, 5.5rem)', lineHeight: '0.85' }}
-              >
-                Dream Home
-              </h1>
-            </div>
-            {/* Hard spacer to forcefully push the subtitle down */}
-            <div style={{ height: '16px', width: '100%' }}></div>
-            <div className="overflow-hidden max-w-2xl">
-              <p 
-                ref={el => heroTextLinesRef.current[2] = el}
-                className="text-white text-base md:text-lg font-light opacity-90 drop-shadow-md tracking-wide font-poppins"
-              >
-                Discover exceptional residences where thoughtful design, modern comfort, and timeless elegance come together. Explore spaces created to complement your lifestyle and inspire every day.
-              </p>
-            </div>
-          </div>
-        </section>
-
-                {/* 4. About Us Section (Who Are We) */}
-        <section 
-          id="about"
-          ref={aboutSectionRef}
-          className="relative w-full flex flex-col items-center overflow-hidden"
-          style={{ paddingTop: '100px', paddingBottom: '100px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
-        >
-          {/* Centered Heading with Dot */}
-          <div className="flex items-center" style={{ gap: '10px', marginBottom: '32px' }} ref={el => aboutTextRefs.current[0] = el}>
-            <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#b85300' }}></div>
-            <h3 style={{ fontSize: '17px', fontWeight: 400, letterSpacing: '-0.4px', color: '#191919', margin: 0 }}>
-              Who Are We?
-            </h3>
-          </div>
-
-          {/* Centered Large Text */}
-          <div style={{ maxWidth: '760px', textAlign: 'center', marginBottom: '100px' }} ref={el => aboutTextRefs.current[1] = el}>
-            <p style={{ fontSize: '24px', fontWeight: 400, color: '#191919', lineHeight: '1.5', margin: 0 }}>
-              At Panthers, we believe a home is life's most important foundation. Our mission is to find your perfect habitat so you can comfortably build your future and best life.
-            </p>
-          </div>
-
-          {/* Cards Section */}
-          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style={{ gap: '24px', maxWidth: '1200px' }} ref={cardsSectionRef}>
-            {/* Card 1 */}
-            <div className="flex flex-col justify-between" style={{ height: '212px', padding: '32px', borderRadius: '15px', borderWidth: '1.3px', borderStyle: 'solid', borderColor: '#e6e6e6', backgroundColor: '#f9f9f9' }}>
-              <div style={{ width: '32px', height: '32px', color: '#666', flex: 'none' }}>
-                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M 0 6 L 0 0 L 10.5 0 L 10.5 6 Z" fillOpacity="0" fill="currentColor" transform="translate(6.75 12)"/>
-                  <path d="M 0 6 L 0 0 L 10.5 0 L 10.5 6" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(6.75 12)"/>
-                  <path d="M 0 0 L 10.5 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(6.75 15)"/>
-                  <path d="M 0 0 L 21 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(1.5 18)"/>
-                  <path d="M 21 0 L 0 4.5" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(1.5 4.5)"/>
-                  <path d="M 0 0 L 0 9.322" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(3 8.678)"/>
-                  <path d="M 0 0 L 0 13.178" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(21 4.822)"/>
-                </svg>
-              </div>
-              <div className="flex flex-col" style={{ gap: '16px' }}>
-                <h4 style={{ fontSize: '40px', fontWeight: 600, color: '#111', lineHeight: '1em', letterSpacing: '-0.04em', margin: 0 }}>5000+</h4>
-                <p style={{ fontSize: '15px', fontWeight: 400, color: '#333', lineHeight: '1.2em', margin: 0 }}>Property deliverd</p>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="flex flex-col justify-between" style={{ height: '212px', padding: '32px', borderRadius: '15px', borderWidth: '1.3px', borderStyle: 'solid', borderColor: '#e6e6e6', backgroundColor: '#f9f9f9' }}>
-              <div style={{ width: '32px', height: '32px', color: '#666', flex: 'none' }}>
-                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M 0 3.75 C 0 1.679 1.679 0 3.75 0 C 5.821 0 7.5 1.679 7.5 3.75 C 7.5 5.821 5.821 7.5 3.75 7.5 C 1.679 7.5 0 5.821 0 3.75 Z" fillOpacity="0" fill="currentColor" transform="translate(8.25 9.75)"/>
-                  <path d="M 0 3 C 0 1.343 1.343 0 3 0 C 4.657 0 6 1.343 6 3 C 6 4.657 4.657 6 3 6 C 1.343 6 0 4.657 0 3 Z" fillOpacity="0" fill="currentColor" transform="translate(3 5.25)"/>
-                  <path d="M 0 3 C 0 1.343 1.343 0 3 0 C 4.657 0 6 1.343 6 3 C 6 4.657 4.657 6 3 6 C 1.343 6 0 4.657 0 3 Z" fillOpacity="0" fill="currentColor" transform="translate(15 5.25)"/>
-                  <path d="M 0 0 C 1.771 -0.001 3.439 0.833 4.5 2.25" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(18 11.25)"/>
-                  <path d="M 0 2.25 C 1.061 0.833 2.729 -0.001 4.5 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(1.5 11.25)"/>
-                  <path d="M 0 3.75 C 0 1.679 1.679 0 3.75 0 C 5.821 0 7.5 1.679 7.5 3.75 C 7.5 5.821 5.821 7.5 3.75 7.5 C 1.679 7.5 0 5.821 0 3.75 Z" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(8.25 9.75)"/>
-                  <path d="M 0 3 C 1.095 1.141 3.092 0 5.25 0 C 7.408 0 9.405 1.141 10.5 3" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(6.75 17.25)"/>
-                  <path d="M 0 2.25 C 0.39 0.741 1.87 -0.218 3.407 0.043 C 4.944 0.304 6.025 1.698 5.894 3.252 C 5.764 4.805 4.465 6 2.906 6" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(15.094 5.25)"/>
-                  <path d="M 2.999 6 C 1.44 6 0.141 4.805 0.011 3.252 C -0.12 1.698 0.961 0.304 2.498 0.043 C 4.034 -0.218 5.515 0.741 5.905 2.25" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(3.001 5.25)"/>
-                </svg>
-              </div>
-              <div className="flex flex-col" style={{ gap: '16px' }}>
-                <h4 style={{ fontSize: '40px', fontWeight: 600, color: '#111', lineHeight: '1em', letterSpacing: '-0.04em', margin: 0 }}>2000+</h4>
-                <p style={{ fontSize: '15px', fontWeight: 400, color: '#333', lineHeight: '1.2em', margin: 0 }}>Client served worldwide</p>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="flex flex-col justify-between" style={{ height: '212px', padding: '32px', borderRadius: '15px', borderWidth: '1.3px', borderStyle: 'solid', borderColor: '#e6e6e6', backgroundColor: '#f9f9f9' }}>
-              <div style={{ width: '32px', height: '32px', color: '#666', flex: 'none' }}>
-                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M 0 0 L 13.5 0 L 13.5 5.916 C 13.5 9.638 10.523 12.722 6.802 12.75 C 5.002 12.764 3.272 12.059 1.995 10.791 C 0.718 9.524 0 7.799 0 6 Z" fillOpacity="0" fill="currentColor" transform="translate(5.25 4.5)"/>
-                  <path d="M 0 0 L 6 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(9 21)"/>
-                  <path d="M 0 0 L 0 3.75" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(12 17.25)"/>
-                  <path d="M 3.938 5.25 L 3 5.25 C 1.343 5.25 0 3.907 0 2.25 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 3.75 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(1.5 6.75)"/>
-                  <path d="M 0 5.25 L 0.938 5.25 C 2.594 5.25 3.938 3.907 3.938 2.25 L 3.938 0.75 C 3.938 0.336 3.602 0 3.188 0 L 0.188 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(18.563 6.75)"/>
-                  <path d="M 0 0 L 13.5 0 L 13.5 5.916 C 13.5 9.638 10.523 12.722 6.802 12.75 C 5.002 12.764 3.272 12.059 1.995 10.791 C 0.718 9.524 0 7.799 0 6 Z" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(5.25 4.5)"/>
-                </svg>
-              </div>
-              <div className="flex flex-col" style={{ gap: '16px' }}>
-                <h4 style={{ fontSize: '40px', fontWeight: 600, color: '#111', lineHeight: '1em', letterSpacing: '-0.04em', margin: 0 }}>100+</h4>
-                <p style={{ fontSize: '15px', fontWeight: 400, color: '#333', lineHeight: '1.2em', margin: 0 }}>Awards</p>
-              </div>
-            </div>
-
-            {/* Card 4 */}
-            <div className="flex flex-col justify-between" style={{ height: '212px', padding: '32px', borderRadius: '15px', borderWidth: '1.3px', borderStyle: 'solid', borderColor: '#e6e6e6', backgroundColor: '#f9f9f9' }}>
-              <div style={{ width: '32px', height: '32px', color: '#666', flex: 'none' }}>
-                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M 0.75 3.75 C 0.336 3.75 0 3.414 0 3 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 11.25 0 C 11.664 0 12 0.336 12 0.75 L 12 3 C 12 3.414 11.664 3.75 11.25 3.75 Z" fillOpacity="0" fill="currentColor" transform="translate(6 3)"/>
-                  <path d="M 0.75 3.75 C 0.336 3.75 0 3.414 0 3 L 0 0.75 C 0 0.336 0.336 0 0.75 0 L 11.25 0 C 11.664 0 12 0.336 12 0.75 L 12 3 C 12 3.414 11.664 3.75 11.25 3.75 Z" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(6 3)"/>
-                  <path d="M 0 0 L 2.25 14.25" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(15.75 6.75)"/>
-                  <path d="M 0 14.25 L 2.25 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(6 6.75)"/>
-                  <path d="M 0 0 L 10.343 0" fill="transparent" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" stroke="currentColor" transform="translate(6.829 15.75)"/>
-                </svg>
-              </div>
-              <div className="flex flex-col" style={{ gap: '16px' }}>
-                <h4 style={{ fontSize: '40px', fontWeight: 600, color: '#111', lineHeight: '1em', letterSpacing: '-0.04em', margin: 0 }}>12+</h4>
-                <p style={{ fontSize: '15px', fontWeight: 400, color: '#333', lineHeight: '1.2em', margin: 0 }}>Years of expereince</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 5. Explore Properties Section */}
-        <section 
-          id="properties"
-          ref={featuredSectionRef}
-          className="relative w-full flex flex-col items-center overflow-hidden"
-          style={{ paddingBottom: '100px', paddingTop: '40px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
-        >
-          <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end" style={{ maxWidth: '1200px', marginBottom: '80px' }}>
-            
-            {/* Left Text Block */}
-            <div className="flex flex-col items-start featured-header" style={{ maxWidth: '600px' }}>
-              <div className="flex items-center" style={{ gap: '10px', marginBottom: '20px' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#b85300' }}></div>
                 <h3 style={{ fontSize: '17px', fontWeight: 400, letterSpacing: '-0.4px', color: '#333', margin: 0 }}>
                   Listings

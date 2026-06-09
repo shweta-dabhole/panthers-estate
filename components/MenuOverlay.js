@@ -176,27 +176,27 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
       <nav 
         id="panthers-nav-locked"
         ref={activeNavRef} 
-        className={`${isBlackText ? 'opacity-100' : 'opacity-0'} fixed top-0 left-0 pt-8 pb-4 px-6 md:pt-10 md:pb-6 md:px-12 z-[100] bg-transparent pointer-events-auto`}
-        style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', maxWidth: '100vw' }}
+        className="hidden"
+        style={{ display: 'none' }}
       >
-        <div className="logo cursor-pointer z-[110] w-[150px] md:w-[180px]">
-          <a href="/">
-            <img src="/assets/panthers%20logo%20new.png" alt="Panthers Estate" className="w-full h-auto block" style={{ filter: (isBlackText && !isMenuOpen) ? 'brightness(0)' : 'none' }} />
-          </a>
+        <div className="logo cursor-pointer z-[110]" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+          <div style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px' }}>
+            PANTHERS
+          </div>
         </div>
         <div className="menu-toggle cursor-pointer z-[110]" onClick={toggleMenu}>
           <div style={{ position: 'relative', width: '60px', height: '24px' }}>
             <p 
               id="menu-open"
               className="absolute top-0 left-0 w-full text-right font-semibold tracking-wider hover:opacity-70 transition-opacity uppercase text-sm md:text-base m-0"
-              style={{ fontFamily: 'var(--font-poppins), sans-serif', opacity: isMenuOpen ? 0 : 1, color: (isBlackText && !isMenuOpen) ? '#000000' : '#ffffff', textShadow: (isBlackText && !isMenuOpen) ? 'none' : '0 2px 10px rgba(0,0,0,0.25)' }}
+              style={{ fontFamily: 'var(--font-poppins), sans-serif', opacity: isMenuOpen ? 0 : 1 }}
             >
               MENU
             </p>
             <p 
               id="menu-close"
               className="absolute top-0 left-0 w-full text-right font-semibold tracking-wider hover:opacity-70 transition-opacity uppercase text-sm md:text-base m-0"
-              style={{ fontFamily: 'var(--font-poppins), sans-serif', opacity: isMenuOpen ? 1 : 0, color: (isBlackText && !isMenuOpen) ? '#000000' : '#ffffff', textShadow: (isBlackText && !isMenuOpen) ? 'none' : '0 2px 10px rgba(0,0,0,0.25)' }}
+              style={{ fontFamily: 'var(--font-poppins), sans-serif', opacity: isMenuOpen ? 1 : 0 }}
             >
               CLOSE
             </p>
@@ -206,6 +206,16 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
 
       {/* Overlay Menu */}
       <div className="menu-overlay" ref={menuOverlayRef}>
+        <div 
+          onClick={toggleMenu}
+          className="absolute top-8 right-8 md:top-12 md:right-12 z-[120] cursor-pointer hover:opacity-70 transition-opacity"
+          style={{ width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.1)' }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </div>
         <div className="menu-content" ref={menuContentRef}>
           <div className="menu-items">
             <div className="col-lg">

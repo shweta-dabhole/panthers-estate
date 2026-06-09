@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import "tailwindcss";
 
@@ -713,3 +715,420 @@ nav#panthers-nav-locked {
   transition: none !important;
   will-change: auto !important;
 }
+
+
+/* Custom P10 Hero Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 6rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+p {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.preloader,
+.split-overlay,
+.tags-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100svh;
+}
+
+.preloader,
+.split-overlay {
+  background-color: #0a0a0a;
+  color: #fff;
+}
+
+.preloader,
+.tags-overlay {
+  z-index: 2;
+}
+
+.split-overlay {
+  z-index: 1;
+}
+
+.intro-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.outro-title {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 10rem);
+  transform: translate(-50%, -50%);
+}
+
+.tag {
+  position: absolute;
+  width: max-content;
+  color: #5a5a5a;
+  overflow: hidden;
+}
+
+.tag-1 {
+  top: 15%;
+  left: 15%;
+}
+
+.tag-2 {
+  bottom: 15%;
+  left: 25%;
+}
+
+.tag-3 {
+  bottom: 30%;
+  right: 15%;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  clip-path: polygon(0 48%, 0 48%, 0 52%, 0 52%);
+  z-index: 2;
+}
+
+.container .hero-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+nav,
+footer {
+  position: relative;
+  width: 100vw;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  z-index: 2;
+}
+
+nav p#logo {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  clip-path: polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%);
+}
+
+.card h1 {
+  text-align: center;
+  width: 100%;
+  font-size: 3rem;
+}
+
+.card .char span {
+  position: relative;
+  display: inline-block;
+  transform: translateY(100%);
+  will-change: transform;
+}
+
+.intro-title .char,
+.outro-title .char,
+.card .char {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.intro-title .char,
+.outro-title .char {
+  margin-top: 0.75rem;
+}
+
+.intro-title .char span,
+.outro-title .char span,
+.tag .word {
+  position: relative;
+  display: inline-block;
+  transform: translateY(-100%);
+  will-change: transform;
+}
+
+.intro-title .first-char {
+  transform-origin: top left;
+}
+
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .outro-title {
+    left: calc(50% + 4rem);
+  }
+
+  .card {
+    width: 75%;
+  }
+
+  .card h1 {
+    font-size: 2.5rem;
+  }
+
+  .intro-title .char,
+  .outro-title .char {
+    margin-top: 0.5rem;
+  }
+}
+
+
+/* --- P10 Hero Styles --- */
+
+
+
+
+
+
+.p10-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p10-hero.h1 {
+  text-transform: uppercase;
+  font-size: 6rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.p10-hero.p {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.p10-preloader,
+.p10-split-overlay,
+.p10-tags-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100svh;
+}
+
+.p10-preloader,
+.p10-split-overlay {
+  background-color: #0a0a0a;
+  color: #fff;
+}
+
+.p10-preloader,
+.p10-tags-overlay {
+  z-index: 2;
+}
+
+.p10-split-overlay {
+  z-index: 1;
+}
+
+.p10-intro-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.p10-outro-title {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 10rem);
+  transform: translate(-50%, -50%);
+}
+
+.p10-tag {
+  position: absolute;
+  width: max-content;
+  color: #5a5a5a;
+  overflow: hidden;
+}
+
+.p10-tag-1 {
+  top: 15%;
+  left: 15%;
+}
+
+.p10-tag-2 {
+  bottom: 15%;
+  left: 25%;
+}
+
+.p10-tag-3 {
+  bottom: 30%;
+  right: 15%;
+}
+
+.p10-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  clip-path: polygon(0 48%, 0 48%, 0 52%, 0 52%);
+  z-index: 2;
+}
+
+.p10-container .p10-hero-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+nav,
+footer {
+  position: relative;
+  width: 100vw;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  z-index: 2;
+}
+
+nav p#logo {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.p10-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  clip-path: polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%);
+}
+
+.p10-card h1 {
+  text-align: center;
+  width: 100%;
+  font-size: 3rem;
+}
+
+.p10-card .p10-char span {
+  position: relative;
+  display: inline-block;
+  transform: translateY(100%);
+  will-change: transform;
+}
+
+.p10-intro-title .p10-char,
+.p10-outro-title .p10-char,
+.p10-card .p10-char {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.p10-intro-title .p10-char,
+.p10-outro-title .p10-char {
+  margin-top: 0.75rem;
+}
+
+.p10-intro-title .p10-char span,
+.p10-outro-title .p10-char span,
+.p10-tag .p10-word {
+  position: relative;
+  display: inline-block;
+  transform: translateY(-100%);
+  will-change: transform;
+}
+
+.p10-intro-title .first-char {
+  transform-origin: top left;
+}
+
+@media (max-width: 1000px) {
+  .p10-hero.h1 {
+    font-size: 2.5rem;
+  }
+
+  .p10-outro-title {
+    left: calc(50% + 4rem);
+  }
+
+  .p10-card {
+    width: 75%;
+  }
+
+  .p10-card h1 {
+    font-size: 2.5rem;
+  }
+
+  .p10-intro-title .p10-char,
+  .p10-outro-title .p10-char {
+    margin-top: 0.5rem;
+  }
+}
+/* T27 Animation Styles */
+.t27-copy { position: absolute; top: 50%; width: 100%; height: 100vh; display: flex; justify-content: space-around; color: #fff; text-transform: uppercase; font-size: 12px; pointer-events: none; z-index: 10; opacity: 0; }
+.t27-blocks { position: absolute; width: 100%; height: 100vh; top: 0; left: 0; pointer-events: none; z-index: 50; }
+.t27-block { position: fixed; width: 50%; height: 100vh; z-index: 50; background: #fff; top: 0; }
+.t27-block-left { left: 0; }
+.t27-block-right { right: 0; }
+.t27-letters { position: absolute; top: 0; left: 0; width: 100%; height: 100vh; pointer-events: none; z-index: 100; display: flex; flex-direction: column; justify-content: space-between; }
+.t27-letter { position: absolute; z-index: 10000; padding: 0em 0.2em; font-size: 12em; color: #000; }
+.t27-row { width: 100%; height: 50vh; position: relative; }
+.t27-top-left, .t27-top-right, .t27-bottom-right { position: absolute; z-index: 10000; opacity: 0; }
+.t27-top-left { top: 32%; left: 42%; }
+.t27-top-right { top: 32%; right: 42%; }
+.t27-bottom-right { bottom: 32%; right: 42%; }
+@media (max-width: 900px) { .t27-letter { font-size: 5em; } .t27-top-left { left: 30%; } .t27-top-right { right: 30%; } .t27-bottom-right { right: 30%; } }
