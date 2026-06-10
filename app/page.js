@@ -1327,106 +1327,16 @@ export default function Home() {
     gsap.ticker.lagSmoothing(0);
 
     // 1. Initial State Setup
-    // Position navigation slightly above and hidden initially for a smooth entrance
-    gsap.set(navRef.current, { y: -50, opacity: 0 });
+    gsap.set(navRef.current, { y: 0, opacity: 1 });
 
-    // Set initial scale and rotation to images for a subtle organic entry
     const slideElements = heroImgsRef.current ? heroImgsRef.current.children : [];
-    gsap.set(slideElements, { scale: 1.10 });
+    gsap.set(slideElements, { scale: 1.0, clipPath: "polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%)" });
 
-    // Set initial state for text lines
-    gsap.set(heroTextLinesRef.current, { y: "150%", rotation: 10, transformOrigin: "left top" });
+    gsap.set(heroTextLinesRef.current, { y: "0%", rotation: 0, transformOrigin: "left top" });
 
-    // 2. Timeline for the entry animations
-    const tl = gsap.timeline();
-
-    // Fade in the blinking logo immediately
-    tl.to(
-      loaderImgRef.current,
-      {
-        opacity: 1.0,
-        duration: 0.5,
-        ease: "power2.out",
-      },
-      0
-    );
-
-    // Let the logo blink on screen for 1.5 seconds, then gracefully fade it out
-    tl.to(
-      loaderImgRef.current,
-      {
-        opacity: 0,
-        duration: 0.5,
-        ease: "power2.out",
-      },
-      "+=1.5"
-    );
-
-    // Slide up the black pre-loader screen like a curtain
-    tl.to(
-      preLoaderRef.current,
-      {
-        yPercent: -100,
-        duration: 1.2,
-        ease: "power4.inOut",
-      },
-      "-=0.2"
-    );
-
-    // Staggered clip-path swipe reveal of the images (Right to Left)
-    if (slideElements.length > 0) {
-      tl.to(
-        slideElements,
-        {
-          clipPath: "polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%)",
-          duration: 2.2, // Increased for smoother flow
-          ease: "power3.inOut", // Smoother curve
-          stagger: 0.6, // More time between swipes
-        },
-        "-=0.8" // Start swiping as the curtain is sliding up
-      );
-
-      // Parallax scale down zoom effect as each image is revealed
-      tl.to(
-        slideElements,
-        {
-          scale: 1.0,
-          duration: 2.5, // Smoother scale down
-          ease: "power3.out",
-          stagger: 0.6,
-        },
-        "-=2.2" // Sync perfectly with clipPath start
-      );
-    }
-
-    // Animate navigation bar sliding down and fading into view much earlier
-    tl.to(
-      navRef.current,
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.5,
-        ease: "power4.out",
-      },
-      "-=1.8" // Adjusted overlap for new stagger timings
-    );
-
-    // Animate the text in
-    if (heroTextLinesRef.current.length > 0) {
-      tl.to(
-        heroTextLinesRef.current,
-        {
-          y: "0%",
-          rotation: 0,
-          duration: 1.5,
-          ease: "power4.out",
-          stagger: 0.15,
-        },
-        "-=1.8" // Start during the final image swiping
-      );
-    }
-
-    // Text animation is now handled completely independently above to prevent timeline clipping bugs!
+    // Preloader and loading elements have been removed from the animation timeline.
+    if (preLoaderRef.current) gsap.set(preLoaderRef.current, { display: 'none' });
+    if (loaderImgRef.current) gsap.set(loaderImgRef.current, { display: 'none' });
 
     // 3. Setup ScrollTrigger for About section Parallax Images
     if (parallaxImagesRef.current.length > 0 && aboutSectionRef.current) {
@@ -1657,7 +1567,43 @@ export default function Home() {
       {/* 3. Main Hero Website Section Wrapped in Container for Rotation */}
       <div className="app-container" ref={containerRef}>
         
+        {/* 4. About Us Section (Who Are We) */}
+        <section 
+          id="about"
+          ref={aboutSectionRef}
+          className="relative w-full flex flex-col items-center overflow-hidden"
+          style={{ paddingTop: '100px', paddingBottom: '100px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
+        >
+          {/* Centered Heading with Dot */}
+          <div className="flex items-center" style={{ gap: '10px', marginBottom: '32px' }} ref={el => aboutTextRefs.current[0] = el}>
+            <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#b85300' }}></div>
+            <h3 style={{ fontSize: '17px', fontWeight: 400, letterSpacing: '-0.4px', color: '#191919', margin: 0 }}>
+              Who Are We?
+            </h3>
+          </div>
 
+          {/* Centered Large Text */}
+          <div style={{ maxWidth: '850px', textAlign: 'center', marginBottom: '100px' }} ref={el => aboutTextRefs.current[1] = el}>
+            <p style={{ fontSize: '24px', fontWeight: 400, color: '#191919', lineHeight: '1.5', margin: 0 }}>
+              At Panthers, we believe a home is life's most important foundation. Our mission is to find your perfect habitat so you can comfortably build your future and best life.
+            </p>
+          </div>
+
+
+        </section>
+
+        {/* 5. Explore Properties Section */}
+        <section 
+          id="properties"
+          ref={featuredSectionRef}
+          className="relative w-full flex flex-col items-center overflow-hidden"
+          style={{ paddingBottom: '100px', paddingTop: '40px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
+        >
+          <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end" style={{ maxWidth: '1200px', marginBottom: '80px' }}>
+            
+            {/* Left Text Block */}
+            <div className="flex flex-col items-start featured-header" style={{ maxWidth: '600px' }}>
+              <div className="flex items-center" style={{ gap: '10px', marginBottom: '20px' }}>
                 <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#b85300' }}></div>
                 <h3 style={{ fontSize: '17px', fontWeight: 400, letterSpacing: '-0.4px', color: '#333', margin: 0 }}>
                   Listings

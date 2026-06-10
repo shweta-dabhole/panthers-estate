@@ -8,39 +8,14 @@ export default function P10HeroSection() {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      const isMobile = window.innerWidth <= 900;
-      const tl = gsap.timeline();
+      // Just play the video immediately since we removed the loading animation
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+        videoRef.current.play();
+      }
       
-      // Initialize states - no opacity 0 for letters so they show instantly
-      gsap.set(".t27-copy", { opacity: 0 });
-
-      tl.to(".t27-letter", {
-        y: "-100vh",
-        duration: 2,
-        ease: "power3.inOut",
-      }, "+=1.5") // Wait 1.5s then slide text up
-      .to(".t27-block-left", {
-        left: "-50%",
-        duration: 2,
-        ease: "power3.inOut",
-        onStart: () => {
-          if (videoRef.current) {
-            videoRef.current.currentTime = 0;
-            videoRef.current.play();
-          }
-        }
-      }, "-=0.5") // Start opening the blocks slightly before the text finishes sliding up
-      .to(".t27-block-right", {
-        right: "-50%",
-        duration: 2,
-        ease: "power3.inOut",
-      }, "<")
-      .to(".t27-copy", {
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.inOut"
-      }, "-=0.8");
-
+      // Ensure copy text is visible
+      gsap.set(".t27-copy", { opacity: 1 });
     }, containerRef);
     return () => ctx.revert();
   }, []);
@@ -69,16 +44,6 @@ export default function P10HeroSection() {
             </video>
         </div>
 
-        <div className="t27-blocks">
-          <div className="t27-block t27-block-left"></div>
-          <div className="t27-block t27-block-right"></div>
-        </div>
-
-        <div className="t27-letters" style={{ justifyContent: 'center', alignItems: 'center', zIndex: 9999 }}>
-          <div className="t27-letter" style={{ position: 'relative', fontSize: '10vw', letterSpacing: '0.05em', color: '#000', opacity: 1, visibility: 'visible' }}>
-            PANTHERS
-          </div>
-        </div>
 
         <div className="t27-copy">
           <p>LA 09123, <br />TYO 2398</p>
