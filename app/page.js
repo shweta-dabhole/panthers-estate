@@ -638,6 +638,30 @@ const BlogsSection = () => {
           });
         }
       });
+
+      // Animate inner text
+      const cards = [card1Ref.current, card2Ref.current];
+      cards.forEach((card, i) => {
+        if (!card) return;
+        const texts = card.querySelectorAll('.blog-text-anim');
+        if (texts.length > 0) {
+          gsap.fromTo(texts, 
+            { opacity: 0, y: 30 }, 
+            { 
+              opacity: 1, 
+              y: 0, 
+              duration: 1.5, 
+              stagger: 0.3, 
+              ease: "power2.out", 
+              delay: i * 0.2 + 0.6,
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top 70%"
+              }
+            }
+          );
+        }
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -698,10 +722,10 @@ const BlogsSection = () => {
             />
           </div>
           <div className="flex flex-col" style={{ padding: '24px' }}>
-            <h3 className="transition-colors duration-300 group-hover:text-gray-600" style={{ fontSize: '22px', fontWeight: 600, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.4, marginBottom: '32px' }}>
+            <h3 className="blog-text-anim transition-colors duration-300 group-hover:text-gray-600" style={{ fontSize: '22px', fontWeight: 600, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.4, marginBottom: '32px' }}>
               {blogs[0].title}
             </h3>
-            <div className="flex items-center justify-between" style={{ fontSize: '15px', color: '#757575', fontFamily: '"Inter", sans-serif' }}>
+            <div className="blog-text-anim flex items-center justify-between" style={{ fontSize: '15px', color: '#757575', fontFamily: '"Inter", sans-serif' }}>
               <span>{blogs[0].date}</span>
               <span>{blogs[0].readTime}</span>
             </div>
@@ -718,10 +742,10 @@ const BlogsSection = () => {
             />
           </div>
           <div className="flex flex-col" style={{ padding: '24px' }}>
-            <h3 className="transition-colors duration-300 group-hover:text-gray-600" style={{ fontSize: '22px', fontWeight: 600, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.4, marginBottom: '32px' }}>
+            <h3 className="blog-text-anim transition-colors duration-300 group-hover:text-gray-600" style={{ fontSize: '22px', fontWeight: 600, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.4, marginBottom: '32px' }}>
               {blogs[1].title}
             </h3>
-            <div className="flex items-center justify-between" style={{ fontSize: '15px', color: '#757575', fontFamily: '"Inter", sans-serif' }}>
+            <div className="blog-text-anim flex items-center justify-between" style={{ fontSize: '15px', color: '#757575', fontFamily: '"Inter", sans-serif' }}>
               <span>{blogs[1].date}</span>
               <span>{blogs[1].readTime}</span>
             </div>
@@ -918,7 +942,7 @@ const FaqsSection = () => {
 
           
           <h2 style={{ fontSize: '44px', fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '24px' }}>
-            Got Questions?<br />We've Got Answers
+            Got Questions? We've Got Answers
           </h2>
           
           <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px', textTransform: 'none' }}>
