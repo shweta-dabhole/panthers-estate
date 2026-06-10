@@ -333,20 +333,21 @@ const DiscoverSpacesSection = () => {
 
   useEffect(() => {
     const moveCursor = (e) => {
-      if (cursorRef.current && isHovering) {
+      if (cursorRef.current) {
         gsap.to(cursorRef.current, {
           x: e.clientX,
           y: e.clientY,
-          duration: 0.3,
+          duration: 0.2,
           ease: "power2.out",
           xPercent: -50,
-          yPercent: -50
+          yPercent: -50,
+          overwrite: "auto"
         });
       }
     };
     window.addEventListener("mousemove", moveCursor);
     return () => window.removeEventListener("mousemove", moveCursor);
-  }, [isHovering]);
+  }, []);
 
   return (
     <section ref={sectionRef} className="relative w-full overflow-hidden h-screen" style={{ backgroundColor: "#fff" }}>
@@ -355,12 +356,12 @@ const DiscoverSpacesSection = () => {
         {/* Texts */}
         <div className="absolute z-10 w-full flex flex-col items-center justify-center pointer-events-none" style={{ gap: '10px' }}>
           
-          <div className="flex" style={{ fontSize: '80px', fontWeight: 400, fontFamily: '"Newsreader", "Playfair Display", serif', color: '#191919', lineHeight: 1.1, letterSpacing: '-2px' }}>
+          <div className="flex" style={{ fontSize: '80px', fontWeight: 400, fontFamily: 'var(--font-poppins), sans-serif', color: '#191919', lineHeight: 1.1, letterSpacing: '-2px' }}>
             <div ref={textL1Ref} className="whitespace-pre">Discover </div>
             <div ref={textR1Ref} className="whitespace-pre">Spaces</div>
           </div>
           
-          <div className="flex" style={{ fontSize: '80px', fontWeight: 400, fontFamily: '"Newsreader", "Playfair Display", serif', color: '#191919', lineHeight: 1.1, letterSpacing: '-2px' }}>
+          <div className="flex" style={{ fontSize: '80px', fontWeight: 400, fontFamily: 'var(--font-poppins), sans-serif', color: '#191919', lineHeight: 1.1, letterSpacing: '-2px' }}>
             <div ref={textL2Ref} className="whitespace-pre">That Speak </div>
             <div ref={textR2Ref} className="whitespace-pre">to You</div>
           </div>
@@ -378,8 +379,12 @@ const DiscoverSpacesSection = () => {
           ref={centerImgWrapperRef} 
           className="absolute z-20 flex items-end justify-start overflow-hidden pointer-events-auto" 
           style={{ width: '0px', height: '0px', borderRadius: '50%', left: '50%', top: '50%', border: 'none', outline: 'none', boxShadow: 'none' }}
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
+          onMouseEnter={() => {
+            gsap.to(cursorRef.current, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out", overwrite: "auto" });
+          }}
+          onMouseLeave={() => {
+            gsap.to(cursorRef.current, { opacity: 0, scale: 0.5, duration: 0.3, ease: "power2.in", overwrite: "auto" });
+          }}
         >
           <img ref={centerImgRef} src="/realtora-real-estate/public/images/OaySddwc0ovmBM0gb4ic04QX1Ls.jpeg" className="w-full h-full object-cover absolute inset-0 pointer-events-none" style={{ border: 'none', outline: 'none' }} />
           
@@ -400,9 +405,8 @@ const DiscoverSpacesSection = () => {
         className="fixed z-50 pointer-events-none flex items-center justify-center bg-white shadow-lg"
         style={{ 
           width: '120px', height: '48px', borderRadius: '100px',
-          opacity: isHovering ? 1 : 0, 
-          transform: isHovering ? 'scale(1)' : 'scale(0.5)',
-          transition: 'opacity 0.3s',
+          opacity: 0, 
+          transform: 'scale(0.5)',
           top: 0, left: 0
         }}
       >
@@ -414,6 +418,27 @@ const DiscoverSpacesSection = () => {
 
 const FeaturesSection = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.fromTo(headerRef.current.children, 
+        { opacity: 0, y: 30 },
+        { 
+          opacity: 1, y: 0, 
+          duration: 0.8, 
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%"
+          }
+        }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
   const features = [
     {
@@ -422,12 +447,12 @@ const FeaturesSection = () => {
       description: "Thoughtfully planned spaces that fit the pace of real life, with room to grow, recharge, and gather."
     },
     {
-      title: "Prime & Promising Locations",
+      title: "Prime Residential Locations",
       image: "/realtora-real-estate/public/images/j8wE7PNwqxKHejAbpdrhyVl79s8.webp",
       description: "From upscale neighborhoods to emerging hotspots, each address is chosen for its value and vibrance."
     },
     {
-      title: "Smart, Sustainable Features",
+      title: "Smart Sustainable Features",
       image: "/realtora-real-estate/public/images/ZpjnjMU3ELZv5AhKRQMj99dRIk.png",
       description: "Enjoy future-ready homes equipped with eco-conscious technology and intelligent design."
     },
@@ -439,17 +464,17 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="features" className="w-full flex flex-col items-center relative z-10" style={{ backgroundColor: '#f9f9f9', padding: '200px 5% 120px 5%', marginTop: '-1px' }}>
+    <section id="features" ref={sectionRef} className="w-full flex flex-col items-center relative z-10" style={{ backgroundColor: '#f9f9f9', padding: '200px 5% 120px 5%', marginTop: '-1px' }}>
       {/* Header */}
-      <div className="flex flex-col items-center text-center" style={{ maxWidth: '800px', marginBottom: '80px' }}>
+      <div ref={headerRef} className="flex flex-col items-center text-center" style={{ maxWidth: '800px', marginBottom: '80px' }}>
 
         
-        <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '24px' }}>
+        <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '24px' }}>
           Why Thousands Trust Us to Find Their Next Home
         </h2>
         
-        <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, textAlign: 'center' }}>
-          More than listing, we deliver peace of mind,<br />smarter decisions, and smoother experiences.
+        <p style={{ fontSize: '16px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, textAlign: 'center', textTransform: 'none' }}>
+          More than listings, we deliver guidance, peace of mind,<br />smarter decisions, and smoother experiences.
         </p>
       </div>
 
@@ -480,7 +505,7 @@ const FeaturesSection = () => {
                 
                 <h3 style={{ 
                   fontSize: '18px', 
-                  fontWeight: isActive ? 600 : 500, 
+                  fontWeight: isActive ? 700 : 600, 
                   color: isActive ? '#191919' : '#9e9e9e',
                   fontFamily: '"Outfit", sans-serif',
                   margin: 0,
@@ -537,6 +562,8 @@ const BlogsSection = () => {
   const headerRef = useRef(null);
   const card1Ref = useRef(null);
   const card2Ref = useRef(null);
+  const img1Ref = useRef(null);
+  const img2Ref = useRef(null);
 
   const blogs = [
     {
@@ -570,6 +597,18 @@ const BlogsSection = () => {
         }
       );
 
+      // Tilt-in effect for images
+      const images = [img1Ref.current, img2Ref.current];
+      images.forEach((item, index) => {
+        if (!item) return;
+        const isLeft = index % 2 === 0;
+        gsap.set(item, {
+          y: "60%",
+          rotation: isLeft ? -15 : 15,
+          transformOrigin: "center center",
+        });
+      });
+
       // Fade in cards
       gsap.fromTo([card1Ref.current, card2Ref.current],
         { opacity: 0, y: 40 },
@@ -584,6 +623,21 @@ const BlogsSection = () => {
           }
         }
       );
+
+      // Animate inner images
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 70%",
+        onEnter: () => {
+          gsap.to(images, {
+            y: 0,
+            rotation: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            stagger: 0.2,
+          });
+        }
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -593,22 +647,17 @@ const BlogsSection = () => {
     <section ref={sectionRef} id="blog" className="w-full flex flex-col items-center" style={{ backgroundColor: '#f9f9f9', padding: '120px 5%' }}>
       
       {/* Header Container */}
-      <div ref={headerRef} className="w-full max-w-[1200px] flex flex-col relative" style={{ marginBottom: '80px' }}>
+      <div className="w-full max-w-[1000px] flex flex-col relative" style={{ marginBottom: '80px' }}>
         
-        {/* Badge */}
-        <div className="flex items-center self-start" style={{ marginBottom: '16px' }}>
-          <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d96a29', marginRight: '10px' }} />
-          <span style={{ fontSize: '16px', fontWeight: 500, color: '#191919', fontFamily: '"Inter", sans-serif' }}>Blogs</span>
-        </div>
-        
+
         {/* Title & Subtitle vs Button layout */}
         <div className="w-full flex flex-col md:flex-row justify-between items-end">
           
-          <div className="flex flex-col" style={{ maxWidth: '600px' }}>
-            <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '16px' }}>
+          <div ref={headerRef} className="flex flex-col" style={{ maxWidth: '600px' }}>
+            <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '16px' }}>
               Your Guide to Smart Home Buying
             </h2>
-            <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, textTransform: 'none' }}>
               Read our latest articles on market trends,<br />financing tips, and home improvement ideas.
             </p>
           </div>
@@ -637,45 +686,43 @@ const BlogsSection = () => {
       </div>
 
       {/* Cards Grid */}
-      <div className="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-2" style={{ gap: '40px' }}>
+      <div className="w-full max-w-[1000px] grid grid-cols-1 md:grid-cols-2" style={{ gap: '40px' }}>
         
         {/* Card 1 */}
-        <div ref={card1Ref} className="group cursor-pointer flex flex-col">
-          <div className="w-full overflow-hidden" style={{ borderRadius: '16px', height: '400px', marginBottom: '24px' }}>
+        <div ref={card1Ref} className="group cursor-pointer flex flex-col" style={{ backgroundColor: '#f3f4f6', borderRadius: '16px', overflow: 'hidden' }}>
+          <div ref={img1Ref} className="w-full overflow-hidden" style={{ height: '300px' }}>
             <img 
               src={blogs[0].image} 
               alt={blogs[0].title}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </div>
-          <div className="flex flex-col px-2">
-            <h3 className="transition-colors duration-300 group-hover:text-gray-600" style={{ fontSize: '32px', fontWeight: 500, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.2, letterSpacing: '-0.5px', marginBottom: '16px' }}>
+          <div className="flex flex-col" style={{ padding: '24px' }}>
+            <h3 className="transition-colors duration-300 group-hover:text-gray-600" style={{ fontSize: '22px', fontWeight: 600, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.4, marginBottom: '32px' }}>
               {blogs[0].title}
             </h3>
-            <div className="flex items-center" style={{ fontSize: '14px', color: '#757575', fontFamily: '"Inter", sans-serif' }}>
+            <div className="flex items-center justify-between" style={{ fontSize: '15px', color: '#757575', fontFamily: '"Inter", sans-serif' }}>
               <span>{blogs[0].date}</span>
-              <span className="mx-3" style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: '#d96a29' }}></span>
               <span>{blogs[0].readTime}</span>
             </div>
           </div>
         </div>
 
         {/* Card 2 */}
-        <div ref={card2Ref} className="group cursor-pointer flex flex-col">
-          <div className="w-full overflow-hidden" style={{ borderRadius: '16px', height: '400px', marginBottom: '24px' }}>
+        <div ref={card2Ref} className="group cursor-pointer flex flex-col" style={{ backgroundColor: '#f3f4f6', borderRadius: '16px', overflow: 'hidden' }}>
+          <div ref={img2Ref} className="w-full overflow-hidden" style={{ height: '300px' }}>
             <img 
               src={blogs[1].image} 
               alt={blogs[1].title}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </div>
-          <div className="flex flex-col px-2">
-            <h3 className="transition-colors duration-300 group-hover:text-gray-600" style={{ fontSize: '32px', fontWeight: 500, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.2, letterSpacing: '-0.5px', marginBottom: '16px' }}>
+          <div className="flex flex-col" style={{ padding: '24px' }}>
+            <h3 className="transition-colors duration-300 group-hover:text-gray-600" style={{ fontSize: '22px', fontWeight: 600, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.4, marginBottom: '32px' }}>
               {blogs[1].title}
             </h3>
-            <div className="flex items-center" style={{ fontSize: '14px', color: '#757575', fontFamily: '"Inter", sans-serif' }}>
+            <div className="flex items-center justify-between" style={{ fontSize: '15px', color: '#757575', fontFamily: '"Inter", sans-serif' }}>
               <span>{blogs[1].date}</span>
-              <span className="mx-3" style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: '#d96a29' }}></span>
               <span>{blogs[1].readTime}</span>
             </div>
           </div>
@@ -710,7 +757,7 @@ const TestimonialsSection = () => {
     },
     {
       name: "Henry Caldwell",
-      avatar: "/realtora-real-estate/public/images/A2jIeSLi2HTwjLhzSESMxp3rd1c.webp",
+      avatar: "/realtora-real-estate/public/images/Y7Io1rEQTpr82XSw3hvUWDoM.webp",
       text: "“From virtual tours to final signing, the process was seamless. We couldn’t be happier with our new home.”",
       image: "/realtora-real-estate/public/images/wJUahXSEUzCrb6zS2SKNWdm2S0.png"
     }
@@ -749,16 +796,13 @@ const TestimonialsSection = () => {
 
   return (
     <section ref={sectionRef} className="w-full flex flex-col items-center overflow-hidden" style={{ backgroundColor: '#f9f9f9', padding: '120px 5%' }}>
-      <div ref={headerRef} className="w-full max-w-[1200px] flex flex-col mb-[80px] relative">
-        <div className="flex items-center self-start" style={{ marginBottom: '16px' }}>
-          <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d96a29', marginRight: '10px' }} />
-          <span style={{ fontSize: '16px', fontWeight: 500, color: '#191919', fontFamily: '"Inter", sans-serif' }}>Testimonials</span>
-        </div>
-        <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '16px' }}>What Our Clients says</h2>
-        <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, maxWidth: '500px' }}>More than listing, we deliver peace of mind,<br />smarter decisions, and smoother experiences.</p>
+      <div ref={headerRef} className="w-full max-w-[1000px] flex flex-col relative" style={{ marginBottom: '100px' }}>
+
+        <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '16px' }}>What Our Clients says</h2>
+        <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, maxWidth: '500px', textTransform: 'none' }}>More than listing, we deliver peace of mind,<br />smarter decisions, and smoother experiences.</p>
       </div>
 
-      <div ref={contentRef} className="w-full max-w-[1200px] flex flex-col md:flex-row items-stretch justify-between" style={{ gap: '60px' }}>
+      <div ref={contentRef} className="w-full max-w-[1000px] flex flex-col md:flex-row items-stretch justify-center" style={{ gap: '80px' }}>
         
         <div className="w-full md:w-[40%] flex flex-col justify-end pb-2">
           <div className="w-full relative" style={{ height: '240px' }}>
@@ -780,7 +824,7 @@ const TestimonialsSection = () => {
                     {t.name}
                   </h3>
                 </div>
-                <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, paddingRight: '20px' }}>
+                <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, paddingRight: '20px', textTransform: 'none' }}>
                   {t.text}
                 </p>
               </div>
@@ -797,7 +841,7 @@ const TestimonialsSection = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-[60%] overflow-hidden relative" style={{ height: '440px', borderRadius: '16px' }}>
+        <div className="w-full md:w-[45%] overflow-hidden relative" style={{ height: '340px', borderRadius: '16px' }}>
            <div ref={imageSliderRef} className="flex h-full w-[300%] absolute left-0 top-0">
              {testimonials.map((t, idx) => (
                 <div key={idx} className="h-full p-0" style={{ width: '33.333%' }}>
@@ -867,20 +911,17 @@ const FaqsSection = () => {
 
   return (
     <section ref={sectionRef} className="w-full flex flex-col items-center" style={{ backgroundColor: '#f9f9f9', padding: '120px 5%' }}>
-      <div className="w-full max-w-[1200px] flex flex-col md:flex-row items-start justify-between" style={{ gap: '80px' }}>
+      <div className="w-full max-w-[1000px] flex flex-col md:flex-row items-start justify-between" style={{ gap: '80px' }}>
         
         {/* Left Column */}
         <div ref={leftRef} className="w-full md:w-[45%] flex flex-col">
-          <div className="flex items-center self-start" style={{ marginBottom: '24px' }}>
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d96a29', marginRight: '10px' }} />
-            <span style={{ fontSize: '16px', fontWeight: 500, color: '#191919', fontFamily: '"Inter", sans-serif' }}>FAQs</span>
-          </div>
+
           
-          <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '24px' }}>
+          <h2 style={{ fontSize: '44px', fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '24px' }}>
             Got Questions?<br />We've Got Answers
           </h2>
           
-          <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px' }}>
+          <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px', textTransform: 'none' }}>
             Everything you need to know about buying, selling, and renting with confidence.
           </p>
 
@@ -911,7 +952,7 @@ const FaqsSection = () => {
                 </div>
               </div>
               <div className="overflow-hidden transition-all duration-500" style={{ maxHeight: openFaq === idx ? '200px' : '0px', opacity: openFaq === idx ? 1 : 0 }}>
-                <p style={{ fontSize: '16px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, marginTop: '16px', paddingRight: '40px' }}>
+                <p style={{ fontSize: '16px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, marginTop: '16px', paddingRight: '40px', textTransform: 'none' }}>
                   {faq.answer}
                 </p>
               </div>
@@ -1568,16 +1609,16 @@ export default function Home() {
           className="relative w-full flex flex-col items-center overflow-hidden"
           style={{ paddingBottom: '100px', paddingTop: '200px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
         >
-          <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end" style={{ maxWidth: '1200px', marginBottom: '80px' }}>
+          <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end" style={{ maxWidth: '1000px', marginBottom: '80px' }}>
             
             {/* Left Text Block */}
-            <div className="flex flex-col items-start featured-header" style={{ maxWidth: '600px' }}>
+            <div className="flex flex-col items-start" style={{ maxWidth: '600px' }}>
 
-              <h2 style={{ fontSize: '44px', fontWeight: 500, color: '#191919', letterSpacing: '-0.5px', lineHeight: '1.1em', margin: '0 0 16px 0' }}>
+              <h2 className="featured-header" style={{ fontSize: '44px', fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', letterSpacing: '-0.5px', lineHeight: '1.1em', margin: '0 0 16px 0' }}>
                 Explore Properties
               </h2>
-              <p style={{ fontSize: '16px', color: '#666', lineHeight: '1.5em', margin: 0, maxWidth: '450px', textTransform: 'uppercase' }}>
-                Luxury villas, smart apartments, commercial spaces. All verified and ready for you.
+              <p className="featured-header" style={{ fontSize: '16px', color: '#666', lineHeight: '1.5em', margin: 0, maxWidth: '450px', textTransform: 'none' }}>
+                Luxury villas, smart apartments, commercial spaces.<br />All verified and ready for you.
               </p>
             </div>
 
@@ -1595,7 +1636,7 @@ export default function Home() {
           </div>
 
           {/* Cards Grid Wrapper */}
-          <div className="w-full grid grid-cols-1 md:grid-cols-2" style={{ maxWidth: '1200px', gap: '40px' }}>
+          <div className="w-full grid grid-cols-1 md:grid-cols-2" style={{ maxWidth: '1000px', gap: '40px' }}>
             {propertiesList.map((property, idx) => (
               <PropertyCard key={idx} property={property} index={idx} />
             ))}
