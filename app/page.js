@@ -151,23 +151,8 @@ const PropertyCard = ({ property, index }) => {
   const imageWrapperRef = useRef(null);
 
   useEffect(() => {
-    gsap.fromTo(
-      cardRef.current,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        delay: index * 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: "top 85%",
-          toggleActions: "play none none none"
-        }
-      }
-    );
-  }, [index]);
+    // Parent animation handles the entry
+  }, []);
 
   const handleMouseMove = (e) => {
     if (!imageWrapperRef.current || !cursorRef.current) return;
@@ -203,10 +188,10 @@ const PropertyCard = ({ property, index }) => {
   };
 
   return (
-    <div ref={cardRef} className="flex flex-col w-full" style={{ gap: '24px' }}>
+    <div ref={cardRef} className="property-card flex flex-col w-full" style={{ gap: '24px' }}>
       <div 
         ref={imageWrapperRef}
-        className="relative w-full overflow-hidden rounded-[15px] cursor-none group"
+        className="property-card-img relative w-full overflow-hidden rounded-[15px] cursor-none group"
         style={{ aspectRatio: '1.5', backgroundColor: '#e3e3e3' }}
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
@@ -1411,6 +1396,7 @@ export default function Home() {
     if (featuredSectionRef.current) {
       const headerElements = featuredSectionRef.current.querySelectorAll('.featured-header');
       const cards = featuredSectionRef.current.querySelectorAll('.property-card');
+      const cardImages = featuredSectionRef.current.querySelectorAll('.property-card-img');
       
       if (headerElements.length > 0) {
         gsap.fromTo(
@@ -1431,45 +1417,34 @@ export default function Home() {
         );
       }
 
-      if (cards.length > 0) {
-        const loop = horizontalLoop(gsap.utils.toArray(cards), {
-          repeat: -1,
-          speed: 0.5,
-          paddingRight: 32 // matching gap-8
+      if (cards.length > 0 && cardImages.length > 0) {
+        cardImages.forEach((item, itemIndex) => {
+          const isLeftProjectItem = itemIndex % 2 === 0;
+          gsap.set(item, {
+            y: 1000,
+            rotation: isLeftProjectItem ? -60 : 60,
+            transformOrigin: "center center",
+          });
         });
 
-        // Pause loop on hover
-        const wrapper = featuredSectionRef.current.querySelector(".property-cards-wrapper");
-        if (wrapper) {
-          const onEnter = () => loop.pause();
-          const onLeave = () => loop.play();
-          wrapper.addEventListener("mouseenter", onEnter);
-          wrapper.addEventListener("mouseleave", onLeave);
-
-          // Save cleanup handler
-          wrapper._cleanup = () => {
-            wrapper.removeEventListener("mouseenter", onEnter);
-            wrapper.removeEventListener("mouseleave", onLeave);
-            loop.kill();
-          };
+        // Trigger animation per row using the static container
+        for (let i = 0; i < cards.length; i += 2) {
+          const rowImages = [cardImages[i], cardImages[i+1]].filter(Boolean);
+          
+          ScrollTrigger.create({
+            trigger: cards[i], // Use the static card wrapper as trigger, not the translated image
+            start: "top 70%",
+            onEnter: () => {
+              gsap.to(rowImages, {
+                y: 0,
+                rotation: 0,
+                duration: 1,
+                ease: "power4.out",
+                stagger: 0.25,
+              });
+            },
+          });
         }
-
-        // Fade in the cards wrapper
-        gsap.fromTo(
-          ".property-cards-wrapper",
-          { opacity: 0, y: 50 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.0,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: featuredSectionRef.current,
-              start: "top 70%",
-              toggleActions: "play none none reverse"
-            }
-          }
-        );
       }
     }
 
