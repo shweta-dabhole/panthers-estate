@@ -1132,3 +1132,9 @@ nav p#logo {
 .t27-top-right { top: 32%; right: 42%; }
 .t27-bottom-right { bottom: 32%; right: 42%; }
 @media (max-width: 900px) { .t27-letter { font-size: 5em; } .t27-top-left { left: 30%; } .t27-top-right { right: 30%; } .t27-bottom-right { right: 30%; } }
+
+/* Insights Marquee Styles */
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes marquee-reverse { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+.animate-marquee { animation: marquee 100s linear infinite; display: flex; width: max-content; }
+.animate-marquee-reverse { animation: marquee-reverse 120s linear infinite; display: flex; width: max-content; }

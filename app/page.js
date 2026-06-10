@@ -1,5 +1,6 @@
 "use client";
 import P10HeroSection from '../components/P10HeroSection';
+import InsightsMarqueeSection from '../components/InsightsMarqueeSection';
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
@@ -1574,17 +1575,11 @@ export default function Home() {
           className="relative w-full flex flex-col items-center overflow-hidden"
           style={{ paddingTop: '100px', paddingBottom: '100px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
         >
-          {/* Centered Heading with Dot */}
-          <div className="flex items-center" style={{ gap: '10px', marginBottom: '32px' }} ref={el => aboutTextRefs.current[0] = el}>
-            <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#b85300' }}></div>
-            <h3 style={{ fontSize: '17px', fontWeight: 400, letterSpacing: '-0.4px', color: '#191919', margin: 0 }}>
-              Who Are We?
-            </h3>
-          </div>
+
 
           {/* Centered Large Text */}
-          <div style={{ maxWidth: '850px', textAlign: 'center', marginBottom: '100px' }} ref={el => aboutTextRefs.current[1] = el}>
-            <p style={{ fontSize: '24px', fontWeight: 400, color: '#191919', lineHeight: '1.5', margin: 0 }}>
+          <div style={{ maxWidth: '850px', textAlign: 'center', marginBottom: '40px' }} ref={el => aboutTextRefs.current[1] = el}>
+            <p style={{ fontSize: '30px', fontWeight: 400, color: '#191919', lineHeight: '1.5', margin: 0 }}>
               At Panthers, we believe a home is life's most important foundation. Our mission is to find your perfect habitat so you can comfortably build your future and best life.
             </p>
           </div>
@@ -1592,23 +1587,21 @@ export default function Home() {
 
         </section>
 
+        {/* 4.5 Insights Marquee Section */}
+        <InsightsMarqueeSection />
+
         {/* 5. Explore Properties Section */}
         <section 
           id="properties"
           ref={featuredSectionRef}
           className="relative w-full flex flex-col items-center overflow-hidden"
-          style={{ paddingBottom: '100px', paddingTop: '40px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
+          style={{ paddingBottom: '100px', paddingTop: '120px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
         >
           <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end" style={{ maxWidth: '1200px', marginBottom: '80px' }}>
             
             {/* Left Text Block */}
             <div className="flex flex-col items-start featured-header" style={{ maxWidth: '600px' }}>
-              <div className="flex items-center" style={{ gap: '10px', marginBottom: '20px' }}>
-                <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#b85300' }}></div>
-                <h3 style={{ fontSize: '17px', fontWeight: 400, letterSpacing: '-0.4px', color: '#333', margin: 0 }}>
-                  Listings
-                </h3>
-              </div>
+
               <h2 style={{ fontSize: '44px', fontWeight: 500, color: '#191919', letterSpacing: '-0.5px', lineHeight: '1.1em', margin: '0 0 16px 0' }}>
                 Explore Properties
               </h2>
