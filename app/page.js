@@ -98,7 +98,7 @@ const propertiesList = [
     beds: "6 Bedrooms",
     baths: "8 Bathrooms",
     sqft: "3,800 SQ.FT",
-    image: "/realtora-real-estate/public/images/QHrU5R2YxV6j0vFGDThc7hSgGKw.webp",
+    image: "/realtora-real-estate/public/images/ChatGPT Image Jun 10, 2026, 12_51_45 PM.png",
     badge: "FOR SALE"
   },
   {
@@ -135,7 +135,7 @@ const featuresList = [
   {
     title: "Smart, Sustainable Features",
     description: "Enjoy future-ready homes equipped with eco-conscious technology and intelligent design.",
-    image: "/realtora-real-estate/public/images/QHrU5R2YxV6j0vFGDThc7hSgGKw.webp"
+    image: "/realtora-real-estate/public/images/ChatGPT Image Jun 10, 2026, 12_51_45 PM.png"
   },
   {
     title: "End-to-End Support",
@@ -305,10 +305,10 @@ const DiscoverSpacesSection = () => {
       tl.to(img3Ref.current, { x: "30vw", y: "-30vh", opacity: 0, duration: 1.5 }, splitStart);
       tl.to(img4Ref.current, { x: "30vw", y: "30vh", opacity: 0, duration: 1.5 }, splitStart);
 
-      // Center image scales up to fill the screen
+      // Center image scales up to fill the screen edge-to-edge
       tl.fromTo(centerImgWrapperRef.current, 
-        { width: "0px", height: "0px", borderRadius: "50%" },
-        { width: "100vw", height: "100vh", borderRadius: "0px", duration: 1.5, ease: "power2.inOut" }, 
+        { width: "0px", height: "0px", borderRadius: "50%", xPercent: -50, yPercent: -50 },
+        { width: "98%", height: "98%", borderRadius: "40px", xPercent: -50, yPercent: -50, duration: 1.5, ease: "power2.inOut" }, 
         splitStart
       );
 
@@ -376,18 +376,18 @@ const DiscoverSpacesSection = () => {
         {/* Center Reveal Image */}
         <div 
           ref={centerImgWrapperRef} 
-          className="absolute z-20 flex items-end justify-start overflow-hidden shadow-2xl" 
-          style={{ width: '0px', height: '0px', borderRadius: '50%' }}
+          className="absolute z-20 flex items-end justify-start overflow-hidden pointer-events-auto" 
+          style={{ width: '0px', height: '0px', borderRadius: '50%', left: '50%', top: '50%', border: 'none', outline: 'none', boxShadow: 'none' }}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
-          <img ref={centerImgRef} src="/realtora-real-estate/public/images/OaySddwc0ovmBM0gb4ic04QX1Ls.jpeg" className="w-full h-full object-cover absolute inset-0 pointer-events-none" />
+          <img ref={centerImgRef} src="/realtora-real-estate/public/images/OaySddwc0ovmBM0gb4ic04QX1Ls.jpeg" className="w-full h-full object-cover absolute inset-0 pointer-events-none" style={{ border: 'none', outline: 'none' }} />
           
           {/* Overlay Content */}
-          <div ref={overlayTextRef} className="relative z-30 p-10 flex flex-col items-start justify-end w-full h-full" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%)' }}>
-             <div className="ml-4 mb-4">
+          <div ref={overlayTextRef} className="relative z-30 flex flex-col items-center justify-end w-full h-full" style={{ padding: '40px', paddingBottom: '8%', background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%)' }}>
+             <div className="text-center">
                <h3 style={{ color: '#fff', fontSize: '56px', fontWeight: 500, margin: 0, fontFamily: '"Outfit", sans-serif', letterSpacing: '-1px' }}>Horizon Villa</h3>
-               <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '18px', margin: 0, fontFamily: '"Inter", sans-serif' }}>Mystic Falls, Azure Ridge</p>
+               <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '18px', margin: 0, fontFamily: '"Inter", sans-serif', textTransform: 'uppercase' }}>Mystic Falls, Azure Ridge</p>
              </div>
           </div>
         </div>
@@ -399,7 +399,7 @@ const DiscoverSpacesSection = () => {
         ref={cursorRef} 
         className="fixed z-50 pointer-events-none flex items-center justify-center bg-white shadow-lg"
         style={{ 
-          width: '120px', height: '120px', borderRadius: '50%',
+          width: '120px', height: '48px', borderRadius: '100px',
           opacity: isHovering ? 1 : 0, 
           transform: isHovering ? 'scale(1)' : 'scale(0.5)',
           transition: 'opacity 0.3s',
@@ -439,14 +439,10 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="features" className="w-full flex flex-col items-center" style={{ backgroundColor: '#f9f9f9', padding: '120px 5%' }}>
+    <section id="features" className="w-full flex flex-col items-center relative z-10" style={{ backgroundColor: '#f9f9f9', padding: '200px 5% 120px 5%', marginTop: '-1px' }}>
       {/* Header */}
       <div className="flex flex-col items-center text-center" style={{ maxWidth: '800px', marginBottom: '80px' }}>
-        {/* Badge */}
-        <div className="flex items-center" style={{ backgroundColor: '#fff', padding: '8px 20px', borderRadius: '30px', marginBottom: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
-          <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d96a29', marginRight: '10px' }} />
-          <span style={{ fontSize: '14px', fontWeight: 500, color: '#191919', fontFamily: '"Inter", sans-serif' }}>Features</span>
-        </div>
+
         
         <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '24px' }}>
           Why Thousands Trust Us to Find Their Next Home
@@ -458,19 +454,18 @@ const FeaturesSection = () => {
       </div>
 
       {/* Main Content: 2 Columns */}
-      <div className="w-full max-w-[1200px] flex flex-col md:flex-row items-center justify-between" style={{ gap: '60px' }}>
+      <div className="w-full max-w-[1200px] flex flex-col md:flex-row items-start justify-center" style={{ gap: '80px' }}>
         
         {/* Left: Tabs */}
-        <div className="w-full md:w-[40%] flex flex-col">
+        <div className="w-full md:w-[35%] flex flex-col" style={{ height: '340px' }}>
           {features.map((feature, idx) => {
             const isActive = activeTab === idx;
             return (
               <div 
                 key={idx}
                 onClick={() => setActiveTab(idx)}
-                className="w-full flex items-center cursor-pointer transition-all duration-300"
+                className="w-full flex items-center cursor-pointer transition-all duration-300 flex-1"
                 style={{
-                  padding: '32px 0',
                   borderBottom: '1px solid #e6e6e6',
                   opacity: isActive ? 1 : 0.6
                 }}
@@ -484,7 +479,7 @@ const FeaturesSection = () => {
                 }} />
                 
                 <h3 style={{ 
-                  fontSize: '24px', 
+                  fontSize: '18px', 
                   fontWeight: isActive ? 600 : 500, 
                   color: isActive ? '#191919' : '#9e9e9e',
                   fontFamily: '"Outfit", sans-serif',
@@ -499,8 +494,8 @@ const FeaturesSection = () => {
         </div>
 
         {/* Right: Image */}
-        <div className="w-full md:w-[55%] flex flex-col">
-          <div className="relative w-full" style={{ height: '400px', borderRadius: '16px', overflow: 'hidden', marginBottom: '24px' }}>
+        <div className="w-full md:w-[45%] flex flex-col">
+          <div className="relative w-full" style={{ height: '340px', borderRadius: '16px', overflow: 'hidden', marginBottom: '20px' }}>
             {features.map((feature, idx) => (
               <img 
                 key={idx}
@@ -518,11 +513,12 @@ const FeaturesSection = () => {
                 className="absolute top-0 left-0 transition-opacity duration-500"
                 style={{ 
                   opacity: activeTab === idx ? 1 : 0, 
-                  fontSize: '18px', 
+                  fontSize: '16px', 
                   color: '#191919', 
                   fontFamily: '"Inter", sans-serif',
                   lineHeight: 1.5,
-                  maxWidth: '90%'
+                  textTransform: 'none',
+                  maxWidth: '100%'
                 }}
               >
                 {feature.description}
@@ -1421,8 +1417,8 @@ export default function Home() {
         cardImages.forEach((item, itemIndex) => {
           const isLeftProjectItem = itemIndex % 2 === 0;
           gsap.set(item, {
-            y: 1000,
-            rotation: isLeftProjectItem ? -60 : 60,
+            y: "60%",
+            rotation: isLeftProjectItem ? -15 : 15,
             transformOrigin: "center center",
           });
         });
@@ -1433,14 +1429,14 @@ export default function Home() {
           
           ScrollTrigger.create({
             trigger: cards[i], // Use the static card wrapper as trigger, not the translated image
-            start: "top 70%",
+            start: "top 95%",
             onEnter: () => {
               gsap.to(rowImages, {
                 y: 0,
                 rotation: 0,
-                duration: 1,
-                ease: "power4.out",
-                stagger: 0.25,
+                duration: 1.2,
+                ease: "power3.out",
+                stagger: 0.2,
               });
             },
           });
@@ -1570,7 +1566,7 @@ export default function Home() {
           id="properties"
           ref={featuredSectionRef}
           className="relative w-full flex flex-col items-center overflow-hidden"
-          style={{ paddingBottom: '100px', paddingTop: '120px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
+          style={{ paddingBottom: '100px', paddingTop: '200px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
         >
           <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end" style={{ maxWidth: '1200px', marginBottom: '80px' }}>
             
@@ -1580,7 +1576,7 @@ export default function Home() {
               <h2 style={{ fontSize: '44px', fontWeight: 500, color: '#191919', letterSpacing: '-0.5px', lineHeight: '1.1em', margin: '0 0 16px 0' }}>
                 Explore Properties
               </h2>
-              <p style={{ fontSize: '16px', color: '#666', lineHeight: '1.5em', margin: 0, maxWidth: '345px' }}>
+              <p style={{ fontSize: '16px', color: '#666', lineHeight: '1.5em', margin: 0, maxWidth: '450px', textTransform: 'uppercase' }}>
                 Luxury villas, smart apartments, commercial spaces. All verified and ready for you.
               </p>
             </div>
