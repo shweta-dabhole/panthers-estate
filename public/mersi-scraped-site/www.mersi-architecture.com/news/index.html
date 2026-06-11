@@ -27,7 +27,24 @@ pointer-events:auto;
 border-color: black;
     outline: black;
 }
-</style></head><body><div class="grain-bg"></div><div class="container-loader loader"><div class="div-block-9"><div>Quiet luxury interiors</div></div><div class="div-ms-loader load"><div class="ms-fake w-embed"><svg width="100%" height="100%" viewBox="0 0 550 237" fill="none" xmlns="http://www.w3.org/2000/svg">
+</style>
+<!-- GLOBAL DOM HEALER -->
+<script>
+  window.addEventListener("pageshow", function(e) {
+      setTimeout(function() {
+        document.querySelectorAll('video').forEach(function(v) {
+          if (v.paused) v.play().catch(function(err) { console.log('Autoplay prevented', err); });
+        });
+        var preLoader = document.querySelector('.pre-loader');
+        if (preLoader) preLoader.style.display = 'none';
+        var taxiTransition = document.querySelector('.taxi-transition');
+        if (taxiTransition) taxiTransition.style.display = 'none';
+        document.body.style.pointerEvents = 'auto';
+      }, 100);
+  });
+</script>
+
+</head><body><div class="grain-bg"></div><div class="container-loader loader"><div class="div-block-9"><div>Quiet luxury interiors</div></div><div class="div-ms-loader load"><div class="ms-fake w-embed"><svg width="100%" height="100%" viewBox="0 0 550 237" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <clipPath id="innerShapesClip">
       <path d="M153.124 95.8847H138.899V173.606H153.124V95.8847Z"></path>

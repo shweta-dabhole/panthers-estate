@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
-import MenuOverlay from '../../../components/MenuOverlay';
 
 export default function ClientProjectPage({ htmlContent, dataWfPage }) {
   const containerRef = useRef(null);
@@ -40,6 +39,10 @@ export default function ClientProjectPage({ htmlContent, dataWfPage }) {
           window.Webflow.ready();
           window.Webflow.require('ix2').init();
         }
+        
+        // Trigger the DOMContentLoaded and load events that the GSAP script in main.js is waiting for
+        window.dispatchEvent(new Event('DOMContentLoaded'));
+        window.dispatchEvent(new Event('load'));
       } catch (err) {
         console.error("Error loading Webflow scripts:", err);
       }
@@ -84,13 +87,6 @@ export default function ClientProjectPage({ htmlContent, dataWfPage }) {
   return (
     <div className="webflow-wrapper">
       <link href="https://cdn.prod.website-files.com/69689842a40a17ac45e5418a/css/mersiv2.webflow.shared.48daa5886.min.css" rel="stylesheet" type="text/css" />
-      <style dangerouslySetInnerHTML={{__html: `
-        html, body { height: auto; }
-        .ms-fake, .ms-real, svg[viewBox="0 0 550 237"], .logo-nav, .logo-landing-big, .nav-r, .nav-link { display: none !important; }
-        .container-loader.loader { display: none !important; }
-        [line], [reveal-letter], [reveal-op] { opacity: 1 !important; transform: none !important; }
-      `}} />
-      <MenuOverlay containerRef={containerRef} isBlackText={true} />
       <div ref={containerRef} dangerouslySetInnerHTML={{ __html: htmlContent }} />
     </div>
   );

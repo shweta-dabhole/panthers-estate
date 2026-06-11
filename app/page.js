@@ -1360,6 +1360,28 @@ export default function Home() {
   const menuContentRef = useRef(null);
   const menuPreviewImgRef = useRef(null);
   const heroTextLinesRef = useRef([]);
+
+  useEffect(() => {
+    const healPage = () => {
+      // 100ms timeout ensures the browser has fully finished its Back-Forward Cache restoration
+      // before we force the video to play and reset the animations. This completely avoids page reloads!
+      setTimeout(() => {
+        // Force all background videos to play
+        document.querySelectorAll('video').forEach(v => {
+          if (v.paused) v.play().catch(e => console.log('Autoplay prevented', e));
+        });
+        
+        // Hide loaders if stuck
+        const preLoader = document.querySelector('.pre-loader');
+        if (preLoader) preLoader.style.display = 'none';
+      }, 100);
+    };
+
+    healPage(); // Run on fresh mounts
+    window.addEventListener("pageshow", healPage); // Run on BFCache restores
+    
+    return () => window.removeEventListener("pageshow", healPage);
+  }, []);
   const aboutSectionRef = useRef(null);
   const parallaxImagesRef = useRef([]);
   const aboutTextRefs = useRef([]);

@@ -29,8 +29,8 @@ export default function P10HeroSection() {
           </div>
           <div 
             onClick={() => {
-              const menuToggle = document.getElementById('menu-open')?.parentElement;
-              if (menuToggle) menuToggle.click();
+              // Dispatch a custom event that MenuOverlay listens for — no DOM querying needed
+              window.dispatchEvent(new CustomEvent('panthers:toggleMenu'));
             }}
             style={{ fontSize: '13px', fontWeight: 'bold', textTransform: 'uppercase', color: '#fff', letterSpacing: '1px', cursor: 'pointer' }}
           >

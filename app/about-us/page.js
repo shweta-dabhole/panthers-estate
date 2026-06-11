@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
-import MenuOverlay from '../../components/MenuOverlay';
 import { htmlContent } from './htmlContent';
 
 export default function AboutUsPage() {
@@ -43,6 +42,10 @@ export default function AboutUsPage() {
           window.Webflow.ready();
           window.Webflow.require('ix2').init();
         }
+        
+        // Trigger the DOMContentLoaded and load events that the GSAP script in main.js is waiting for
+        window.dispatchEvent(new Event('DOMContentLoaded'));
+        window.dispatchEvent(new Event('load'));
       } catch (err) {
         console.error("Error loading Webflow scripts:", err);
       }
@@ -94,10 +97,6 @@ export default function AboutUsPage() {
   return (
     <div className="webflow-wrapper">
       <link href="https://cdn.prod.website-files.com/69689842a40a17ac45e5418a/css/mersiv2.webflow.shared.48daa5886.min.css" rel="stylesheet" type="text/css" />
-      <MenuOverlay isBlackText={true} />
-      <style dangerouslySetInnerHTML={{ __html: `
-        nav.navbar, div.menu_w { display: none !important; }
-      `}} />
       <div 
         ref={containerRef} 
         dangerouslySetInnerHTML={{ __html: htmlContent }} 

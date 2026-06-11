@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import gsap from 'gsap';
@@ -16,7 +16,47 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
   const menuOverlayRef = useRef(null);
   const menuContentRef = useRef(null);
   const menuPreviewImgRef = useRef(null);
+  const toggleMenuRef = useRef(null); // Ref to avoid stale closure in event listeners
   const router = useRouter();
+
+  // BFCache State Reset: When navigating back from a raw HTML page (like /projects),
+  // the browser restores the exact memory state. We must force a reload so the video plays and menu resets.
+  useEffect(() => {
+    const healMenu = () => {
+      setIsMenuOpen(false);
+      setIsMenuAnimating(false);
+      if (menuOverlayRef.current) {
+        gsap.set(menuOverlayRef.current, { pointerEvents: "none", clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" });
+      }
+      if (menuContentRef.current) {
+        gsap.set(menuContentRef.current, { rotation: -15, x: -100, y: -100, scale: 1.5, opacity: 0.25 });
+      }
+      const open = document.getElementById("menu-open");
+      const close = document.getElementById("menu-close");
+      if (open && close) {
+         gsap.set(close, { opacity: 0 });
+         gsap.set(open, { opacity: 1 });
+      }
+    };
+
+    healMenu();
+    window.addEventListener("pageshow", healMenu);
+
+    // Listen for the custom toggle event from P10HeroSection's MENU button
+    // Use ref to avoid stale closure — always calls the latest toggleMenu
+    const onToggle = () => { if (toggleMenuRef.current) toggleMenuRef.current(); };
+    window.addEventListener("panthers:toggleMenu", onToggle);
+
+    return () => {
+      window.removeEventListener("pageshow", healMenu);
+      window.removeEventListener("panthers:toggleMenu", onToggle);
+    };
+  }, []);
+
+  // Keep toggleMenuRef pointing to the latest toggleMenu after every render (avoids stale closure)
+  useEffect(() => {
+    toggleMenuRef.current = toggleMenu;
+  });
 
   const toggleMenu = () => {
     if (isMenuAnimating) return;
@@ -123,22 +163,31 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
     }
   };
 
-  const handleNavClick = (e, targetId) => {
+  const handleNavClick = (e, targetUrl) => {
     e.preventDefault();
     if (isMenuOpen && !isMenuAnimating) {
       toggleMenu();
-      if (targetId && targetId !== 'external') {
-        setTimeout(() => {
+      setTimeout(() => {
+        // FORCE REACT STATE RESET before leaving!
+        // This guarantees that if the browser restores this exact memory frame from BFCache, 
+        // the menu will NOT be stuck in an "animating" or "open" state.
+        setIsMenuOpen(false);
+        setIsMenuAnimating(false);
+        
+        if (targetUrl.startsWith('/#')) {
+          const targetId = targetUrl.substring(2);
           const el = document.getElementById(targetId);
           if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
           } else {
-            window.location.href = `/#${targetId}`;
+            window.location.href = targetUrl;
           }
-        }, 800);
-      }
+        } else {
+          window.location.href = targetUrl;
+        }
+      }, 1000); // Wait 1s for GSAP menu close animation to finish
     } else if (!isMenuOpen) {
-       window.location.href = `/#${targetId}`;
+       window.location.href = targetUrl;
     }
   };
 
@@ -226,16 +275,16 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
             <div className="col-sm">
               <div className="menu-links">
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%202.jpg')}>
-                  <Link data-taxi-ignore href="/#hero" onClick={(e) => handleNavClick(e, 'hero')}>Home</Link>
+                  <a data-taxi-ignore href="/#hero" onClick={(e) => handleNavClick(e, '/#hero')}>Home</a>
                 </div>
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%205.jpg')}>
-                  <Link data-taxi-ignore href="/about-us" onClick={toggleMenu}>About Us</Link>
+                  <a data-taxi-ignore href="/about-us" onClick={(e) => handleNavClick(e, '/about-us')}>About Us</a>
                 </div>
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%207.jpg')}>
-                  <Link data-taxi-ignore href="/projects" onClick={toggleMenu}>Projects</Link>
+                  <a data-taxi-ignore href="/projects" onClick={(e) => handleNavClick(e, '/projects')}>Projects</a>
                 </div>
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/menu%20img1.jpg')}>
-                  <Link data-taxi-ignore href="/process" onClick={toggleMenu}>Process</Link>
+                  <a data-taxi-ignore href="/process" onClick={(e) => handleNavClick(e, '/process')}>Process</a>
                 </div>
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%201.jpg')}>
                   <a href="#">Connect</a>
