@@ -2,7 +2,7 @@ import React from 'react';
 
 const images = [
   "https://framerusercontent.com/images/IsC1LnC6noiLAKGmFo4rSGXtjo.jpg",
-  "https://framerusercontent.com/images/VuzweXPMqPrrHSBKiq37NT8ekU.jpg",
+  "/realtora-real-estate/public/images/stairs.png",
   "https://framerusercontent.com/images/SlkPE3qiKHqLdUMtzN1z4PFX5w.jpg",
   "https://framerusercontent.com/images/qiQVKMVr1MoXlOPT9TanAXo0xc.jpg",
   "https://framerusercontent.com/images/Is5SseNIsSZTN8czqYBWakzxFM.jpg"
