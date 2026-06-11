@@ -886,7 +886,7 @@ const TestimonialsSection = () => {
 };
 
 
-const FaqsSection = () => {
+export const FaqsSection = () => {
   const sectionRef = useRef(null);
   const leftRef = useRef(null);
   const rightRef = useRef(null);
@@ -961,7 +961,7 @@ const FaqsSection = () => {
         </div>
 
         {/* Right Column: Accordion */}
-        <div ref={rightRef} className="w-full md:w-[55%] flex flex-col" style={{ marginTop: '20px' }}>
+        <div ref={rightRef} className="w-full md:w-[55%] flex flex-col" style={{ marginTop: '-30px' }}>
           {faqs.map((faq, idx) => (
             <div key={idx} className="w-full flex flex-col cursor-pointer border-b border-[#e5e5e5] transition-colors" onClick={() => toggleFaq(idx)} style={{ padding: '24px 0' }}>
               <div className="w-full flex items-center justify-between">
@@ -989,7 +989,7 @@ const FaqsSection = () => {
   );
 };
 
-const FooterSection = () => {
+export const FooterSection = () => {
   const sectionRef = useRef(null);
   const topRef = useRef(null);
   const bottomRef = useRef(null);
@@ -1084,9 +1084,13 @@ const FooterSection = () => {
               Other pages
             </h4>
             <div className="flex flex-col" style={{ gap: '20px' }}>
-              {['404', 'Privacy Policy', 'Terms & Conditions'].map(link => (
-                <a key={link} href="#" style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Inter", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
-                  {link}
+              {[
+                { name: '404', href: '/404' },
+                { name: 'Privacy Policy', href: '/privacy-policy' },
+                { name: 'Terms & Conditions', href: '/terms-conditions' }
+              ].map(link => (
+                <a key={link.name} href={link.href} style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Inter", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
+                  {link.name}
                 </a>
               ))}
             </div>

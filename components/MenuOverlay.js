@@ -180,26 +180,26 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
         style={{ display: 'none' }}
       >
         <div className="logo cursor-pointer z-[110]" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-          <div style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px' }}>
+          <div style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: (isBlackText && !isMenuOpen) ? 'black' : 'inherit' }}>
             PANTHERS
           </div>
         </div>
         <div className="menu-toggle cursor-pointer z-[110]" onClick={toggleMenu}>
           <div style={{ position: 'relative', width: '60px', height: '24px' }}>
-            <p 
-              id="menu-open"
-              className="absolute top-0 left-0 w-full text-right font-semibold tracking-wider hover:opacity-70 transition-opacity uppercase text-sm md:text-base m-0"
-              style={{ fontFamily: 'var(--font-poppins), sans-serif', opacity: isMenuOpen ? 0 : 1 }}
-            >
-              MENU
-            </p>
-            <p 
-              id="menu-close"
-              className="absolute top-0 left-0 w-full text-right font-semibold tracking-wider hover:opacity-70 transition-opacity uppercase text-sm md:text-base m-0"
-              style={{ fontFamily: 'var(--font-poppins), sans-serif', opacity: isMenuOpen ? 1 : 0 }}
-            >
-              CLOSE
-            </p>
+              <p 
+                id="menu-open"
+                className="absolute top-0 left-0 w-full text-right font-semibold tracking-wider hover:opacity-70 transition-opacity uppercase text-sm md:text-base m-0"
+                style={{ fontFamily: 'var(--font-poppins), sans-serif', opacity: isMenuOpen ? 0 : 1, color: (isBlackText && !isMenuOpen) ? 'black' : 'inherit' }}
+              >
+                MENU
+              </p>
+              <p 
+                id="menu-close"
+                className="absolute top-0 left-0 w-full text-right font-semibold tracking-wider hover:opacity-70 transition-opacity uppercase text-sm md:text-base m-0"
+                style={{ fontFamily: 'var(--font-poppins), sans-serif', opacity: isMenuOpen ? 1 : 0, color: isMenuOpen ? 'white' : ((isBlackText && !isMenuOpen) ? 'black' : 'inherit') }}
+              >
+                CLOSE
+              </p>
           </div>
         </div>
       </nav>
