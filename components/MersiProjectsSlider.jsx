@@ -7,13 +7,13 @@ import Link from 'next/link';
 
 const projectsData = [
   {
-    id: "naya",
-    name: "Naya",
+    id: "velora",
+    name: "Velora",
     location: "Levallois",
     tag: "Résidentiel",
     year: "2025",
     color: "hsla(16, 58.87%, 42.88%, 1.00)",
-    slug: "naya",
+    slug: "velora",
     leftImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png",
     rightImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/69a859206f8dac87c4c0b553_MERSI x LEVALLOIS-2 (1).png",
   },

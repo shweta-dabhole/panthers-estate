@@ -1171,18 +1171,9 @@ nav p#logo {
 .animate-marquee { animation: marquee 100s linear infinite; display: flex; width: max-content; }
 .animate-marquee-reverse { animation: marquee-reverse 100s linear infinite; display: flex; width: max-content; }
 
-/* Grain Background Texture Overlay */
+/* Grain Background Texture Overlay (Disabled) */
 .grain-bg {
-  z-index: 1000;
-  pointer-events: none;
-  mix-blend-mode: color-dodge;
-  background-image: url(https://cdn.prod.website-files.com/69689842a40a17ac45e5418a/696fa735107879475a0cab0e_a1a6cc782354d179a4012e64d120e2b7_Grain%20\(1\).webp);
-  background-position: 50%;
-  background-size: 150px;
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  inset: 0%;
+  display: none;
 }
 
 /* Projects Hero Title and Filters Style Match */

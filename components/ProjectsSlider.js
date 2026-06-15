@@ -6,8 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const projectsData = [
   {
-    id: "naya",
-    name: "Naya",
+    id: "velora",
+    name: "Velora",
     location: "Levallois",
     tag: "Résidentiel",
     year: "2025",

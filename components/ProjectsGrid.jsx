@@ -8,13 +8,14 @@ import FooterSection from "./FooterSection";
 
 const projectsData = [
   {
-    slug: "naya",
-    title: "Naya",
+    slug: "velora",
+    title: "Velora",
     location: "Levallois",
     filterName: "Residential",
     year: "2025",
     color: "hsla(16, 58.87%, 42.88%, 1.00)",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/69a859206f8dac87c4c0b553_MERSI x LEVALLOIS-2 (1).png",
+    price: "$1,600,000", bedrooms: 5, bathrooms: 5, sqft: "4,500",
+    img: "/assets/new villa.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png"
   },
   {
@@ -24,7 +25,8 @@ const projectsData = [
     filterName: "Hospitality",
     year: "2025",
     color: "#657b69",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x MAURICE_-6.png",
+    price: "$1,875,000", bedrooms: 6, bathrooms: 8, sqft: "3,800",
+    img: "/assets/p36i3IJiJzBK4cHjJGtkOkx4M.jpeg",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x MAURICE_-10.png"
   },
   {
@@ -34,7 +36,8 @@ const projectsData = [
     filterName: "Residential",
     year: "2025",
     color: "#aaa798",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSIxBERRI-24 (1).png",
+    price: "$2,250,000", bedrooms: 5, bathrooms: 5, sqft: "4,000",
+    img: "/assets/new villa 3.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSIxBERRI-16 (1).png"
   },
   {
@@ -44,7 +47,8 @@ const projectsData = [
     filterName: "Hospitality",
     year: "2025",
     color: "#dc633f",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_Mersi x Restaurant COOK-2.png",
+    price: "$2,500,000", bedrooms: 4, bathrooms: 3, sqft: "3,200",
+    img: "/assets/BBK7G2W0GpZei2zukI6jNqEI6X4.jpeg",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_1.png"
   },
   {
@@ -54,7 +58,8 @@ const projectsData = [
     filterName: "Residential",
     year: "2025",
     color: "#918f7a",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover R_1.png",
+    price: "$1,450,000", bedrooms: 4, bathrooms: 4, sqft: "3,500",
+    img: "/assets/CR9WCJs8QkwyR05G5BzUHipBX8.webp",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_2.png"
   },
   {
@@ -64,7 +69,8 @@ const projectsData = [
     filterName: "Residential",
     year: "2025",
     color: "#b3a696",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover R_2.png",
+    price: "$3,100,000", bedrooms: 7, bathrooms: 6, sqft: "5,200",
+    img: "/assets/new villa 4.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_3.png"
   },
   {
@@ -74,7 +80,8 @@ const projectsData = [
     filterName: "Retail",
     year: "2025",
     color: "#dc8b3f",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x AURÉLIEN COHEN-4 (1).png",
+    price: "$950,000", bedrooms: 3, bathrooms: 2, sqft: "2,100",
+    img: "/assets/new villa 5.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x AURÉLIEN COHEN-1 copie (1).png"
   },
   {
@@ -84,7 +91,8 @@ const projectsData = [
     filterName: "Residential",
     year: "2025",
     color: "#8b9ec1",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover R.png",
+    price: "$1,200,000", bedrooms: 4, bathrooms: 3, sqft: "2,800",
+    img: "/assets/new villa 6.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L.png"
   },
   {
@@ -94,8 +102,20 @@ const projectsData = [
     filterName: "Residential",
     year: "2024",
     color: "#ccb598",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSI x RUE DE LA PAIX-1.png",
+    price: "$4,500,000", bedrooms: 8, bathrooms: 8, sqft: "6,000",
+    img: "/assets/new villa 7.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSI x RUE DE LA PAIX-16.png"
+  },
+  {
+    slug: "velora-2",
+    title: "Velora",
+    location: "Levallois",
+    filterName: "Residential",
+    year: "2025",
+    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    price: "$1,600,000", bedrooms: 5, bathrooms: 5, sqft: "4,500",
+    img: "/assets/new villa 8.png",
+    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png"
   }
 ];
 
@@ -112,14 +132,17 @@ function ProjectCard({ project, index, total }) {
     gsap.to(cursorRef.current, {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
+      xPercent: -50,
+      yPercent: -50,
       duration: 0.2, overwrite: 'auto',
     });
   };
-  const handleMouseEnter = () => gsap.to(cursorRef.current, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.5)' });
-  const handleMouseLeave = () => gsap.to(cursorRef.current, { scale: 0.5, opacity: 0, duration: 0.3, ease: 'power2.in' });
+  const handleMouseEnter = () => gsap.to(cursorRef.current, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.5)', xPercent: -50, yPercent: -50 });
+  const handleMouseLeave = () => gsap.to(cursorRef.current, { scale: 0.5, opacity: 0, duration: 0.3, ease: 'power2.in', xPercent: -50, yPercent: -50 });
 
   return (
-    <div className="project-card-wrapper w-full mb-[3.125rem]">
+    <div className="project-card-wrapper w-full" style={{ marginBottom: '8rem' }}>
+
       {/* Placeholder maintains the space in the grid */}
       <div className="project-card-placeholder w-full relative" style={{ aspectRatio: '1/1' }}>
         
@@ -139,7 +162,7 @@ function ProjectCard({ project, index, total }) {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <Link href={`/projects/${project.slug}`} ref={linkRef} style={{ display: 'block', width: '100%', height: '100%', position: 'relative', overflow: 'hidden' }}>
+          <Link href={`/projects/${project.slug}`} ref={linkRef} className="group" style={{ display: 'block', width: '100%', height: '100%', position: 'relative', overflow: 'hidden' }}>
 
             <div ref={imgRef} style={{ width: '100%', height: '100%' }}>
               <img
@@ -150,19 +173,21 @@ function ProjectCard({ project, index, total }) {
               />
             </div>
 
-            {/* Custom round cursor */}
+            {/* Custom pill cursor */}
             <div
               ref={cursorRef}
               style={{
-                position: 'absolute', top: '-40px', left: '-40px',
-                width: '80px', height: '80px', borderRadius: '50%',
-                backgroundColor: '#1A1A1A', color: '#EDE7DE',
+                position: 'absolute', top: 0, left: 0,
+                padding: '12px 24px', borderRadius: '9999px',
+                backgroundColor: '#FFFFFF', color: '#1A1A1A',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 pointerEvents: 'none', zIndex: 20,
                 opacity: 0, transform: 'scale(0.5)',
+                whiteSpace: 'nowrap',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
               }}
             >
-              <span style={{ fontFamily: '"Inter", sans-serif', fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Voir</span>
+              <span style={{ fontFamily: '"Inter", sans-serif', fontSize: '15px', fontWeight: 500, letterSpacing: '0' }}>View Details</span>
             </div>
           </Link>
         </div>
@@ -179,23 +204,28 @@ function ProjectCard({ project, index, total }) {
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1a1a1a' }}>
+          <span style={{ fontSize: '1.25rem', fontWeight: 600, color: '#1a1a1a' }}>
             {project.title}
           </span>
-          <span style={{ fontSize: '1.125rem', fontWeight: 700, color: '#1a1a1a' }}>
-            {project.location}
+          <span style={{ fontSize: '1.125rem', fontWeight: 600, color: '#1a1a1a' }}>
+            {project.price}
           </span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ fontSize: '0.875rem', fontWeight: 500, color: '#666' }}>
-            {project.filterName}
+          <span style={{ fontSize: '0.875rem', fontWeight: 400, color: '#666' }}>
+            {project.bedrooms} Bedrooms
           </span>
-          <span style={{ fontSize: '0.875rem', fontWeight: 500, color: '#ccc' }}>•</span>
-          <span style={{ fontSize: '0.875rem', fontWeight: 500, color: '#666' }}>
-            {project.year}
+          <span style={{ fontSize: '0.875rem', fontWeight: 400, color: '#ccc' }}>•</span>
+          <span style={{ fontSize: '0.875rem', fontWeight: 400, color: '#666' }}>
+            {project.bathrooms} Bathrooms
+          </span>
+          <span style={{ fontSize: '0.875rem', fontWeight: 400, color: '#ccc' }}>•</span>
+          <span style={{ fontSize: '0.875rem', fontWeight: 400, color: '#666' }}>
+            {project.sqft} SQ.FT
           </span>
         </div>
       </div>
+
     </div>
   );
 }
@@ -307,8 +337,7 @@ export default function ProjectsGrid() {
 
   return (
     <div className="projects-page-wrapper w-full bg-[#EDE7DE] select-none relative overflow-x-hidden" style={{ backgroundColor: '#EDE7DE' }}>
-      {/* 0. Full-Screen Grain Overlay */}
-      <div className="grain-bg" />
+
 
 
       {/* 2. Hero section — full viewport height, flex col centered */}
@@ -327,18 +356,19 @@ export default function ProjectsGrid() {
           <h1 style={{
             textAlign: 'center',
             textTransform: 'uppercase',
-            fontFamily: 'Doner, Arial, sans-serif',
+            fontFamily: 'var(--font-poppins), sans-serif',
             fontSize: '50px',
             fontWeight: 700,
             lineHeight: 0.9,
             letterSpacing: '-0.01em',
             color: '#1a1a1a',
-            margin: 0,
+            margin: '0 auto',
             padding: 0,
             whiteSpace: 'normal',
             width: '100%',
+            maxWidth: '500px',
           }}>
-            Quiet luxury<br/>interiors shaped<br/>by true stories
+            Explore Exclusive<br/>Luxury Properties<br/>Designed For You
           </h1>
         </div>
       </section>

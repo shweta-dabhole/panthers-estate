@@ -8,8 +8,8 @@ import { useParams } from "next/navigation";
 
 const projectsData = [
   {
-    slug: "naya",
-    title: "Naya",
+    slug: "velora",
+    title: "Velora",
     location: "Levallois",
     filterName: "Residential",
     year: "2025",
@@ -96,6 +96,16 @@ const projectsData = [
     color: "#ccb598",
     img: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSI x RUE DE LA PAIX-1.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSI x RUE DE LA PAIX-16.png"
+  },
+  {
+    slug: "velora-2",
+    title: "Velora",
+    location: "Levallois",
+    filterName: "Residential",
+    year: "2025",
+    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    img: "/assets/new villa 8.png",
+    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png"
   }
 ];
 
@@ -185,34 +195,21 @@ export default function ProjectDetail() {
             flexShrink: 0
           }}
         >
-          {/* Top left pseudo-logo to go back */}
-          <Link href="/projects" style={{ cursor: 'pointer', display: 'inline-block' }}>
-            <h2 style={{ fontFamily: 'Doner, Arial, sans-serif', fontSize: '1.5rem', fontWeight: 700, margin: 0, textTransform: 'uppercase' }}>
-              MERSI
-            </h2>
-          </Link>
+
           
           {/* Centered details */}
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', maxWidth: '300px', margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginBottom: '1.5rem' }}>
-               <span style={{ fontFamily: '"Inter", sans-serif', fontSize: '0.875rem', fontWeight: 600 }}>{project.location}</span>
-               <span style={{ fontFamily: '"Inter", sans-serif', fontSize: '0.875rem', fontWeight: 600 }}>{project.year}</span>
-            </div>
+
             
             {/* Thumbnail preview - Portrait */}
             <div style={{ width: '100%', aspectRatio: '4/5', overflow: 'hidden', marginBottom: '1.5rem' }}>
               <img src={project.hoverImg} alt={`${project.title} preview`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
-            
-            <div style={{ fontFamily: '"Inter", sans-serif', fontSize: '1rem', fontWeight: 500, textAlign: 'center' }}>
-              Intérieur singulier et intemporel<br/>
-              {project.filterName}
-            </div>
           </div>
 
           {/* Bottom massive title */}
           <div>
-            <h1 style={{ fontFamily: 'Doner, Arial, sans-serif', fontSize: '8rem', fontWeight: 700, lineHeight: 0.9, textTransform: 'uppercase', margin: 0, textAlign: 'center' }}>
+            <h1 style={{ fontFamily: 'Doner, Arial, sans-serif', fontSize: '3rem', fontWeight: 700, lineHeight: 0.9, textTransform: 'uppercase', margin: 0, textAlign: 'center' }}>
               {project.title}
             </h1>
           </div>
