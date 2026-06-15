@@ -89,7 +89,7 @@ const propertiesList = [
     beds: "5 Bedrooms",
     baths: "5 Bathrooms",
     sqft: "4,500 SQ.FT",
-    image: "/realtora-real-estate/public/images/BM5DJRZcwLRhIfqMFOK4GeI.webp",
+    image: "/assets/BM5DJRZcwLRhIfqMFOK4GeI.webp",
     badge: "FOR SALE"
   },
   {
@@ -98,7 +98,7 @@ const propertiesList = [
     beds: "6 Bedrooms",
     baths: "8 Bathrooms",
     sqft: "3,800 SQ.FT",
-    image: "/realtora-real-estate/public/images/ChatGPT Image Jun 10, 2026, 12_51_45 PM.png",
+    image: "/assets/ChatGPT Image Jun 10, 2026, 12_51_45 PM.png",
     badge: "FOR SALE"
   },
   {
@@ -107,7 +107,7 @@ const propertiesList = [
     beds: "5 Bedrooms",
     baths: "5 Bathrooms",
     sqft: "4,000 SQ.FT",
-    image: "/realtora-real-estate/public/images/p36i3IJiJzBK4cHjJGtkOkx4M.jpeg",
+    image: "/assets/p36i3IJiJzBK4cHjJGtkOkx4M.jpeg",
     badge: "NEW"
   },
   {
@@ -116,7 +116,7 @@ const propertiesList = [
     beds: "4 Bedrooms",
     baths: "3 Bathrooms",
     sqft: "3,200 SQ.FT",
-    image: "/realtora-real-estate/public/images/A2jIeSLi2HTwjLhzSESMxp3rd1c.webp",
+    image: "/assets/A2jIeSLi2HTwjLhzSESMxp3rd1c.webp",
     badge: "FOR SALE"
   }
 ];
@@ -125,22 +125,22 @@ const featuresList = [
   {
     title: "Lifestyle-Centric Living",
     description: "Thoughtfully planned spaces that fit the pace of real life, with room to grow, recharge, and gather.",
-    image: "/realtora-real-estate/public/images/BM5DJRZcwLRhIfqMFOK4GeI.webp"
+    image: "/assets/BM5DJRZcwLRhIfqMFOK4GeI.webp"
   },
   {
     title: "Prime & Promising Locations",
     description: "From upscale neighborhoods to emerging hotspots, each address is chosen for its value and vibrance.",
-    image: "/realtora-real-estate/public/images/A2jIeSLi2HTwjLhzSESMxp3rd1c.webp"
+    image: "/assets/A2jIeSLi2HTwjLhzSESMxp3rd1c.webp"
   },
   {
     title: "Smart, Sustainable Features",
     description: "Enjoy future-ready homes equipped with eco-conscious technology and intelligent design.",
-    image: "/realtora-real-estate/public/images/ChatGPT Image Jun 10, 2026, 12_51_45 PM.png"
+    image: "/assets/ChatGPT Image Jun 10, 2026, 12_51_45 PM.png"
   },
   {
     title: "End-to-End Support",
     description: "We handle the complexities of buying, selling, and renting, giving you peace of mind at every step.",
-    image: "/realtora-real-estate/public/images/hoMkKeDJp1rMS99FfvGiuFk8Vsc.webp"
+    image: "/assets/hoMkKeDJp1rMS99FfvGiuFk8Vsc.webp"
   }
 ];
 
@@ -369,10 +369,10 @@ const DiscoverSpacesSection = () => {
         </div>
 
         {/* Small Images */}
-        <img ref={img1Ref} src="/realtora-real-estate/public/images/BM5DJRZcwLRhIfqMFOK4GeI.webp" className="absolute object-cover shadow-xl" style={{ top: '15%', left: '15%', width: '220px', height: '140px', borderRadius: '0px' }} />
-        <img ref={img2Ref} src="/realtora-real-estate/public/images/hoMkKeDJp1rMS99FfvGiuFk8Vsc.webp" className="absolute object-cover shadow-xl" style={{ bottom: '15%', left: '10%', width: '240px', height: '180px', borderRadius: '0px' }} />
-        <img ref={img3Ref} src="/realtora-real-estate/public/images/hhMQHZPK2Han8nGE8ZGJzzB2Mo.webp" className="absolute object-cover shadow-xl" style={{ top: '15%', right: '15%', width: '240px', height: '140px', borderRadius: '0px' }} />
-        <img ref={img4Ref} src="/realtora-real-estate/public/images/QHrU5R2YxV6j0vFGDThc7hSgGKw.webp" className="absolute object-cover shadow-xl" style={{ bottom: '15%', right: '10%', width: '220px', height: '140px', borderRadius: '0px' }} />
+        <img ref={img1Ref} src="/assets/BM5DJRZcwLRhIfqMFOK4GeI.webp" className="absolute object-cover shadow-xl" style={{ top: '15%', left: '15%', width: '220px', height: '140px', borderRadius: '0px' }} />
+        <img ref={img2Ref} src="/assets/hoMkKeDJp1rMS99FfvGiuFk8Vsc.webp" className="absolute object-cover shadow-xl" style={{ bottom: '15%', left: '10%', width: '240px', height: '180px', borderRadius: '0px' }} />
+        <img ref={img3Ref} src="/assets/hhMQHZPK2Han8nGE8ZGJzzB2Mo.webp" className="absolute object-cover shadow-xl" style={{ top: '15%', right: '15%', width: '240px', height: '140px', borderRadius: '0px' }} />
+        <img ref={img4Ref} src="/assets/QHrU5R2YxV6j0vFGDThc7hSgGKw.webp" className="absolute object-cover shadow-xl" style={{ bottom: '15%', right: '10%', width: '220px', height: '140px', borderRadius: '0px' }} />
 
         {/* Center Reveal Image */}
         <div 
@@ -386,7 +386,7 @@ const DiscoverSpacesSection = () => {
             gsap.to(cursorRef.current, { opacity: 0, scale: 0.5, duration: 0.3, ease: "power2.in", overwrite: "auto" });
           }}
         >
-          <img ref={centerImgRef} src="/realtora-real-estate/public/images/OaySddwc0ovmBM0gb4ic04QX1Ls.jpeg" className="w-full h-full object-cover absolute inset-0 pointer-events-none" style={{ border: 'none', outline: 'none' }} />
+          <img ref={centerImgRef} src="/assets/OaySddwc0ovmBM0gb4ic04QX1Ls.jpeg" className="w-full h-full object-cover absolute inset-0 pointer-events-none" style={{ border: 'none', outline: 'none' }} />
           
           {/* Overlay Content */}
           <div ref={overlayTextRef} className="relative z-30 flex flex-col items-center justify-end w-full h-full" style={{ padding: '40px', paddingBottom: '8%', background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%)' }}>
@@ -443,22 +443,22 @@ const FeaturesSection = () => {
   const features = [
     {
       title: "Lifestyle-Centric Living",
-      image: "/realtora-real-estate/public/images/jFZ7UpAtLOeVJGXeZX6K072gE.png",
+      image: "/assets/jFZ7UpAtLOeVJGXeZX6K072gE.png",
       description: "Thoughtfully planned spaces that fit the pace of real life, with room to grow, recharge, and gather."
     },
     {
       title: "Prime Residential Locations",
-      image: "/realtora-real-estate/public/images/j8wE7PNwqxKHejAbpdrhyVl79s8.webp",
+      image: "/assets/j8wE7PNwqxKHejAbpdrhyVl79s8.webp",
       description: "From upscale neighborhoods to emerging hotspots, each address is chosen for its value and vibrance."
     },
     {
       title: "Smart Sustainable Features",
-      image: "/realtora-real-estate/public/images/ZpjnjMU3ELZv5AhKRQMj99dRIk.png",
+      image: "/assets/ZpjnjMU3ELZv5AhKRQMj99dRIk.png",
       description: "Enjoy future-ready homes equipped with eco-conscious technology and intelligent design."
     },
     {
       title: "End-to-End Support",
-      image: "/realtora-real-estate/public/images/bJ5HA9CE0X9HXUh4sJsZJh6xb40.png",
+      image: "/assets/bJ5HA9CE0X9HXUh4sJsZJh6xb40.png",
       description: "From discovery to handover, our experts guide you through every step for a smooth, stress-free journey."
     }
   ];
@@ -570,13 +570,13 @@ const BlogsSection = () => {
       title: "Your Luxury Sanctuary: Quick Home Design Tips",
       date: "Dec 7, 2024",
       readTime: "7 min read",
-      image: "/realtora-real-estate/public/images/CR9WCJs8QkwyR05G5BzUHipBX8.webp"
+      image: "/assets/CR9WCJs8QkwyR05G5BzUHipBX8.webp"
     },
     {
       title: "How to Choose the Perfect Home for Your Family",
       date: "Sep 3, 2025",
       readTime: "10 min read",
-      image: "/realtora-real-estate/public/images/sTu9AUvn0LRJMxRSYiuilf4brfc.webp"
+      image: "/assets/sTu9AUvn0LRJMxRSYiuilf4brfc.webp"
     }
   ];
 
@@ -769,21 +769,21 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       name: "Charlotte Bennett",
-      avatar: "/realtora-real-estate/public/images/z576pxgMO7uqozxes3YJljpu2s.webp",
+      avatar: "/assets/z576pxgMO7uqozxes3YJljpu2s.webp",
       text: "“Exceptional service from start to finish. We found the perfect apartment that truly feels like home.”",
-      image: "/realtora-real-estate/public/images/KYjiPvPFQrnxGJ1Rl36Vgqtiw.png"
+      image: "/assets/KYjiPvPFQrnxGJ1Rl36Vgqtiw.png"
     },
     {
       name: "Emily John",
-      avatar: "/realtora-real-estate/public/images/V09GjbzLmn3SKxc0QOInwAHfw.webp",
+      avatar: "/assets/V09GjbzLmn3SKxc0QOInwAHfw.webp",
       text: "“We couldn’t have asked for a better experience! From the moment we reached out, the team went above and beyond to find us the perfect home. Highly recommend!”",
-      image: "/realtora-real-estate/public/images/CR9WCJs8QkwyR05G5BzUHipBX8.webp"
+      image: "/assets/CR9WCJs8QkwyR05G5BzUHipBX8.webp"
     },
     {
       name: "Henry Caldwell",
-      avatar: "/realtora-real-estate/public/images/Y7Io1rEQTpr82XSw3hvUWDoM.webp",
+      avatar: "/assets/Y7Io1rEQTpr82XSw3hvUWDoM.webp",
       text: "“From virtual tours to final signing, the process was seamless. We couldn’t be happier with our new home.”",
-      image: "/realtora-real-estate/public/images/wJUahXSEUzCrb6zS2SKNWdm2S0.png"
+      image: "/assets/wJUahXSEUzCrb6zS2SKNWdm2S0.png"
     }
   ];
 
@@ -1013,7 +1013,7 @@ export const FooterSection = () => {
       
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full z-0">
-        <img src="/realtora-real-estate/public/images/BBK7G2W0GpZei2zukI6jNqEI6X4.jpeg" alt="Footer Background" className="w-full h-full object-cover" />
+        <img src="/assets/BBK7G2W0GpZei2zukI6jNqEI6X4.jpeg" alt="Footer Background" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#0a0a0a]"></div>
       </div>
 
@@ -1333,7 +1333,7 @@ const HeroSection = () => {
           <p>Menu</p>
         </nav>
         <div className="hero-img absolute w-full h-full inset-0">
-          <img src="/realtora-real-estate/public/images/BBK7G2W0GpZei2zukI6jNqEI6X4.jpeg" alt="Panthers Hero" className="w-full h-full object-cover" />
+          <img src="/assets/BBK7G2W0GpZei2zukI6jNqEI6X4.jpeg" alt="Panthers Hero" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black bg-opacity-30"></div>
         </div>
         <div className="card text-black z-10 flex items-center justify-center" style={{ backgroundColor: '#fff', padding: '2rem' }}>

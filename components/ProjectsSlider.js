@@ -12,8 +12,8 @@ const projectsData = [
     tag: "Résidentiel",
     year: "2025",
     color: "hsla(16, 58.87%, 42.88%, 1.00)",
-    leftImg: "/mersi-scraped-site/cdn.prod.website-files.com/697096b6dde8a7564252bfdd/69a858ffb31f5a2c4b0240d9_MERSI%20x%20LEVALLOIS-9.webp",
-    rightImg: "/mersi-scraped-site/cdn.prod.website-files.com/697096b6dde8a7564252bfdd/69a859206f8dac87c4c0b553_MERSI%20x%20LEVALLOIS-2%20(1).webp",
+    leftImg: "/assets/images/69a858ffb31f5a2c4b0240d9_MERSI%20x%20LEVALLOIS-9.webp",
+    rightImg: "/assets/images/69a859206f8dac87c4c0b553_MERSI%20x%20LEVALLOIS-2%20(1).webp",
   },
   {
     id: "maurice",
@@ -22,8 +22,8 @@ const projectsData = [
     tag: "Commercial",
     year: "2024",
     color: "#657b69",
-    leftImg: "/mersi-scraped-site/cdn.prod.website-files.com/697096b6dde8a7564252bfdd/69a85c495cbbf3419dbc4ab9_MERSI%20x%20MAURICE_-10.webp",
-    rightImg: "/mersi-scraped-site/cdn.prod.website-files.com/697096b6dde8a7564252bfdd/69a85c648569d5ab75b8d1a3_MERSI%20x%20MAURICE_-6.webp",
+    leftImg: "/assets/images/69a85c495cbbf3419dbc4ab9_MERSI%20x%20MAURICE_-10.webp",
+    rightImg: "/assets/images/69a85c648569d5ab75b8d1a3_MERSI%20x%20MAURICE_-6.webp",
   },
   {
     id: "berri",
@@ -32,8 +32,8 @@ const projectsData = [
     tag: "Résidentiel",
     year: "2024",
     color: "#b3a598",
-    leftImg: "/mersi-scraped-site/cdn.prod.website-files.com/697096b6dde8a7564252bfdd/69a85c187ea27e1d8b193ede_CC_MERSIxBERRI-16%20(1).webp",
-    rightImg: "/mersi-scraped-site/cdn.prod.website-files.com/697096b6dde8a7564252bfdd/69a85c20c68e51f70e07786b_CC_MERSIxBERRI-24%20(1).webp",
+    leftImg: "/assets/images/69a85c187ea27e1d8b193ede_CC_MERSIxBERRI-16%20(1).webp",
+    rightImg: "/assets/images/69a85c20c68e51f70e07786b_CC_MERSIxBERRI-24%20(1).webp",
   },
   {
     id: "cook",
@@ -42,8 +42,8 @@ const projectsData = [
     tag: "Commercial",
     year: "2023",
     color: "#886e58",
-    leftImg: "/mersi-scraped-site/cdn.prod.website-files.com/697096b6dde8a7564252bfdd/699dcdc46ceb478ef3012143_Cover%20L.webp",
-    rightImg: "/mersi-scraped-site/cdn.prod.website-files.com/697096b6dde8a7564252bfdd/69a85beae7ee6ecaf8863ba3_CC_Mersi%20x%20Restaurant%20COOK-2.webp",
+    leftImg: "/assets/images/699dcdc46ceb478ef3012143_Cover%20L.webp",
+    rightImg: "/assets/images/69a85beae7ee6ecaf8863ba3_CC_Mersi%20x%20Restaurant%20COOK-2.webp",
   }
 ];
 

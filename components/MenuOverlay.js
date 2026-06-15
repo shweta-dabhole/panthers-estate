@@ -277,15 +277,6 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%202.jpg')}>
                   <a data-taxi-ignore href="/#hero" onClick={(e) => handleNavClick(e, '/#hero')}>Home</a>
                 </div>
-                <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%205.jpg')}>
-                  <a data-taxi-ignore href="/about-us" onClick={(e) => handleNavClick(e, '/about-us')}>About Us</a>
-                </div>
-                <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%207.jpg')}>
-                  <a data-taxi-ignore href="/projects" onClick={(e) => handleNavClick(e, '/projects')}>Projects</a>
-                </div>
-                <div className="link" onMouseEnter={() => handleLinkHover('/assets/menu%20img1.jpg')}>
-                  <a data-taxi-ignore href="/process" onClick={(e) => handleNavClick(e, '/process')}>Process</a>
-                </div>
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%201.jpg')}>
                   <a href="#">Connect</a>
                 </div>

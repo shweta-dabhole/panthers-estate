@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono, Montserrat, Poppins, Inter, Instrument_Serif } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -47,35 +48,32 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${poppins.variable} ${inter.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // NUCLEAR POPSTATE INTERCEPTOR
-              // Instantly kills Taxi.js back-button hijacking which destroys React onClick listeners.
-              window.addEventListener("popstate", function(e) {
-                e.stopImmediatePropagation();
-                window.location.reload();
-              }, true);
-
-              // GLOBAL DOM HEALER (BFCache Fix)
-              // Runs 100ms after page restore to unfreeze any remaining videos or stuck loaders.
-              window.addEventListener("pageshow", function(e) {
-                setTimeout(function() {
-                  document.querySelectorAll('video').forEach(function(v) {
-                    if (v.paused) v.play().catch(function(err) { console.log('Autoplay prevented', err); });
-                  });
-                  var preLoader = document.querySelector('.pre-loader');
-                  if (preLoader) preLoader.style.display = 'none';
-                  var taxiTransition = document.querySelector('.taxi-transition');
-                  if (taxiTransition) taxiTransition.style.display = 'none';
-                  document.body.style.pointerEvents = 'auto';
-                }, 100);
-              });
-            `,
-          }}
-        />
-      </head>
+      <Script
+        id="popstate-interceptor"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            // NUCLEAR POPSTATE INTERCEPTOR
+            window.addEventListener("popstate", function(e) {
+              e.stopImmediatePropagation();
+              window.location.reload();
+            }, true);
+            // GLOBAL DOM HEALER (BFCache Fix)
+            window.addEventListener("pageshow", function(e) {
+              setTimeout(function() {
+                document.querySelectorAll('video').forEach(function(v) {
+                  if (v.paused) v.play().catch(function(err) { console.log('Autoplay prevented', err); });
+                });
+                var preLoader = document.querySelector('.pre-loader');
+                if (preLoader) preLoader.style.display = 'none';
+                var taxiTransition = document.querySelector('.taxi-transition');
+                if (taxiTransition) taxiTransition.style.display = 'none';
+                document.body.style.pointerEvents = 'auto';
+              }, 100);
+            });
+          `,
+        }}
+      />
       <body suppressHydrationWarning className="min-h-full flex flex-col">{children}</body>
     </html>
   );

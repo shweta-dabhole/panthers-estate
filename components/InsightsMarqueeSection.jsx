@@ -1,11 +1,11 @@
 import React from 'react';
 
 const images = [
-  "/realtora-real-estate/public/images/stairs.png",
-  "/realtora-real-estate/public/images/ChatGPT Image Jun 11, 2026, 02_07_46 PM.png",
-  "/realtora-real-estate/public/images/ChatGPT Image Jun 11, 2026, 02_20_13 PM.png",
-  "/realtora-real-estate/public/images/ChatGPT Image Jun 11, 2026, 02_27_29 PM.png",
-  "/realtora-real-estate/public/images/006860af-28a5-4018-a8fd-df7af6325db1.png"
+  "/assets/stairs.png",
+  "/assets/ChatGPT Image Jun 11, 2026, 02_07_46 PM.png",
+  "/assets/ChatGPT Image Jun 11, 2026, 02_20_13 PM.png",
+  "/assets/ChatGPT Image Jun 11, 2026, 02_27_29 PM.png",
+  "/assets/006860af-28a5-4018-a8fd-df7af6325db1.png"
 ];
 
 // Duplicate images to create the infinite scroll illusion (x4 to be safe for wide screens)

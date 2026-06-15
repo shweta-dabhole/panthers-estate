@@ -3,6 +3,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import "tailwindcss";
 
+/* ─── Doner display font (from Mersi Architecture CDN) ─── */
+@font-face {
+  font-family: Doner;
+  src: url(https://cdn.prod.website-files.com/69689842a40a17ac45e5418a/696fa4710b4671c8cb9ffea3_Doner-BoldDisplay.woff2) format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Doner;
+  src: url(https://cdn.prod.website-files.com/69689842a40a17ac45e5418a/696fa4720e2df558026f603e_Doner-SemiBoldDisplay.woff2) format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Doner;
+  src: url(https://cdn.prod.website-files.com/69689842a40a17ac45e5418a/6971fbeb23b43149fea69408_Doner-MediumDisplay.woff2) format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+/* ─── Switzer Variable (from Mersi Architecture CDN) ─── */
+@font-face {
+  font-family: "Switzer Variable";
+  src: url(https://cdn.prod.website-files.com/69689842a40a17ac45e5418a/696fa706b7aaa3e0f242f02a_Switzer-Variable.woff2) format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 @theme {
   --font-sans: var(--font-inter), sans-serif;
   --font-serif: var(--font-instrument-serif), serif;
@@ -1138,3 +1170,70 @@ nav p#logo {
 @keyframes marquee-reverse { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
 .animate-marquee { animation: marquee 100s linear infinite; display: flex; width: max-content; }
 .animate-marquee-reverse { animation: marquee-reverse 100s linear infinite; display: flex; width: max-content; }
+
+/* Grain Background Texture Overlay */
+.grain-bg {
+  z-index: 1000;
+  pointer-events: none;
+  mix-blend-mode: color-dodge;
+  background-image: url(https://cdn.prod.website-files.com/69689842a40a17ac45e5418a/696fa735107879475a0cab0e_a1a6cc782354d179a4012e64d120e2b7_Grain%20\(1\).webp);
+  background-position: 50%;
+  background-size: 150px;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  inset: 0%;
+}
+
+/* Projects Hero Title and Filters Style Match */
+.h1-project-temp {
+  text-align: center;
+  text-transform: uppercase;
+  text-wrap: pretty;
+  font-family: Doner, Arial, sans-serif;
+  font-size: 3.75rem; /* 60px */
+  font-weight: 700;
+  line-height: .9;
+  letter-spacing: -0.01em;
+  color: #1a1a1a;
+}
+@media (max-width: 991px) {
+  .h1-project-temp {
+    font-size: 1.75rem; /* 28px */
+  }
+}
+
+.filtre_list {
+  grid-column-gap: 1.875rem; /* 30px */
+  grid-row-gap: 1.875rem;
+  background-color: var(--card, #beb4a7);
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.875rem; /* Compact 16px top-bottom, 30px left-right padding */
+  display: flex;
+  margin-top: 2.5rem; /* 40px spacing from heading */
+}
+@media (max-width: 991px) {
+  .filtre_list {
+    grid-column-gap: 1.5625rem;
+    grid-row-gap: 1.5625rem;
+    padding: 0.8rem 1.5625rem;
+  }
+}
+
+.filtre_item {
+  cursor: pointer;
+  font-family: "Switzer Variable", Arial, sans-serif;
+  font-size: .75rem; /* 12px */
+  font-weight: 600;
+  color: #1a1a1a;
+  transition: opacity .2s;
+}
+.filtre_item:hover {
+  opacity: .61;
+}
+@media (max-width: 991px) {
+  .filtre_item {
+    font-size: .625rem;
+  }
+}
