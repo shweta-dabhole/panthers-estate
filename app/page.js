@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import P10HeroSection from '../components/P10HeroSection';
 import InsightsMarqueeSection from '../components/InsightsMarqueeSection';
 
@@ -1673,7 +1674,7 @@ export default function Home() {
             </div>
 
             {/* Right Button */}
-            <div className="featured-header mt-8 md:mt-0 flex-none cursor-pointer group">
+            <Link href="/projects" className="featured-header mt-8 md:mt-0 flex-none cursor-pointer group block">
               <div className="flex items-center justify-between transition-all duration-300 hover:bg-[#ebebeb]" style={{ height: '48px', padding: '6px 6px 6px 24px', borderRadius: '229px', border: '1px solid #191919', backgroundColor: 'transparent' }}>
                 <span style={{ fontSize: '15px', fontWeight: 500, color: '#191919', marginRight: '20px' }}>View All</span>
                 <div className="flex items-center justify-center bg-[#191919] transition-colors duration-300" style={{ width: '36px', height: '36px', borderRadius: '50%' }}>
@@ -1682,7 +1683,7 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* Cards Grid Wrapper */}

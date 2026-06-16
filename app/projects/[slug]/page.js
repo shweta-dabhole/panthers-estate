@@ -18,6 +18,22 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png",
     areaVal: "5000 SQ.FT",
     bedroomsVal: "5",
+    floorsVal: "02",
+    parkingsVal: "04",
+    price: "$1,60,000",
+    desc: "Velora Villa",
+    specs: [
+      { label: "Pool", value: "Infinity Pool" },
+      { label: "Home Theatre", value: "Yes" },
+      { label: "Smart Homes", value: "Enabled" },
+      { label: "Garden Area", value: "1000 sqft" }
+    ],
+    facilities: [
+      { label: "Hospital", value: "2.5 KM" },
+      { label: "School", value: "1.2 KM" },
+      { label: "Shopping Mall", value: "3 KM" },
+      { label: "Supermarket", value: "1 KM" }
+    ],
     images: [
       "/assets/velora 1.png",
       "/assets/velora 2.png",
@@ -35,9 +51,37 @@ const projectsData = [
     location: "Paris 8",
     filterName: "Hospitality",
     year: "2025",
-    color: "#657b69",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x MAURICE_-6.png",
-    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x MAURICE_-10.png"
+    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    img: "/assets/new villa.png",
+    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x MAURICE_-10.png",
+    areaVal: "5000 SQ.FT",
+    bedroomsVal: "5",
+    floorsVal: "02",
+    parkingsVal: "04",
+    price: "$1,60,000",
+    desc: "Velora Villa",
+    specs: [
+      { label: "Pool", value: "Infinity Pool" },
+      { label: "Home Theatre", value: "Yes" },
+      { label: "Smart Homes", value: "Enabled" },
+      { label: "Garden Area", value: "1000 sqft" }
+    ],
+    facilities: [
+      { label: "Hospital", value: "2.5 KM" },
+      { label: "School", value: "1.2 KM" },
+      { label: "Shopping Mall", value: "3 KM" },
+      { label: "Supermarket", value: "1 KM" }
+    ],
+    images: [
+      "/assets/velora 1.png",
+      "/assets/velora 2.png",
+      "/assets/velora 3.png",
+      "/assets/velora 4.png",
+      "/assets/velora 5.png",
+      "/assets/velora 6.png",
+      "/assets/velora 7.png",
+      "/assets/velora 8.png"
+    ]
   },
   {
     slug: "marvelle",
@@ -45,9 +89,37 @@ const projectsData = [
     location: "Paris 8",
     filterName: "Residential",
     year: "2025",
-    color: "#aaa798",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSIxBERRI-24 (1).png",
-    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSIxBERRI-16 (1).png"
+    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    img: "/assets/new villa.png",
+    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSIxBERRI-16 (1).png",
+    areaVal: "5000 SQ.FT",
+    bedroomsVal: "5",
+    floorsVal: "02",
+    parkingsVal: "04",
+    price: "$1,60,000",
+    desc: "Velora Villa",
+    specs: [
+      { label: "Pool", value: "Infinity Pool" },
+      { label: "Home Theatre", value: "Yes" },
+      { label: "Smart Homes", value: "Enabled" },
+      { label: "Garden Area", value: "1000 sqft" }
+    ],
+    facilities: [
+      { label: "Hospital", value: "2.5 KM" },
+      { label: "School", value: "1.2 KM" },
+      { label: "Shopping Mall", value: "3 KM" },
+      { label: "Supermarket", value: "1 KM" }
+    ],
+    images: [
+      "/assets/velora 1.png",
+      "/assets/velora 2.png",
+      "/assets/velora 3.png",
+      "/assets/velora 4.png",
+      "/assets/velora 5.png",
+      "/assets/velora 6.png",
+      "/assets/velora 7.png",
+      "/assets/velora 8.png"
+    ]
   },
   {
     slug: "pinecrest",
@@ -55,9 +127,37 @@ const projectsData = [
     location: "Paris 17",
     filterName: "Hospitality",
     year: "2025",
-    color: "#dc633f",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_Mersi x Restaurant COOK-2.png",
-    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_1.png"
+    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    img: "/assets/new villa.png",
+    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_1.png",
+    areaVal: "5000 SQ.FT",
+    bedroomsVal: "5",
+    floorsVal: "02",
+    parkingsVal: "04",
+    price: "$1,60,000",
+    desc: "Velora Villa",
+    specs: [
+      { label: "Pool", value: "Infinity Pool" },
+      { label: "Home Theatre", value: "Yes" },
+      { label: "Smart Homes", value: "Enabled" },
+      { label: "Garden Area", value: "1000 sqft" }
+    ],
+    facilities: [
+      { label: "Hospital", value: "2.5 KM" },
+      { label: "School", value: "1.2 KM" },
+      { label: "Shopping Mall", value: "3 KM" },
+      { label: "Supermarket", value: "1 KM" }
+    ],
+    images: [
+      "/assets/velora 1.png",
+      "/assets/velora 2.png",
+      "/assets/velora 3.png",
+      "/assets/velora 4.png",
+      "/assets/velora 5.png",
+      "/assets/velora 6.png",
+      "/assets/velora 7.png",
+      "/assets/velora 8.png"
+    ]
   },
   {
     slug: "grandcrest",
@@ -65,9 +165,37 @@ const projectsData = [
     location: "Paris 7",
     filterName: "Residential",
     year: "2025",
-    color: "#918f7a",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover R_1.png",
-    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_2.png"
+    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    img: "/assets/new villa.png",
+    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_2.png",
+    areaVal: "5000 SQ.FT",
+    bedroomsVal: "5",
+    floorsVal: "02",
+    parkingsVal: "04",
+    price: "$1,60,000",
+    desc: "Velora Villa",
+    specs: [
+      { label: "Pool", value: "Infinity Pool" },
+      { label: "Home Theatre", value: "Yes" },
+      { label: "Smart Homes", value: "Enabled" },
+      { label: "Garden Area", value: "1000 sqft" }
+    ],
+    facilities: [
+      { label: "Hospital", value: "2.5 KM" },
+      { label: "School", value: "1.2 KM" },
+      { label: "Shopping Mall", value: "3 KM" },
+      { label: "Supermarket", value: "1 KM" }
+    ],
+    images: [
+      "/assets/velora 1.png",
+      "/assets/velora 2.png",
+      "/assets/velora 3.png",
+      "/assets/velora 4.png",
+      "/assets/velora 5.png",
+      "/assets/velora 6.png",
+      "/assets/velora 7.png",
+      "/assets/velora 8.png"
+    ]
   },
   {
     slug: "willowood",
@@ -75,9 +203,37 @@ const projectsData = [
     location: "Paris 6",
     filterName: "Residential",
     year: "2025",
-    color: "#b3a696",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover R_2.png",
-    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_3.png"
+    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    img: "/assets/new villa.png",
+    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_3.png",
+    areaVal: "5000 SQ.FT",
+    bedroomsVal: "5",
+    floorsVal: "02",
+    parkingsVal: "04",
+    price: "$1,60,000",
+    desc: "Velora Villa",
+    specs: [
+      { label: "Pool", value: "Infinity Pool" },
+      { label: "Home Theatre", value: "Yes" },
+      { label: "Smart Homes", value: "Enabled" },
+      { label: "Garden Area", value: "1000 sqft" }
+    ],
+    facilities: [
+      { label: "Hospital", value: "2.5 KM" },
+      { label: "School", value: "1.2 KM" },
+      { label: "Shopping Mall", value: "3 KM" },
+      { label: "Supermarket", value: "1 KM" }
+    ],
+    images: [
+      "/assets/velora 1.png",
+      "/assets/velora 2.png",
+      "/assets/velora 3.png",
+      "/assets/velora 4.png",
+      "/assets/velora 5.png",
+      "/assets/velora 6.png",
+      "/assets/velora 7.png",
+      "/assets/velora 8.png"
+    ]
   },
   {
     slug: "highlander",
@@ -85,9 +241,37 @@ const projectsData = [
     location: "Levallois",
     filterName: "Retail",
     year: "2025",
-    color: "#dc8b3f",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x AURÉLIEN COHEN-4 (1).png",
-    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x AURÉLIEN COHEN-1 copie (1).png"
+    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    img: "/assets/new villa.png",
+    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x AURÉLIEN COHEN-1 copie (1).png",
+    areaVal: "5000 SQ.FT",
+    bedroomsVal: "5",
+    floorsVal: "02",
+    parkingsVal: "04",
+    price: "$1,60,000",
+    desc: "Velora Villa",
+    specs: [
+      { label: "Pool", value: "Infinity Pool" },
+      { label: "Home Theatre", value: "Yes" },
+      { label: "Smart Homes", value: "Enabled" },
+      { label: "Garden Area", value: "1000 sqft" }
+    ],
+    facilities: [
+      { label: "Hospital", value: "2.5 KM" },
+      { label: "School", value: "1.2 KM" },
+      { label: "Shopping Mall", value: "3 KM" },
+      { label: "Supermarket", value: "1 KM" }
+    ],
+    images: [
+      "/assets/velora 1.png",
+      "/assets/velora 2.png",
+      "/assets/velora 3.png",
+      "/assets/velora 4.png",
+      "/assets/velora 5.png",
+      "/assets/velora 6.png",
+      "/assets/velora 7.png",
+      "/assets/velora 8.png"
+    ]
   },
   {
     slug: "brookstone",
@@ -95,9 +279,37 @@ const projectsData = [
     location: "Paris 15",
     filterName: "Residential",
     year: "2025",
-    color: "#8b9ec1",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover R.png",
-    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L.png"
+    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    img: "/assets/new villa.png",
+    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L.png",
+    areaVal: "5000 SQ.FT",
+    bedroomsVal: "5",
+    floorsVal: "02",
+    parkingsVal: "04",
+    price: "$1,60,000",
+    desc: "Velora Villa",
+    specs: [
+      { label: "Pool", value: "Infinity Pool" },
+      { label: "Home Theatre", value: "Yes" },
+      { label: "Smart Homes", value: "Enabled" },
+      { label: "Garden Area", value: "1000 sqft" }
+    ],
+    facilities: [
+      { label: "Hospital", value: "2.5 KM" },
+      { label: "School", value: "1.2 KM" },
+      { label: "Shopping Mall", value: "3 KM" },
+      { label: "Supermarket", value: "1 KM" }
+    ],
+    images: [
+      "/assets/velora 1.png",
+      "/assets/velora 2.png",
+      "/assets/velora 3.png",
+      "/assets/velora 4.png",
+      "/assets/velora 5.png",
+      "/assets/velora 6.png",
+      "/assets/velora 7.png",
+      "/assets/velora 8.png"
+    ]
   },
   {
     slug: "greenvale",
@@ -105,9 +317,37 @@ const projectsData = [
     location: "Paris 1",
     filterName: "Residential",
     year: "2024",
-    color: "#ccb598",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSI x RUE DE LA PAIX-1.png",
-    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSI x RUE DE LA PAIX-16.png"
+    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    img: "/assets/new villa.png",
+    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSI x RUE DE LA PAIX-16.png",
+    areaVal: "5000 SQ.FT",
+    bedroomsVal: "5",
+    floorsVal: "02",
+    parkingsVal: "04",
+    price: "$1,60,000",
+    desc: "Velora Villa",
+    specs: [
+      { label: "Pool", value: "Infinity Pool" },
+      { label: "Home Theatre", value: "Yes" },
+      { label: "Smart Homes", value: "Enabled" },
+      { label: "Garden Area", value: "1000 sqft" }
+    ],
+    facilities: [
+      { label: "Hospital", value: "2.5 KM" },
+      { label: "School", value: "1.2 KM" },
+      { label: "Shopping Mall", value: "3 KM" },
+      { label: "Supermarket", value: "1 KM" }
+    ],
+    images: [
+      "/assets/velora 1.png",
+      "/assets/velora 2.png",
+      "/assets/velora 3.png",
+      "/assets/velora 4.png",
+      "/assets/velora 5.png",
+      "/assets/velora 6.png",
+      "/assets/velora 7.png",
+      "/assets/velora 8.png"
+    ]
   },
   {
     slug: "velora-2",
@@ -120,6 +360,22 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png",
     areaVal: "5000 SQ.FT",
     bedroomsVal: "5",
+    floorsVal: "02",
+    parkingsVal: "04",
+    price: "$1,60,000",
+    desc: "Velora Villa",
+    specs: [
+      { label: "Pool", value: "Infinity Pool" },
+      { label: "Home Theatre", value: "Yes" },
+      { label: "Smart Homes", value: "Enabled" },
+      { label: "Garden Area", value: "1000 sqft" }
+    ],
+    facilities: [
+      { label: "Hospital", value: "2.5 KM" },
+      { label: "School", value: "1.2 KM" },
+      { label: "Shopping Mall", value: "3 KM" },
+      { label: "Supermarket", value: "1 KM" }
+    ],
     images: [
       "/assets/velora 1.png",
       "/assets/velora 2.png",
@@ -293,28 +549,28 @@ export default function ProjectDetail() {
         {/* BLOCK 3: TEXT BLOCK */}
         <div style={{ width: '30vw', height: '100vh', padding: '3rem', display: 'flex', flexDirection: 'column', gap: '3rem', flexShrink: 0, justifyContent: 'center', boxSizing: 'border-box' }}>
            <h2 style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '2rem', textTransform: 'uppercase', lineHeight: 1.2 }}>
-             {project.slug === 'velora' ? 'Velora' : <>Restaurant Méditerranéen,<br/>Institution du quartier</>}
+             {project.desc || project.title}
            </h2>
            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
                <span>Area</span>
-               <span>{project.areaVal || "01"}</span>
+               <span>{project.areaVal || "5000 SQ.FT"}</span>
              </div>
              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
                <span>Floors</span>
-               <span>02</span>
+               <span>{project.floorsVal || "02"}</span>
              </div>
              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
                <span>Bedrooms</span>
-               <span>{project.bedroomsVal || "03"}</span>
+               <span>{project.bedroomsVal || "5"}</span>
              </div>
              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
                <span>Parkings</span>
-               <span>04</span>
+               <span>{project.parkingsVal || "04"}</span>
              </div>
            </div>
            <h3 style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '3rem', margin: 0 }}>
-             $1,60,000
+             {project.price || "$1,60,000"}
            </h3>
         </div>
         
@@ -341,25 +597,20 @@ export default function ProjectDetail() {
         {/* BLOCK 5B: DUPLICATED TEXT BLOCK */}
         <div style={{ width: '30vw', height: '100vh', padding: '3rem', display: 'flex', flexDirection: 'column', gap: '3rem', flexShrink: 0, justifyContent: 'center', boxSizing: 'border-box' }}>
            <h2 style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '2rem', textTransform: 'uppercase', lineHeight: 1.2 }}>
-             {project.slug === 'velora' ? 'Velora' : <>Restaurant Méditerranéen,<br/>Institution du quartier</>}
+             {project.desc || project.title}
            </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
-                <span>{project.title === 'Velora' ? 'Pool' : 'Area'}</span>
-                <span>{project.title === 'Velora' ? 'Infinity Pool' : (project.areaVal || "01")}</span>
-              </div>
-              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
-                <span>{project.title === 'Velora' ? 'Home Theatre' : 'Floors'}</span>
-                <span>{project.title === 'Velora' ? 'Yes' : (project.floorsVal || "02")}</span>
-              </div>
-              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
-                <span>{project.title === 'Velora' ? 'Smart Homes' : 'Bedrooms'}</span>
-                <span>{project.title === 'Velora' ? 'Enabled' : (project.bedroomsVal || "03")}</span>
-              </div>
-              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
-                <span>{project.title === 'Velora' ? 'Garden Area' : 'Parkings'}</span>
-                <span>{project.title === 'Velora' ? '1000 sqft' : (project.parkingsVal || "04")}</span>
-              </div>
+              {(project.specs || [
+                { label: "Pool", value: "Infinity Pool" },
+                { label: "Home Theatre", value: "Yes" },
+                { label: "Smart Homes", value: "Enabled" },
+                { label: "Garden Area", value: "1000 sqft" }
+              ]).map((spec, i) => (
+                <div key={i} style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
+                  <span>{spec.label}</span>
+                  <span>{spec.value}</span>
+                </div>
+              ))}
             </div>
         </div>
 
@@ -382,25 +633,20 @@ export default function ProjectDetail() {
            </div>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '3rem', justifyContent: 'center' }}>
                <h2 style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '2rem', textTransform: 'uppercase', lineHeight: 1.2 }}>
-                 {project.title === 'Velora' ? 'Nearby Facilities' : <>Restaurant Méditerranéen,<br/>Institution du quartier</>}
+                 Nearby Facilities
                </h2>
                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '400px' }}>
-                 <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
-                   <span>{project.title === 'Velora' ? 'Hospital' : 'Area'}</span>
-                   <span>{project.title === 'Velora' ? '2.5 KM' : (project.areaVal || "01")}</span>
-                 </div>
-                 <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
-                   <span>{project.title === 'Velora' ? 'School' : 'Floors'}</span>
-                   <span>{project.title === 'Velora' ? '1.2 KM' : (project.floorsVal || "02")}</span>
-                 </div>
-                 <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
-                   <span>{project.title === 'Velora' ? 'Shopping Mall' : 'Bedrooms'}</span>
-                   <span>{project.title === 'Velora' ? '3 KM' : (project.bedroomsVal || "03")}</span>
-                 </div>
-                 <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
-                   <span>{project.title === 'Velora' ? 'Supermarket' : 'Parkings'}</span>
-                   <span>{project.title === 'Velora' ? '1 KM' : (project.parkingsVal || "04")}</span>
-                 </div>
+                 {(project.facilities || [
+                   { label: "Hospital", value: "2.5 KM" },
+                   { label: "School", value: "1.2 KM" },
+                   { label: "Shopping Mall", value: "3 KM" },
+                   { label: "Supermarket", value: "1 KM" }
+                 ]).map((fac, i) => (
+                   <div key={i} style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
+                     <span>{fac.label}</span>
+                     <span>{fac.value}</span>
+                   </div>
+                 ))}
                </div>
             </div>
         </div>
