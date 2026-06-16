@@ -15,93 +15,93 @@ const projectsData = [
     color: "hsla(16, 58.87%, 42.88%, 1.00)",
     slug: "velora",
     leftImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png",
-    rightImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/69a859206f8dac87c4c0b553_MERSI x LEVALLOIS-2 (1).png",
+    rightImg: "/assets/new villa.png",
   },
   {
     id: "maurice",
-    name: "Maurice Cafe St-Honore",
+    name: "Hillcrest",
     location: "Paris 8",
     tag: "Hospitality",
     year: "2025",
     color: "#657b69",
-    slug: "cafe-maurice-saint-honore",
+    slug: "hillcrest",
     leftImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x MAURICE_-10.png",
     rightImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x MAURICE_-6.png",
   },
   {
-    id: "berri",
-    name: "Berri",
+    id: "marvelle",
+    name: "Marvelle",
     location: "Paris 8",
     tag: "Résidentiel",
     year: "2025",
     color: "#aaa798",
-    slug: "berri",
+    slug: "marvelle",
     leftImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSIxBERRI-16 (1).png",
     rightImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSIxBERRI-24 (1).png",
   },
   {
-    id: "cook",
-    name: "Cook",
+    id: "pinecrest",
+    name: "Pinecrest",
     location: "Paris 17",
     tag: "Hospitality",
     year: "2025",
     color: "#dc633f",
-    slug: "cook",
+    slug: "pinecrest",
     leftImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_1.png",
     rightImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_Mersi x Restaurant COOK-2.png",
   },
   {
-    id: "segur",
-    name: "Segur",
+    id: "grandcrest",
+    name: "Grandcrest",
     location: "Paris 7",
     tag: "Résidentiel",
     year: "2025",
     color: "#918f7a",
-    slug: "segur",
+    slug: "grandcrest",
     leftImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_2.png",
     rightImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover R_1.png",
   },
   {
-    id: "tonnemani",
-    name: "Tonnenami",
+    id: "willowood",
+    name: "Willowood",
     location: "Paris 6",
     tag: "Résidentiel",
     year: "2025",
     color: "#b3a696",
-    slug: "tonnemani",
+    slug: "willowood",
     leftImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_3.png",
     rightImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover R_2.png",
   },
   {
-    id: "aurelien-cohen",
-    name: "Aurelien Cohen",
+    id: "highlander",
+    name: "Highlander",
     location: "Levallois",
     tag: "Retail",
     year: "2025",
     color: "#dc8b3f",
-    slug: "aurelien-cohen-levallois",
+    slug: "highlander",
     leftImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x AURÉLIEN COHEN-1 copie (1).png",
     rightImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x AURÉLIEN COHEN-4 (1).png",
   },
   {
-    id: "atokym",
-    name: "Atokym",
+    id: "brookstone",
+    name: "Brookstone",
     location: "Paris 15",
     tag: "Résidentiel",
     year: "2025",
     color: "#8b9ec1",
-    slug: "atokym",
+    slug: "brookstone",
     leftImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L.png",
     rightImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover R.png",
   },
   {
-    id: "paix",
-    name: "Paix",
+    id: "greenvale",
+    name: "Greenvale",
     location: "Paris 1",
     tag: "Résidentiel",
     year: "2024",
     color: "#ccb598",
-    slug: "paix",
+    slug: "greenvale",
     leftImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSI x RUE DE LA PAIX-16.png",
     rightImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSI x RUE DE LA PAIX-1.png",
   }
@@ -259,13 +259,13 @@ export default function MersiProjectsSlider() {
               <div className="flex flex-col z-10 min-w-0">
                 <h2 
                   className="text-[#1A1A1A] text-lg md:text-2xl font-medium tracking-tight m-0 leading-tight truncate"
-                  style={{ fontFamily: '"Outfit", "Inter", sans-serif' }}
+                  style={{ fontFamily: '"Outfit", "Roboto", sans-serif' }}
                 >
                   {project.name}
                 </h2>
                 <span 
                   className="hidden md:block text-[#1A1A1A] text-xs opacity-70 mt-0.5"
-                  style={{ fontFamily: '"Inter", sans-serif', letterSpacing: '0.05em' }}
+                  style={{ fontFamily: '"Roboto", sans-serif', letterSpacing: '0.05em' }}
                 >
                   {project.location}
                 </span>
@@ -275,7 +275,7 @@ export default function MersiProjectsSlider() {
               <div className="flex items-center gap-4 z-10 shrink-0">
                 <div 
                   className="hidden md:flex flex-col items-end text-[#1A1A1A] opacity-70"
-                  style={{ fontFamily: '"Inter", sans-serif', fontSize: '12px' }}
+                  style={{ fontFamily: '"Roboto", sans-serif', fontSize: '12px' }}
                 >
                   <span>{project.tag}</span>
                   <span>{project.year}</span>

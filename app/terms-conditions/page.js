@@ -91,7 +91,7 @@ export default function TermsConditionsPage() {
             </h1>
           </div>
 
-          <div className="space-y-12 font-[var(--font-inter)] text-[#333] leading-[1.8] text-[16px]" style={{ marginTop: '40px' }}>
+          <div className="space-y-12 font-[var(--font-roboto)] text-[#333] leading-[1.8] text-[16px]" style={{ marginTop: '40px' }}>
             <section>
               <h2 className="text-[22px] font-medium text-[#111] tracking-[-0.01em]" style={{ marginTop: '0px', marginBottom: '16px' }}>1. Acceptance of Terms</h2>
               <div style={{ marginBottom: '16px' }}>

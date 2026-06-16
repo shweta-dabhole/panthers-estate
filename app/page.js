@@ -392,7 +392,7 @@ const DiscoverSpacesSection = () => {
           <div ref={overlayTextRef} className="relative z-30 flex flex-col items-center justify-end w-full h-full" style={{ padding: '40px', paddingBottom: '8%', background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%)' }}>
              <div className="text-center">
                <h3 style={{ color: '#fff', fontSize: '56px', fontWeight: 500, margin: 0, fontFamily: '"Outfit", sans-serif', letterSpacing: '-1px' }}>Horizon Villa</h3>
-               <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '18px', margin: 0, fontFamily: '"Inter", sans-serif', textTransform: 'uppercase' }}>Mystic Falls, Azure Ridge</p>
+               <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '18px', margin: 0, fontFamily: '"Roboto", sans-serif', textTransform: 'uppercase' }}>Mystic Falls, Azure Ridge</p>
              </div>
           </div>
         </div>
@@ -410,7 +410,7 @@ const DiscoverSpacesSection = () => {
           top: 0, left: 0
         }}
       >
-        <span style={{ fontSize: '15px', fontWeight: 500, color: '#191919', fontFamily: '"Inter", sans-serif' }}>View Details</span>
+        <span style={{ fontSize: '15px', fontWeight: 500, color: '#191919', fontFamily: '"Roboto", sans-serif' }}>View Details</span>
       </div>
     </section>
   );
@@ -473,7 +473,7 @@ const FeaturesSection = () => {
           Why Thousands Trust Us to Find Their Next Home
         </h2>
         
-        <p style={{ fontSize: '16px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, textAlign: 'center', textTransform: 'none' }}>
+        <p style={{ fontSize: '16px', color: '#757575', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, textAlign: 'center', textTransform: 'none' }}>
           More than listings, we deliver guidance, peace of mind,<br />smarter decisions, and smoother experiences.
         </p>
       </div>
@@ -540,7 +540,7 @@ const FeaturesSection = () => {
                   opacity: activeTab === idx ? 1 : 0, 
                   fontSize: '16px', 
                   color: '#191919', 
-                  fontFamily: '"Inter", sans-serif',
+                  fontFamily: '"Roboto", sans-serif',
                   lineHeight: 1.5,
                   textTransform: 'none',
                   maxWidth: '100%'
@@ -681,7 +681,7 @@ const BlogsSection = () => {
             <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '16px' }}>
               Your Guide to Smart Home Buying
             </h2>
-            <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, textTransform: 'none' }}>
+            <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, textTransform: 'none' }}>
               Read our latest articles on market trends,<br />financing tips, and home improvement ideas.
             </p>
           </div>
@@ -697,7 +697,7 @@ const BlogsSection = () => {
               marginTop: '24px'
             }}
           >
-            <span style={{ fontSize: '16px', fontWeight: 500, color: '#191919', fontFamily: '"Inter", sans-serif', marginRight: '12px' }}>View All</span>
+            <span style={{ fontSize: '16px', fontWeight: 500, color: '#191919', fontFamily: '"Roboto", sans-serif', marginRight: '12px' }}>View All</span>
             <div className="flex items-center justify-center bg-black group-hover:bg-white text-white group-hover:text-black transition-colors duration-300" style={{ width: '28px', height: '28px', borderRadius: '50%' }}>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14"></path>
@@ -725,7 +725,7 @@ const BlogsSection = () => {
             <h3 className="blog-text-anim transition-colors duration-300 group-hover:text-gray-600" style={{ fontSize: '22px', fontWeight: 600, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.4, marginBottom: '32px' }}>
               {blogs[0].title}
             </h3>
-            <div className="blog-text-anim flex items-center justify-between" style={{ fontSize: '15px', color: '#757575', fontFamily: '"Inter", sans-serif' }}>
+            <div className="blog-text-anim flex items-center justify-between" style={{ fontSize: '15px', color: '#757575', fontFamily: '"Roboto", sans-serif' }}>
               <span>{blogs[0].date}</span>
               <span>{blogs[0].readTime}</span>
             </div>
@@ -745,7 +745,7 @@ const BlogsSection = () => {
             <h3 className="blog-text-anim transition-colors duration-300 group-hover:text-gray-600" style={{ fontSize: '22px', fontWeight: 600, color: '#191919', fontFamily: '"Outfit", sans-serif', lineHeight: 1.4, marginBottom: '32px' }}>
               {blogs[1].title}
             </h3>
-            <div className="blog-text-anim flex items-center justify-between" style={{ fontSize: '15px', color: '#757575', fontFamily: '"Inter", sans-serif' }}>
+            <div className="blog-text-anim flex items-center justify-between" style={{ fontSize: '15px', color: '#757575', fontFamily: '"Roboto", sans-serif' }}>
               <span>{blogs[1].date}</span>
               <span>{blogs[1].readTime}</span>
             </div>
@@ -823,7 +823,7 @@ const TestimonialsSection = () => {
       <div ref={headerRef} className="w-full max-w-[1000px] flex flex-col relative" style={{ marginBottom: '100px' }}>
 
         <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '16px' }}>What Our Clients says</h2>
-        <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, maxWidth: '500px', textTransform: 'none' }}>More than listing, we deliver peace of mind,<br />smarter decisions, and smoother experiences.</p>
+        <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, maxWidth: '500px', textTransform: 'none' }}>More than listing, we deliver peace of mind,<br />smarter decisions, and smoother experiences.</p>
       </div>
 
       <div ref={contentRef} className="w-full max-w-[1000px] flex flex-col md:flex-row items-stretch justify-center" style={{ gap: '80px' }}>
@@ -848,7 +848,7 @@ const TestimonialsSection = () => {
                     {t.name}
                   </h3>
                 </div>
-                <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, paddingRight: '20px', textTransform: 'none' }}>
+                <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, paddingRight: '20px', textTransform: 'none' }}>
                   {t.text}
                 </p>
               </div>
@@ -945,11 +945,11 @@ export const FaqsSection = () => {
             Got Questions? We've Got Answers
           </h2>
           
-          <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px', textTransform: 'none' }}>
+          <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px', textTransform: 'none' }}>
             Everything you need to know about buying, selling, and renting with confidence.
           </p>
 
-          <button className="flex items-center justify-between self-start transition-all hover:bg-[#333]" style={{ backgroundColor: '#000000', color: '#fff', padding: '10px 10px 10px 32px', borderRadius: '50px', fontSize: '18px', fontWeight: 500, fontFamily: '"Inter", sans-serif' }}>
+          <button className="flex items-center justify-between self-start transition-all hover:bg-[#333]" style={{ backgroundColor: '#000000', color: '#fff', padding: '10px 10px 10px 32px', borderRadius: '50px', fontSize: '18px', fontWeight: 500, fontFamily: '"Roboto", sans-serif' }}>
             <span style={{ marginRight: '16px' }}>Get in Touch</span>
             <div className="flex items-center justify-center bg-white text-black" style={{ width: '44px', height: '44px', borderRadius: '50%' }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -965,7 +965,7 @@ export const FaqsSection = () => {
           {faqs.map((faq, idx) => (
             <div key={idx} className="w-full flex flex-col cursor-pointer border-b border-[#e5e5e5] transition-colors" onClick={() => toggleFaq(idx)} style={{ padding: '24px 0' }}>
               <div className="w-full flex items-center justify-between">
-                <h3 style={{ fontSize: '20px', fontWeight: 500, color: '#191919', fontFamily: '"Inter", sans-serif', margin: 0, paddingRight: '20px' }}>
+                <h3 style={{ fontSize: '20px', fontWeight: 500, color: '#191919', fontFamily: '"Roboto", sans-serif', margin: 0, paddingRight: '20px' }}>
                   {faq.question}
                 </h3>
                 <div className="flex items-center justify-center transition-transform duration-300" style={{ transform: openFaq === idx ? 'rotate(45deg)' : 'rotate(0deg)', minWidth: '24px' }}>
@@ -976,7 +976,7 @@ export const FaqsSection = () => {
                 </div>
               </div>
               <div className="overflow-hidden transition-all duration-500" style={{ maxHeight: openFaq === idx ? '200px' : '0px', opacity: openFaq === idx ? 1 : 0 }}>
-                <p style={{ fontSize: '16px', color: '#757575', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, marginTop: '16px', paddingRight: '40px', textTransform: 'none' }}>
+                <p style={{ fontSize: '16px', color: '#757575', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, marginTop: '16px', paddingRight: '40px', textTransform: 'none' }}>
                   {faq.answer}
                 </p>
               </div>
@@ -1022,7 +1022,7 @@ export const FooterSection = () => {
         <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#ffffff', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '20px' }}>
           Join Our News Letter
         </h2>
-        <p style={{ fontSize: '18px', color: '#e5e5e5', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px' }}>
+        <p style={{ fontSize: '18px', color: '#e5e5e5', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px' }}>
           Stay informed. Get the best local<br />real estate updates without the fluff.
         </p>
 
@@ -1041,10 +1041,10 @@ export const FooterSection = () => {
               borderRadius: '40px',
               width: '340px',
               fontSize: '16px',
-              fontFamily: '"Inter", sans-serif'
+              fontFamily: '"Roboto", sans-serif'
             }}
           />
-          <button className="transition-transform hover:scale-105" style={{ backgroundColor: '#ffffff', color: '#191919', padding: '16px 36px', borderRadius: '40px', fontSize: '16px', fontWeight: 600, fontFamily: '"Inter", sans-serif' }}>
+          <button className="transition-transform hover:scale-105" style={{ backgroundColor: '#ffffff', color: '#191919', padding: '16px 36px', borderRadius: '40px', fontSize: '16px', fontWeight: 600, fontFamily: '"Roboto", sans-serif' }}>
             Subscribe
           </button>
         </div>
@@ -1058,7 +1058,7 @@ export const FooterSection = () => {
           <h3 style={{ fontSize: '32px', fontWeight: 600, color: '#ffffff', fontFamily: '"Outfit", sans-serif', marginBottom: '16px' }}>
             Panthers
           </h3>
-          <p style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Inter", sans-serif', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6 }}>
             Start your exciting journey to<br />homeownership right here.
           </p>
         </div>
@@ -1067,12 +1067,12 @@ export const FooterSection = () => {
         <div className="flex" style={{ gap: '120px' }}>
           
           <div className="flex flex-col">
-            <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', fontFamily: '"Inter", sans-serif', marginBottom: '32px' }}>
+            <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', fontFamily: '"Roboto", sans-serif', marginBottom: '32px' }}>
               Main Pages
             </h4>
             <div className="flex flex-col" style={{ gap: '20px' }}>
               {['Home', 'Projects', 'About', 'Blogs'].map(link => (
-                <a key={link} href="#" style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Inter", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
+                <a key={link} href="#" style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
                   {link}
                 </a>
               ))}
@@ -1080,7 +1080,7 @@ export const FooterSection = () => {
           </div>
 
           <div className="flex flex-col">
-            <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', fontFamily: '"Inter", sans-serif', marginBottom: '32px' }}>
+            <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', fontFamily: '"Roboto", sans-serif', marginBottom: '32px' }}>
               Other pages
             </h4>
             <div className="flex flex-col" style={{ gap: '20px' }}>
@@ -1089,7 +1089,7 @@ export const FooterSection = () => {
                 { name: 'Privacy Policy', href: '/privacy-policy' },
                 { name: 'Terms & Conditions', href: '/terms-conditions' }
               ].map(link => (
-                <a key={link.name} href={link.href} style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Inter", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
+                <a key={link.name} href={link.href} style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
                   {link.name}
                 </a>
               ))}
@@ -1635,7 +1635,7 @@ export default function Home() {
           id="about"
           ref={aboutSectionRef}
           className="relative w-full flex flex-col items-center overflow-hidden"
-          style={{ paddingTop: '100px', paddingBottom: '100px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
+          style={{ paddingTop: '100px', paddingBottom: '100px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Roboto", sans-serif' }}
         >
 
 
@@ -1657,7 +1657,7 @@ export default function Home() {
           id="properties"
           ref={featuredSectionRef}
           className="relative w-full flex flex-col items-center overflow-hidden"
-          style={{ paddingBottom: '100px', paddingTop: '200px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Inter", sans-serif' }}
+          style={{ paddingBottom: '100px', paddingTop: '200px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Roboto", sans-serif' }}
         >
           <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end" style={{ maxWidth: '1000px', marginBottom: '80px' }}>
             

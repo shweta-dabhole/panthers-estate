@@ -1,30 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import "tailwindcss";
 
-/* ─── Doner display font (from Mersi Architecture CDN) ─── */
-@font-face {
-  font-family: Doner;
-  src: url(https://cdn.prod.website-files.com/69689842a40a17ac45e5418a/696fa4710b4671c8cb9ffea3_Doner-BoldDisplay.woff2) format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: Doner;
-  src: url(https://cdn.prod.website-files.com/69689842a40a17ac45e5418a/696fa4720e2df558026f603e_Doner-SemiBoldDisplay.woff2) format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: Doner;
-  src: url(https://cdn.prod.website-files.com/69689842a40a17ac45e5418a/6971fbeb23b43149fea69408_Doner-MediumDisplay.woff2) format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
+
+
+
+
 /* ─── Switzer Variable (from Mersi Architecture CDN) ─── */
 @font-face {
   font-family: "Switzer Variable";
@@ -36,9 +18,10 @@
 
 
 @theme {
-  --font-sans: var(--font-inter), sans-serif;
+  --font-sans: var(--font-roboto), sans-serif;
   --font-serif: var(--font-instrument-serif), serif;
   --font-poppins: var(--font-poppins), sans-serif;
+  --font-roboto: var(--font-roboto), sans-serif;
   --font-playfair: "Playfair Display", serif;
 }
 
@@ -758,7 +741,7 @@ nav#panthers-nav-locked {
 }
 
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-roboto), sans-serif;
 }
 
 img {
@@ -1181,7 +1164,7 @@ nav p#logo {
   text-align: center;
   text-transform: uppercase;
   text-wrap: pretty;
-  font-family: Doner, Arial, sans-serif;
+  font-family: var(--font-poppins), sans-serif;
   font-size: 3.75rem; /* 60px */
   font-weight: 700;
   line-height: .9;

@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Montserrat, Poppins, Inter, Instrument_Serif } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat, Poppins, Roboto, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -23,10 +23,10 @@ const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["100", "300", "400", "500", "700", "900"],
 });
 
 const instrumentSerif = Instrument_Serif({
@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${poppins.variable} ${inter.variable} ${instrumentSerif.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${poppins.variable} ${roboto.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <Script
         id="popstate-interceptor"

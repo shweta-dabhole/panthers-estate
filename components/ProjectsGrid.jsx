@@ -19,8 +19,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png"
   },
   {
-    slug: "cafe-maurice-saint-honore",
-    title: "Maurice Cafe St-Honore",
+    slug: "hillcrest",
+    title: "Hillcrest",
     location: "Paris 8",
     filterName: "Hospitality",
     year: "2025",
@@ -30,8 +30,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x MAURICE_-10.png"
   },
   {
-    slug: "berri",
-    title: "Berri",
+    slug: "marvelle",
+    title: "Marvelle",
     location: "Paris 8",
     filterName: "Residential",
     year: "2025",
@@ -41,8 +41,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSIxBERRI-16 (1).png"
   },
   {
-    slug: "cook",
-    title: "Cook",
+    slug: "pinecrest",
+    title: "Pinecrest",
     location: "Paris 17",
     filterName: "Hospitality",
     year: "2025",
@@ -52,8 +52,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_1.png"
   },
   {
-    slug: "segur",
-    title: "Segur",
+    slug: "grandcrest",
+    title: "Grandcrest",
     location: "Paris 7",
     filterName: "Residential",
     year: "2025",
@@ -63,8 +63,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_2.png"
   },
   {
-    slug: "tonnemani",
-    title: "Tonnenami",
+    slug: "willowood",
+    title: "Willowood",
     location: "Paris 6",
     filterName: "Residential",
     year: "2025",
@@ -74,8 +74,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_3.png"
   },
   {
-    slug: "aurelien-cohen-levallois",
-    title: "Aurelien Cohen",
+    slug: "highlander",
+    title: "Highlander",
     location: "Levallois",
     filterName: "Retail",
     year: "2025",
@@ -85,8 +85,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x AURÉLIEN COHEN-1 copie (1).png"
   },
   {
-    slug: "atokym",
-    title: "Atokym",
+    slug: "brookstone",
+    title: "Brookstone",
     location: "Paris 15",
     filterName: "Residential",
     year: "2025",
@@ -96,8 +96,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L.png"
   },
   {
-    slug: "paix",
-    title: "Paix",
+    slug: "greenvale",
+    title: "Greenvale",
     location: "Paris 1",
     filterName: "Residential",
     year: "2024",
@@ -187,7 +187,7 @@ function ProjectCard({ project, index, total }) {
                 boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
               }}
             >
-              <span style={{ fontFamily: '"Inter", sans-serif', fontSize: '15px', fontWeight: 500, letterSpacing: '0' }}>View Details</span>
+              <span style={{ fontFamily: '"Roboto", sans-serif', fontSize: '15px', fontWeight: 500, letterSpacing: '0' }}>View Details</span>
             </div>
           </Link>
         </div>
@@ -199,7 +199,7 @@ function ProjectCard({ project, index, total }) {
         style={{
           display: 'flex', flexDirection: 'column', gap: '0.5rem',
           marginTop: '1.25rem',
-          fontFamily: '"Inter", sans-serif',
+          fontFamily: '"Roboto", sans-serif',
           opacity: 0, // initially hidden
         }}
       >

@@ -14,12 +14,24 @@ const projectsData = [
     filterName: "Residential",
     year: "2025",
     color: "hsla(16, 58.87%, 42.88%, 1.00)",
-    img: "/mersi-scraped-site/www.mersi-architecture.com/assets/69a859206f8dac87c4c0b553_MERSI x LEVALLOIS-2 (1).png",
-    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png"
+    img: "/assets/new villa.png",
+    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png",
+    areaVal: "5000 SQ.FT",
+    bedroomsVal: "5",
+    images: [
+      "/assets/velora 1.png",
+      "/assets/velora 2.png",
+      "/assets/velora 3.png",
+      "/assets/velora 4.png",
+      "/assets/velora 5.png",
+      "/assets/velora 6.png",
+      "/assets/velora 7.png",
+      "/assets/velora 8.png"
+    ]
   },
   {
-    slug: "cafe-maurice-saint-honore",
-    title: "Maurice Cafe St-Honore",
+    slug: "hillcrest",
+    title: "Hillcrest",
     location: "Paris 8",
     filterName: "Hospitality",
     year: "2025",
@@ -28,8 +40,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x MAURICE_-10.png"
   },
   {
-    slug: "berri",
-    title: "Berri",
+    slug: "marvelle",
+    title: "Marvelle",
     location: "Paris 8",
     filterName: "Residential",
     year: "2025",
@@ -38,8 +50,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSIxBERRI-16 (1).png"
   },
   {
-    slug: "cook",
-    title: "Cook",
+    slug: "pinecrest",
+    title: "Pinecrest",
     location: "Paris 17",
     filterName: "Hospitality",
     year: "2025",
@@ -48,8 +60,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_1.png"
   },
   {
-    slug: "segur",
-    title: "Segur",
+    slug: "grandcrest",
+    title: "Grandcrest",
     location: "Paris 7",
     filterName: "Residential",
     year: "2025",
@@ -58,8 +70,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_2.png"
   },
   {
-    slug: "tonnemani",
-    title: "Tonnenami",
+    slug: "willowood",
+    title: "Willowood",
     location: "Paris 6",
     filterName: "Residential",
     year: "2025",
@@ -68,8 +80,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_3.png"
   },
   {
-    slug: "aurelien-cohen-levallois",
-    title: "Aurelien Cohen",
+    slug: "highlander",
+    title: "Highlander",
     location: "Levallois",
     filterName: "Retail",
     year: "2025",
@@ -78,8 +90,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x AURÉLIEN COHEN-1 copie (1).png"
   },
   {
-    slug: "atokym",
-    title: "Atokym",
+    slug: "brookstone",
+    title: "Brookstone",
     location: "Paris 15",
     filterName: "Residential",
     year: "2025",
@@ -88,8 +100,8 @@ const projectsData = [
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L.png"
   },
   {
-    slug: "paix",
-    title: "Paix",
+    slug: "greenvale",
+    title: "Greenvale",
     location: "Paris 1",
     filterName: "Residential",
     year: "2024",
@@ -105,7 +117,19 @@ const projectsData = [
     year: "2025",
     color: "hsla(16, 58.87%, 42.88%, 1.00)",
     img: "/assets/new villa 8.png",
-    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png"
+    hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png",
+    areaVal: "5000 SQ.FT",
+    bedroomsVal: "5",
+    images: [
+      "/assets/velora 1.png",
+      "/assets/velora 2.png",
+      "/assets/velora 3.png",
+      "/assets/velora 4.png",
+      "/assets/velora 5.png",
+      "/assets/velora 6.png",
+      "/assets/velora 7.png",
+      "/assets/velora 8.png"
+    ]
   }
 ];
 
@@ -146,6 +170,50 @@ export default function ProjectDetail() {
           scrub: 1,
           invalidateOnRefresh: true,
         }
+      });
+
+      // Block 1 animations on load
+      gsap.fromTo(
+        [row.querySelector('.block1-thumb'), row.querySelector('.block1-title')],
+        { y: 60, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: "power3.out" }
+      );
+
+      // Reveal animation (bottom to top) for scrolling image containers
+      gsap.utils.toArray(row.querySelectorAll('.parallax-container')).forEach((container) => {
+        gsap.fromTo(container,
+          { y: 100, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: container,
+              containerAnimation: tween,
+              start: "left 95%",
+              toggleActions: "play none none none",
+            }
+          }
+        );
+      });
+
+      // Parallax effect for all images inside .parallax-container
+      gsap.utils.toArray(row.querySelectorAll('.parallax-img')).forEach((img) => {
+        gsap.fromTo(img,
+          { xPercent: -10 },
+          {
+            xPercent: 10,
+            ease: "none",
+            scrollTrigger: {
+              trigger: img.closest('.parallax-container') || img.parentElement,
+              containerAnimation: tween,
+              start: "left right",
+              end: "right left",
+              scrub: true,
+            }
+          }
+        );
       });
       
       // Delay refresh slightly for Next.js to finish painting
@@ -202,113 +270,155 @@ export default function ProjectDetail() {
 
             
             {/* Thumbnail preview - Portrait */}
-            <div style={{ width: '100%', aspectRatio: '4/5', overflow: 'hidden', marginBottom: '1.5rem' }}>
-              <img src={project.hoverImg} alt={`${project.title} preview`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <div className="block1-thumb" style={{ width: '100%', aspectRatio: '4/5', overflow: 'hidden', marginBottom: '1.5rem' }}>
+              <img src={project.images?.[0] || project.hoverImg} alt={`${project.title} preview`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
           </div>
 
           {/* Bottom massive title */}
           <div>
-            <h1 style={{ fontFamily: 'Doner, Arial, sans-serif', fontSize: '3rem', fontWeight: 700, lineHeight: 0.9, textTransform: 'uppercase', margin: 0, textAlign: 'center' }}>
+            <h1 className="block1-title" style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '3rem', fontWeight: 700, lineHeight: 0.9, textTransform: 'uppercase', margin: 0, textAlign: 'center' }}>
               {project.title}
             </h1>
           </div>
         </div>
         
         {/* BLOCK 2: FIRST IMAGE (PADDED) */}
-        <div style={{ width: '50vw', height: '100vh', padding: '2.5rem', boxSizing: 'border-box', flexShrink: 0 }}>
-          <img src={project.img} alt={`${project.title} 1`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{ width: '60vw', height: '75vh', padding: '2.5rem', boxSizing: 'border-box', flexShrink: 0 }}>
+          <div className="parallax-container" style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+            <img className="parallax-img" src={project.img} alt={`${project.title} 1`} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.2)' }} />
+          </div>
         </div>
 
         {/* BLOCK 3: TEXT BLOCK */}
-        <div style={{ width: '50vw', height: '100vh', padding: '4rem', display: 'flex', flexDirection: 'column', gap: '3rem', flexShrink: 0, justifyContent: 'center', boxSizing: 'border-box' }}>
-           <h2 style={{ fontFamily: 'Doner, Arial, sans-serif', fontSize: '2rem', textTransform: 'uppercase', lineHeight: 1.2 }}>
-             Restaurant Méditerranéen,<br/>Institution du quartier
+        <div style={{ width: '30vw', height: '100vh', padding: '3rem', display: 'flex', flexDirection: 'column', gap: '3rem', flexShrink: 0, justifyContent: 'center', boxSizing: 'border-box' }}>
+           <h2 style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '2rem', textTransform: 'uppercase', lineHeight: 1.2 }}>
+             {project.slug === 'velora' ? 'Velora' : <>Restaurant Méditerranéen,<br/>Institution du quartier</>}
            </h2>
            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
-               <span>Retail Concept</span>
-               <span>01</span>
+               <span>Area</span>
+               <span>{project.areaVal || "01"}</span>
              </div>
              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
-               <span>Conception architecturale</span>
+               <span>Floors</span>
                <span>02</span>
              </div>
              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
-               <span>Pilotage de chantier</span>
-               <span>03</span>
+               <span>Bedrooms</span>
+               <span>{project.bedroomsVal || "03"}</span>
              </div>
              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
-               <span>Mobilier et décoration</span>
+               <span>Parkings</span>
                <span>04</span>
              </div>
            </div>
-           <h3 style={{ fontFamily: 'Doner, Arial, sans-serif', fontSize: '5rem', margin: 0 }}>
-             120<span style={{ fontSize: '2rem' }}>m²</span>
+           <h3 style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '3rem', margin: 0 }}>
+             $1,60,000
            </h3>
         </div>
         
         {/* BLOCK 4: WIDE IMAGE (PADDED) */}
-        <div style={{ width: '70vw', height: '100vh', padding: '2.5rem 0 2.5rem 2.5rem', boxSizing: 'border-box', flexShrink: 0 }}>
-           <img src={project.hoverImg} alt={`${project.title} wide`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{ width: '60vw', height: '75vh', padding: '2.5rem 0 2.5rem 2.5rem', boxSizing: 'border-box', flexShrink: 0 }}>
+          <div className="parallax-container" style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+            <img className="parallax-img" src={project.images?.[1] || project.hoverImg} alt={`${project.title} wide`} style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.2)' }} />
+          </div>
         </div>
 
         {/* BLOCK 5: IMAGE COLLAGE (3 IMAGES) */}
-        <div style={{ width: '80vw', height: '100vh', padding: '2.5rem', boxSizing: 'border-box', flexShrink: 0, display: 'flex', gap: '2.5rem' }}>
-           <div style={{ flex: 1, height: '100%' }}>
-             <img src={project.img} alt="Detail 1" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{ width: '80vw', height: '75vh', padding: '2.5rem', boxSizing: 'border-box', flexShrink: 0, display: 'flex', gap: '2.5rem' }}>
+           <div className="parallax-container" style={{ flex: 1, height: '100%', overflow: 'hidden' }}>
+             <img className="parallax-img" src={project.images?.[2] || project.img} alt="Detail 1" style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.2)' }} />
            </div>
-           <div style={{ flex: 1.5, height: '100%' }}>
-             <img src={project.hoverImg} alt="Detail 2" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+           <div className="parallax-container" style={{ flex: 1.5, height: '100%', overflow: 'hidden' }}>
+             <img className="parallax-img" src={project.images?.[3] || project.hoverImg} alt="Detail 2" style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.2)' }} />
            </div>
-           <div style={{ flex: 1, height: '100%' }}>
-             <img src={project.img} alt="Detail 3" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+           <div className="parallax-container" style={{ flex: 1, height: '100%', overflow: 'hidden' }}>
+             <img className="parallax-img" src={project.images?.[4] || project.img} alt="Detail 3" style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.2)' }} />
            </div>
         </div>
 
+        {/* BLOCK 5B: DUPLICATED TEXT BLOCK */}
+        <div style={{ width: '30vw', height: '100vh', padding: '3rem', display: 'flex', flexDirection: 'column', gap: '3rem', flexShrink: 0, justifyContent: 'center', boxSizing: 'border-box' }}>
+           <h2 style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '2rem', textTransform: 'uppercase', lineHeight: 1.2 }}>
+             {project.slug === 'velora' ? 'Velora' : <>Restaurant Méditerranéen,<br/>Institution du quartier</>}
+           </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
+                <span>{project.title === 'Velora' ? 'Pool' : 'Area'}</span>
+                <span>{project.title === 'Velora' ? 'Infinity Pool' : (project.areaVal || "01")}</span>
+              </div>
+              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
+                <span>{project.title === 'Velora' ? 'Home Theatre' : 'Floors'}</span>
+                <span>{project.title === 'Velora' ? 'Yes' : (project.floorsVal || "02")}</span>
+              </div>
+              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
+                <span>{project.title === 'Velora' ? 'Smart Homes' : 'Bedrooms'}</span>
+                <span>{project.title === 'Velora' ? 'Enabled' : (project.bedroomsVal || "03")}</span>
+              </div>
+              <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
+                <span>{project.title === 'Velora' ? 'Garden Area' : 'Parkings'}</span>
+                <span>{project.title === 'Velora' ? '1000 sqft' : (project.parkingsVal || "04")}</span>
+              </div>
+            </div>
+        </div>
+
         {/* BLOCK 6: BATHROOMS (2 IMAGES) */}
-        <div style={{ width: '60vw', height: '100vh', padding: '2.5rem 0', boxSizing: 'border-box', flexShrink: 0, display: 'flex', gap: '2.5rem' }}>
-           <div style={{ flex: 1, height: '100%' }}>
-             <img src={project.hoverImg} alt="Bath 1" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{ width: '60vw', height: '75vh', padding: '2.5rem 2.5rem 2.5rem 0', boxSizing: 'border-box', flexShrink: 0, display: 'flex', gap: '2.5rem' }}>
+           <div className="parallax-container" style={{ flex: 1, height: '100%', overflow: 'hidden' }}>
+             <img className="parallax-img" src={project.images?.[5] || project.hoverImg} alt="Bath 1" style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.2)' }} />
            </div>
-           <div style={{ flex: 1, height: '100%' }}>
-             <img src={project.img} alt="Bath 2" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+           <div className="parallax-container" style={{ flex: 1, height: '100%', overflow: 'hidden' }}>
+             <img className="parallax-img" src={project.images?.[6] || project.img} alt="Bath 2" style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.2)' }} />
            </div>
         </div>
 
         {/* BLOCK 7: PEOPLE AND NEWSLETTER */}
-        <div style={{ width: '80vw', height: '100vh', flexShrink: 0, display: 'flex', alignItems: 'center', paddingRight: '2.5rem', boxSizing: 'border-box' }}>
+        <div style={{ width: '80vw', height: '75vh', flexShrink: 0, display: 'flex', alignItems: 'center', padding: '2.5rem 8vw 2.5rem 0', boxSizing: 'border-box' }}>
            <div style={{ flex: 1, height: '100%', padding: '0 2.5rem 0 0' }}>
-             <img src={project.hoverImg} alt="Architects" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-           </div>
-           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-             <h2 style={{ fontFamily: 'Doner, Arial, sans-serif', fontSize: '2.5rem', margin: 0, lineHeight: 1.2 }}>
-               Nous concevons des lieux uniques, pensés pour être vécus, et dessinés pour traverser le temps.
-             </h2>
-             <div style={{ padding: '2rem', border: '1px solid #ccc', backgroundColor: '#EDE7DE', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-               <h3 style={{ fontFamily: 'Doner, Arial, sans-serif', fontSize: '1.5rem', margin: 0 }}>Newsletter</h3>
-               <div style={{ display: 'flex', borderBottom: '1px solid #1a1a1a', paddingBottom: '0.5rem' }}>
-                 <input type="email" placeholder="VOTRE EMAIL" style={{ background: 'transparent', border: 'none', outline: 'none', flex: 1, fontFamily: '"Inter", sans-serif', fontSize: '0.875rem' }} />
-                 <span style={{ cursor: 'pointer' }}>→</span>
-               </div>
+             <div className="parallax-container" style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+               <img className="parallax-img" src={project.images?.[7] || project.hoverImg} alt="Architects" style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.2)' }} />
              </div>
            </div>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '3rem', justifyContent: 'center' }}>
+               <h2 style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '2rem', textTransform: 'uppercase', lineHeight: 1.2 }}>
+                 {project.title === 'Velora' ? 'Nearby Facilities' : <>Restaurant Méditerranéen,<br/>Institution du quartier</>}
+               </h2>
+               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '400px' }}>
+                 <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
+                   <span>{project.title === 'Velora' ? 'Hospital' : 'Area'}</span>
+                   <span>{project.title === 'Velora' ? '2.5 KM' : (project.areaVal || "01")}</span>
+                 </div>
+                 <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
+                   <span>{project.title === 'Velora' ? 'School' : 'Floors'}</span>
+                   <span>{project.title === 'Velora' ? '1.2 KM' : (project.floorsVal || "02")}</span>
+                 </div>
+                 <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
+                   <span>{project.title === 'Velora' ? 'Shopping Mall' : 'Bedrooms'}</span>
+                   <span>{project.title === 'Velora' ? '3 KM' : (project.bedroomsVal || "03")}</span>
+                 </div>
+                 <div style={{ padding: '1rem 0', borderBottom: '1px solid #ccc', fontWeight: 600, display: 'flex', justifyContent: 'space-between' }}>
+                   <span>{project.title === 'Velora' ? 'Supermarket' : 'Parkings'}</span>
+                   <span>{project.title === 'Velora' ? '1 KM' : (project.parkingsVal || "04")}</span>
+                 </div>
+               </div>
+            </div>
         </div>
         
         {/* BLOCK 8: CONTACT FOOTER */}
-        <div style={{ width: '50vw', height: '100vh', backgroundColor: '#EDE7DE', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '4rem', boxSizing: 'border-box', flexShrink: 0 }}>
+        <div style={{ width: '30vw', height: '100vh', backgroundColor: '#EDE7DE', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '4rem 2rem', boxSizing: 'border-box', flexShrink: 0 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <div>
-              <h3 style={{ fontFamily: 'Doner, Arial, sans-serif', fontSize: '2rem', margin: 0 }}>Mail</h3>
-              <p style={{ fontFamily: '"Inter", sans-serif', fontSize: '1rem', margin: 0 }}>hello@panthers-estate.com</p>
+              <h3 style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '2rem', margin: 0 }}>Mail</h3>
+              <p style={{ fontFamily: '"Roboto", sans-serif', fontSize: '1rem', margin: 0 }}>hello@panthers-estate.com</p>
             </div>
             <div>
-              <h3 style={{ fontFamily: 'Doner, Arial, sans-serif', fontSize: '2rem', margin: 0 }}>WhatsApp</h3>
-              <p style={{ fontFamily: '"Inter", sans-serif', fontSize: '1rem', margin: 0 }}>Let's talk</p>
+              <h3 style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '2rem', margin: 0 }}>WhatsApp</h3>
+              <p style={{ fontFamily: '"Roboto", sans-serif', fontSize: '1rem', margin: 0 }}>Let's talk</p>
             </div>
             <div>
-              <h3 style={{ fontFamily: 'Doner, Arial, sans-serif', fontSize: '2rem', margin: 0 }}>Phone</h3>
-              <p style={{ fontFamily: '"Inter", sans-serif', fontSize: '1rem', margin: 0 }}>+33 1 23 45 67 89</p>
+              <h3 style={{ fontFamily: 'var(--font-poppins), sans-serif', fontSize: '2rem', margin: 0 }}>Phone</h3>
+              <p style={{ fontFamily: '"Roboto", sans-serif', fontSize: '1rem', margin: 0 }}>+33 1 23 45 67 89</p>
             </div>
           </div>
         </div>

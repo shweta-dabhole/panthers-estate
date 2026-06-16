@@ -38,7 +38,7 @@ export default function FooterSection() {
         <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#ffffff', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '20px' }}>
           Join Our News Letter
         </h2>
-        <p style={{ fontSize: '18px', color: '#e5e5e5', fontFamily: '"Inter", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px' }}>
+        <p style={{ fontSize: '18px', color: '#e5e5e5', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px' }}>
           Stay informed. Get the best local<br />real estate updates without the fluff.
         </p>
 
@@ -57,12 +57,12 @@ export default function FooterSection() {
               borderRadius: '40px',
               width: '340px',
               fontSize: '16px',
-              fontFamily: '"Inter", sans-serif'
+              fontFamily: '"Roboto", sans-serif'
             }}
           />
           <button
             className="transition-transform hover:scale-105"
-            style={{ backgroundColor: '#ffffff', color: '#191919', padding: '16px 36px', borderRadius: '40px', fontSize: '16px', fontWeight: 600, fontFamily: '"Inter", sans-serif' }}
+            style={{ backgroundColor: '#ffffff', color: '#191919', padding: '16px 36px', borderRadius: '40px', fontSize: '16px', fontWeight: 600, fontFamily: '"Roboto", sans-serif' }}
           >
             Subscribe
           </button>
@@ -77,7 +77,7 @@ export default function FooterSection() {
           <h3 style={{ fontSize: '32px', fontWeight: 600, color: '#ffffff', fontFamily: '"Outfit", sans-serif', marginBottom: '16px' }}>
             Panthers
           </h3>
-          <p style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Inter", sans-serif', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6 }}>
             Start your exciting journey to<br />homeownership right here.
           </p>
         </div>
@@ -85,12 +85,12 @@ export default function FooterSection() {
         {/* Right Links */}
         <div className="flex" style={{ gap: '120px' }}>
           <div className="flex flex-col">
-            <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', fontFamily: '"Inter", sans-serif', marginBottom: '32px' }}>
+            <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', fontFamily: '"Roboto", sans-serif', marginBottom: '32px' }}>
               Main Pages
             </h4>
             <div className="flex flex-col" style={{ gap: '20px' }}>
               {['Home', 'Projects', 'About', 'Blogs'].map(link => (
-                <a key={link} href="#" style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Inter", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
+                <a key={link} href="#" style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
                   {link}
                 </a>
               ))}
@@ -98,7 +98,7 @@ export default function FooterSection() {
           </div>
 
           <div className="flex flex-col">
-            <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', fontFamily: '"Inter", sans-serif', marginBottom: '32px' }}>
+            <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', fontFamily: '"Roboto", sans-serif', marginBottom: '32px' }}>
               Other pages
             </h4>
             <div className="flex flex-col" style={{ gap: '20px' }}>
@@ -107,7 +107,7 @@ export default function FooterSection() {
                 { name: 'Privacy Policy', href: '/privacy-policy' },
                 { name: 'Terms & Conditions', href: '/terms-conditions' }
               ].map(link => (
-                <a key={link.name} href={link.href} style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Inter", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
+                <a key={link.name} href={link.href} style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
                   {link.name}
                 </a>
               ))}
