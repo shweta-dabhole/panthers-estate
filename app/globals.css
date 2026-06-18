@@ -573,7 +573,7 @@ nav p {
 
 .capsules-intro,
 .capsules-outro {
-  height: 100svh;
+  height: 100vh;
   padding: 1.5em;
   display: flex;
   justify-content: center;
@@ -594,7 +594,7 @@ nav p {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 25svh;
+  gap: 25vh;
 }
 
 .card-marquee {
@@ -621,7 +621,7 @@ nav p {
 .card {
   position: relative;
   width: 100vw;
-  height: 100svh;
+  height: 100vh;
   padding: 1.5em;
 }
 

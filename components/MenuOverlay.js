@@ -94,14 +94,19 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
         ease: "power4.inOut",
       });
 
-      gsap.to([".menu-links .link a", ".menu-socials .social a"], {
-        y: "0%",
-        delay: 0.75,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power3.out",
-      });
+      const linkEls = document.querySelectorAll(".menu-links .link a");
+      const socialEls = document.querySelectorAll(".menu-socials .social a");
+      const animTargets = [...linkEls, ...socialEls];
+      if (animTargets.length > 0) {
+        gsap.to(animTargets, {
+          y: "0%",
+          delay: 0.75,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.1,
+          ease: "power3.out",
+        });
+      }
 
       gsap.to(menuOverlayRef.current, {
         pointerEvents: "auto",
@@ -150,7 +155,10 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
         onComplete: () => {
           setIsMenuOpen(false);
           setIsMenuAnimating(false);
-          gsap.set([".menu-links .link a", ".menu-socials .social a"], { y: "120%", opacity: 0.25 });
+          const resetTargets = document.querySelectorAll(".menu-links .link a, .menu-socials .social a");
+          if (resetTargets.length > 0) {
+            gsap.set(resetTargets, { y: "120%", opacity: 0.25 });
+          }
           
           if (menuPreviewImgRef.current) {
             menuPreviewImgRef.current.innerHTML = "";
@@ -281,7 +289,7 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
                   <a data-taxi-ignore href="/projects" onClick={(e) => handleNavClick(e, '/projects')}>Projects</a>
                 </div>
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%201.jpg')}>
-                  <a href="#">Connect</a>
+                  <a data-taxi-ignore href="/process" onClick={(e) => handleNavClick(e, '/process')}>Process</a>
                 </div>
               </div>
             </div>
