@@ -405,6 +405,7 @@ export default function TailwindCapsulesStickyCards() {
           </div>
         </div>
       </section>
+      <div className="w-full h-[7rem]"></div>
     </div>
   );
 }
