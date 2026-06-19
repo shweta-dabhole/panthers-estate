@@ -78,7 +78,7 @@ export default function FooterSection() {
             Panthers
           </h3>
           <p style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6 }}>
-            Start your exciting journey to<br />homeownership right here.
+            Begin Your Journey Toward Your Dream Home Today.
           </p>
         </div>
 
