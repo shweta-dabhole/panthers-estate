@@ -2,14 +2,31 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import MenuOverlay from "@/components/MenuOverlay";
 import FooterSection from "@/components/FooterSection";
 import ContactForm from "@/components/ContactForm";
 import FAQAccordion from "@/components/FAQAccordion";
 
 export default function ContactPage() {
   return (
-    <main className="bg-[#F9F9F9] text-[#0B0B0B] min-h-screen relative z-20 font-sans overflow-x-hidden" style={{ paddingTop: '9rem' }}>
-      <div className="max-w-[1440px] mx-auto w-full" style={{ paddingLeft: '8rem', paddingRight: '8rem', paddingBottom: '8rem' }}>
+    <>
+      <MenuOverlay isBlackText={true} />
+      <nav className="absolute top-0 left-0 w-full flex justify-between items-center z-50" style={{ padding: '2rem 4rem' }}>
+        <Link href="/" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#000', letterSpacing: '1px', textDecoration: 'none' }}>
+          PANTHERS
+        </Link>
+        <div 
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent('panthers:toggleMenu'));
+          }}
+          style={{ fontSize: '13px', fontWeight: 'bold', textTransform: 'uppercase', color: '#000', letterSpacing: '1px', cursor: 'pointer' }}
+        >
+          MENU
+        </div>
+      </nav>
+      <main className="bg-[#F9F9F9] text-[#0B0B0B] min-h-screen relative z-20 font-sans overflow-x-hidden" style={{ paddingTop: '9rem' }}>
+        <div className="max-w-[1440px] mx-auto w-full" style={{ paddingLeft: '8rem', paddingRight: '8rem', paddingBottom: '8rem' }}>
         
         {/* Hero Section */}
         <section className="flex flex-col items-start justify-start w-full text-left !p-0" style={{ marginBottom: '4rem' }}>
@@ -99,5 +116,6 @@ export default function ContactPage() {
       </div>
       <FooterSection />
     </main>
+    </>
   );
 }

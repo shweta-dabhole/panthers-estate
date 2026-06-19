@@ -4,6 +4,8 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import Link from "next/link";
+import MenuOverlay from "./MenuOverlay";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -107,7 +109,7 @@ export default function TailwindCapsulesStickyCards() {
       const cardImgWrapper = introCard.querySelector(".card-img");
       const cardImg = introCard.querySelector(".card-img img");
       if (cardImgWrapper && cardImg) {
-        gsap.set(cardImgWrapper, { scale: 0.5, borderRadius: "400px" });
+        gsap.set(cardImgWrapper, { scale: 0, borderRadius: "200px", opacity: 0 });
         gsap.set(cardImg, { scale: 1.5 });
       }
 
@@ -142,16 +144,24 @@ export default function TailwindCapsulesStickyCards() {
         end: "+=300vh",
         onUpdate: (self) => {
           const progress = self.progress;
-          const imgScale = 0.5 + progress * 0.5;
-          const borderRadius = 400 - progress * 375;
+          const imgScale = progress;
+          const currentBorderRadius = progress > 0 ? 24 / progress : 200;
           const innerImgScale = 1.5 - progress * 0.5;
 
           if (cardImgWrapper && cardImg) {
             gsap.set(cardImgWrapper, {
               scale: imgScale,
-              borderRadius: borderRadius + "px",
+              borderRadius: currentBorderRadius + "px",
+              opacity: Math.min(1, progress * 10)
             });
             gsap.set(cardImg, { scale: innerImgScale });
+          }
+
+          const textLeft = introCard.querySelector(".text-left-part");
+          const textRight = introCard.querySelector(".text-right-part");
+          if (textLeft && textRight) {
+            gsap.set(textLeft, { x: `${-progress * 60}vw`, opacity: Math.max(0, 1 - progress * 1.5) });
+            gsap.set(textRight, { x: `${progress * 60}vw`, opacity: Math.max(0, 1 - progress * 1.5) });
           }
 
           if (marquee) {
@@ -273,15 +283,38 @@ export default function TailwindCapsulesStickyCards() {
 
   return (
     <div ref={containerRef} className="bg-[#F9F9F9] text-black font-sans overflow-x-hidden">
-      <section className="relative w-screen h-[100svh] p-[1.5em] flex justify-center items-center">
-        <h1 className="w-full md:w-[60%] text-center leading-[1.1] text-4xl md:text-[5rem] font-medium tracking-tight">
-          Our Process
-        </h1>
-      </section>
+      <MenuOverlay isBlackText={true} />
+      <nav className="absolute top-0 w-full flex justify-between items-center z-50" style={{ padding: '2rem 4rem' }}>
+        <Link href="/" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#000', letterSpacing: '1px', textDecoration: 'none' }}>
+          PANTHERS
+        </Link>
+        <div 
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent('panthers:toggleMenu'));
+          }}
+          style={{ fontSize: '13px', fontWeight: 'bold', textTransform: 'uppercase', color: '#000', letterSpacing: '1px', cursor: 'pointer' }}
+        >
+          MENU
+        </div>
+      </nav>
       <section className="relative flex flex-col gap-[25svh]">
         {/* Card 1 */}
-        <div className="card-section intro relative w-screen h-[100svh] p-[1.5em] mt-[100vh]">
-          <div className="card-wrapper relative w-full h-full">
+        <div className="card-section intro relative w-screen h-[100svh] p-[1.5em]">
+          
+          <div className="card-wrapper relative w-full h-full z-10">
+            {/* Background Text Flanking the Image */}
+            <div className="bg-text absolute inset-0 flex items-center justify-center gap-[2vw] w-full pointer-events-none z-0 overflow-hidden">
+              <div className="text-left-part">
+                <h1 className="text-5xl md:text-[6rem] lg:text-[8rem] font-medium tracking-tight text-[#0B0B0B] whitespace-nowrap leading-none text-center" style={{ transform: 'translateY(-2rem)' }}>
+                  Our
+                </h1>
+              </div>
+              <div className="text-right-part">
+                <h1 className="text-5xl md:text-[6rem] lg:text-[8rem] font-medium tracking-tight text-[#0B0B0B] whitespace-nowrap leading-none text-center" style={{ transform: 'translateY(-2rem)' }}>
+                  Process
+                </h1>
+              </div>
+            </div>
             <div className="card-content absolute w-full h-full flex items-end justify-center z-10">
               <div className="card-description text-center w-[90%] md:w-[40%] mb-[3em] relative translate-x-[40px] opacity-0">
                 <p className="text-lg md:text-[1.125rem] font-normal leading-[1.25] text-white">

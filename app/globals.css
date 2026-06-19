@@ -449,6 +449,8 @@ nav p {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  position: relative;
+  z-index: 10;
 }
 
 .menu-socials {

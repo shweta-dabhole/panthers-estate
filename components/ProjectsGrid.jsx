@@ -4,6 +4,7 @@ import React, { useState, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import Link from "next/link";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import MenuOverlay from "./MenuOverlay";
 import FooterSection from "./FooterSection";
 
 const projectsData = [
@@ -337,9 +338,20 @@ export default function ProjectsGrid() {
 
   return (
     <div className="projects-page-wrapper w-full bg-[#EDE7DE] select-none relative overflow-x-hidden" style={{ backgroundColor: '#EDE7DE' }}>
-
-
-
+      <MenuOverlay isBlackText={true} />
+      <nav className="absolute top-0 w-full flex justify-between items-center z-50" style={{ padding: '2rem 4rem' }}>
+        <Link href="/" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#000', letterSpacing: '1px', textDecoration: 'none' }}>
+          PANTHERS
+        </Link>
+        <div 
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent('panthers:toggleMenu'));
+          }}
+          style={{ fontSize: '13px', fontWeight: 'bold', textTransform: 'uppercase', color: '#000', letterSpacing: '1px', cursor: 'pointer' }}
+        >
+          MENU
+        </div>
+      </nav>
       {/* 2. Hero section — full viewport height, flex col centered */}
       <section style={{
         width: '100%',

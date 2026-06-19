@@ -55,13 +55,18 @@ export default function PrivacyPolicyPage() {
     <div className="min-h-screen bg-[#fafafa] text-[#191919] selection:bg-[#191919] selection:text-white">
       <MenuOverlay isBlackText={true} />
       
-      {/* Simple Header - keeping the panthers navbar but with dark text */}
-      <nav className="w-full flex justify-between items-center p-8 z-50 relative">
-        <Link href="/">
-          <p className="uppercase tracking-widest cursor-pointer hover:opacity-70 transition-opacity" style={{ color: 'black', textShadow: 'none', fontSize: '20px', fontWeight: '900', letterSpacing: '2px', lineHeight: '1', marginLeft: '12px' }}>
-            Panthers
-          </p>
+      <nav className="absolute top-0 w-full flex justify-between items-center z-50" style={{ padding: '2rem 4rem' }}>
+        <Link href="/" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#000', letterSpacing: '1px', textDecoration: 'none' }}>
+          PANTHERS
         </Link>
+        <div 
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent('panthers:toggleMenu'));
+          }}
+          style={{ fontSize: '13px', fontWeight: 'bold', textTransform: 'uppercase', color: '#000', letterSpacing: '1px', cursor: 'pointer' }}
+        >
+          MENU
+        </div>
       </nav>
 
       {/* Content */}

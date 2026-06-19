@@ -89,9 +89,14 @@ export default function FooterSection() {
               Main Pages
             </h4>
             <div className="flex flex-col" style={{ gap: '20px' }}>
-              {['Home', 'Projects', 'About', 'Blogs'].map(link => (
-                <a key={link} href="#" style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
-                  {link}
+              {[
+                { name: 'Home', href: '/' },
+                { name: 'Projects', href: '/projects' },
+                { name: 'About', href: '/about-us' },
+                { name: 'Blogs', href: '/blogs' }
+              ].map(link => (
+                <a key={link.name} href={link.href} style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
+                  {link.name}
                 </a>
               ))}
             </div>
