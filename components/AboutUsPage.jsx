@@ -14,9 +14,31 @@ export default function AboutUsPage() {
   const containerRef = useRef(null);
 
   useLayoutEffect(() => {
-    // Add a simple fade-in up animation for all major sections
     const ctx = gsap.context(() => {
-      const sections = gsap.utils.toArray("section");
+      
+      // Hero Image Expansion Animation
+      const heroImage = document.querySelector('.hero-expand-img');
+      const heroSection = document.querySelector('.hero-expand-section');
+      
+      if (heroImage && heroSection) {
+        gsap.to(heroImage, {
+          width: "100vw",
+          height: "100vh",
+          y: 0, // Animate from -15vh back to center
+          borderRadius: "0px",
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroSection,
+            start: "top top",
+            end: "+=1500",
+            scrub: true,
+            pin: true,
+          }
+        });
+      }
+
+      // Add a simple fade-in up animation for all major sections
+      const sections = gsap.utils.toArray("section:not(.hero-expand-section)");
       sections.forEach((sec) => {
         gsap.fromTo(
           sec,
@@ -54,6 +76,25 @@ export default function AboutUsPage() {
           MENU
         </div>
       </nav>
+
+      {/* NEW HERO EXPAND SECTION */}
+      <section className="hero-expand-section w-full h-screen relative bg-[#F9F9F9] overflow-hidden">
+        {/* Text Container */}
+        <div className="absolute bottom-[4vh] md:bottom-[5vh] left-0 w-full flex flex-col items-center z-10 px-4">
+          <h1 className="text-[2.5rem] md:text-[4.5rem] lg:text-[6vw] leading-[0.95] text-center font-bold tracking-tighter uppercase max-w-[95vw]" style={{ fontFamily: 'var(--font-sans), sans-serif', color: '#111' }}>
+            EXPLORE EXCLUSIVE<br />LUXURY PROPERTIES<br />DESIGNED FOR YOU
+          </h1>
+
+        </div>
+
+        {/* Image Container */}
+        <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+          <div className="hero-expand-img w-[350px] h-[200px] md:w-[500px] md:h-[300px] rounded-[24px] overflow-hidden pointer-events-auto" style={{ transform: "translateY(-22vh)" }}>
+             <img src="/assets/conatct%20img.png" alt="Luxury Interior" className="w-full h-full object-cover" />
+          </div>
+        </div>
+      </section>
+
       {/* Container */}
       <div className="max-w-[1440px] mx-auto w-full px-6 md:px-16 lg:px-32 pb-32">
         
@@ -62,7 +103,7 @@ export default function AboutUsPage() {
         {/* Who Are We & Stats */}
         <section className="flex flex-col items-center justify-center gap-16 mb-32 pt-16" style={{ marginTop: '9rem' }}>
           <div className="flex flex-col items-center text-center max-w-[850px]">
-            <h3 className="text-[#555555] uppercase tracking-widest text-sm font-medium mb-6">About Us</h3>
+            <h2 className="text-5xl md:text-6xl font-medium leading-[1.15] tracking-tight text-center w-full text-[#111]" style={{ fontFamily: 'var(--font-sans), sans-serif', marginBottom: '40px' }}>Luxury Living, Designed for Life</h2>
             <p style={{ fontSize: '30px', fontWeight: 400, color: '#191919', lineHeight: '1.5', margin: 0 }}>
               At Panthers, we believe a home is life's most important foundation. Our mission is to find your perfect habitat so you can comfortably build your future and best life.
             </p>
@@ -72,15 +113,7 @@ export default function AboutUsPage() {
 
         {/* Our Values */}
         <section className="mb-32 w-full flex flex-col items-center justify-center" style={{ marginTop: '120px' }}>
-          <div className="flex flex-col items-center justify-center mb-24 max-w-3xl mx-auto w-full" style={{ marginBottom: '80px' }}>
 
-            <h2 className="text-5xl md:text-6xl font-medium leading-[1.15] tracking-tight text-center w-full" style={{ fontFamily: 'var(--font-sans), sans-serif', textAlign: 'center', marginBottom: '40px' }}>
-              Built on Trust, Driven<br className="hidden md:block"/> by Excellence
-            </h2>
-            <p className="text-[#555555] text-lg text-center w-full" style={{ textAlign: 'center' }}>
-              Delivering exceptional real estate experiences through<br className="hidden md:block"/> honesty, dedication, and client-focused service.
-            </p>
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1100px] mx-auto w-full">
             {/* Card 1: Integrity */}
             <div className="bg-[#f5f5f5] p-8 rounded-[24px] flex flex-col items-center text-center gap-10">
@@ -137,12 +170,9 @@ export default function AboutUsPage() {
         </section>
 
         {/* Meet Our Team */}
-        <section className="mb-32">
-          <div className="flex flex-col items-start justify-start mb-12">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-3 h-3 rounded-full bg-[#d05c24]"></div>
-              <h3 className="text-[#333333] text-lg font-medium">Team</h3>
-            </div>
+        <section className="mb-32 w-full flex flex-col items-center" style={{ marginTop: '160px' }}>
+          <div className="flex flex-col items-start justify-start w-full max-w-[1100px] mx-auto" style={{ paddingBottom: '80px' }}>
+
             <h2 className="text-5xl md:text-6xl font-medium leading-[1.1] tracking-tight mb-4 text-[#0B0B0B]" style={{ fontFamily: 'var(--font-sans), sans-serif' }}>
               Meet Our Team
             </h2>
@@ -152,21 +182,21 @@ export default function AboutUsPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1100px] mx-auto w-full">
              <div className="flex flex-col group cursor-pointer">
-               <div className="w-full aspect-[3/4] rounded-[40px] overflow-hidden mb-6 relative">
+               <div className="w-[85%] max-w-[320px] aspect-[3/4] rounded-[16px] overflow-hidden mb-6 relative">
                  <img src="https://framerusercontent.com/images/N0Rx0wEwyuc4sNvtbFFdiuZd6w.png?width=1200&height=1200" alt="Marcus Legrand" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                </div>
                <h3 className="text-3xl font-serif font-medium mb-2">Marcus Legrand</h3>
                <p className="text-[#555555] font-medium uppercase tracking-wider text-sm">Founder & CEO</p>
              </div>
              <div className="flex flex-col group cursor-pointer">
-               <div className="w-full aspect-[3/4] rounded-[40px] overflow-hidden mb-6 relative">
+               <div className="w-[85%] max-w-[320px] aspect-[3/4] rounded-[16px] overflow-hidden mb-6 relative">
                  <img src="https://framerusercontent.com/images/U3gNo5T6vzUmpD4Ya6xWQ68KwS0.png?width=800&height=1200" alt="Emma Rodrigues" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                </div>
                <h3 className="text-3xl font-serif font-medium mb-2">Emma Rodrigues</h3>
                <p className="text-[#555555] font-medium uppercase tracking-wider text-sm">Real Estate Agent</p>
              </div>
              <div className="flex flex-col group cursor-pointer">
-               <div className="w-full aspect-[3/4] rounded-[40px] overflow-hidden mb-6 relative">
+               <div className="w-[85%] max-w-[320px] aspect-[3/4] rounded-[16px] overflow-hidden mb-6 relative">
                  <img src="https://framerusercontent.com/images/GnEW4Rnk3ulU6n4SWKVyRKdpgE.jpg?width=1200&height=1200" alt="Daniel Ruiz" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                </div>
                <h3 className="text-3xl font-serif font-medium mb-2">Daniel Ruiz</h3>
