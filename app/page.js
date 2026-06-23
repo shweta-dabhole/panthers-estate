@@ -99,7 +99,7 @@ const propertiesList = [
     beds: "6 Bedrooms",
     baths: "8 Bathrooms",
     sqft: "3,800 SQ.FT",
-    image: "/assets/ChatGPT Image Jun 10, 2026, 12_51_45 PM.png",
+    image: "/assets/insight0.png",
     badge: "FOR SALE"
   },
   {
@@ -136,7 +136,7 @@ const featuresList = [
   {
     title: "Smart, Sustainable Features",
     description: "Enjoy future-ready homes equipped with eco-conscious technology and intelligent design.",
-    image: "/assets/ChatGPT Image Jun 10, 2026, 12_51_45 PM.png"
+    image: "/assets/insight0.png"
   },
   {
     title: "End-to-End Support",
@@ -223,11 +223,11 @@ const PropertyCard = ({ property, index }) => {
       </div>
       
       <div className="flex flex-col" style={{ gap: '10px' }}>
-        <div className="flex justify-between items-center w-full">
-          <h3 style={{ fontSize: '20px', fontWeight: 600, color: '#191919', margin: 0 }}>{property.title}</h3>
-          <h3 style={{ fontSize: '20px', fontWeight: 600, color: '#191919', margin: 0 }}>{property.price}</h3>
+        <div className="flex justify-between items-center w-full flex-col md:flex-row md:items-center items-start gap-2 md:gap-0">
+          <h3 className="text-xl md:text-[20px]" style={{ fontWeight: 600, color: '#191919', margin: 0 }}>{property.title}</h3>
+          <h3 className="text-lg md:text-[20px]" style={{ fontWeight: 600, color: '#191919', margin: 0 }}>{property.price}</h3>
         </div>
-        <div className="flex items-center" style={{ fontSize: '15px', gap: '8px' }}>
+        <div className="flex items-center flex-wrap" style={{ fontSize: '15px', gap: '8px' }}>
           <div className="flex gap-1 items-center">
             <span style={{ color: '#757575' }}>{property.beds.split(' ')[0]}</span>
             <span style={{ color: '#4d4d4d' }}>{property.beds.split(' ')[1]}</span>
@@ -357,12 +357,12 @@ const DiscoverSpacesSection = () => {
         {/* Texts */}
         <div className="absolute z-10 w-full flex flex-col items-center justify-center pointer-events-none" style={{ gap: '10px' }}>
           
-          <div className="flex" style={{ fontSize: '80px', fontWeight: 400, fontFamily: 'var(--font-poppins), sans-serif', color: '#191919', lineHeight: 1.1, letterSpacing: '-2px' }}>
+          <div className="flex text-5xl md:text-[80px]" style={{ fontWeight: 400, fontFamily: 'var(--font-poppins), sans-serif', color: '#191919', lineHeight: 1.1, letterSpacing: '-2px' }}>
             <div ref={textL1Ref} className="whitespace-pre">Discover </div>
             <div ref={textR1Ref} className="whitespace-pre">Spaces</div>
           </div>
           
-          <div className="flex" style={{ fontSize: '80px', fontWeight: 400, fontFamily: 'var(--font-poppins), sans-serif', color: '#191919', lineHeight: 1.1, letterSpacing: '-2px' }}>
+          <div className="flex text-5xl md:text-[80px]" style={{ fontWeight: 400, fontFamily: 'var(--font-poppins), sans-serif', color: '#191919', lineHeight: 1.1, letterSpacing: '-2px' }}>
             <div ref={textL2Ref} className="whitespace-pre">That Speak </div>
             <div ref={textR2Ref} className="whitespace-pre">to You</div>
           </div>
@@ -370,10 +370,10 @@ const DiscoverSpacesSection = () => {
         </div>
 
         {/* Small Images */}
-        <img ref={img1Ref} src="/assets/BM5DJRZcwLRhIfqMFOK4GeI.webp" className="absolute object-cover shadow-xl" style={{ top: '15%', left: '15%', width: '220px', height: '140px', borderRadius: '0px' }} />
-        <img ref={img2Ref} src="/assets/hoMkKeDJp1rMS99FfvGiuFk8Vsc.webp" className="absolute object-cover shadow-xl" style={{ bottom: '15%', left: '10%', width: '240px', height: '180px', borderRadius: '0px' }} />
-        <img ref={img3Ref} src="/assets/hhMQHZPK2Han8nGE8ZGJzzB2Mo.webp" className="absolute object-cover shadow-xl" style={{ top: '15%', right: '15%', width: '240px', height: '140px', borderRadius: '0px' }} />
-        <img ref={img4Ref} src="/assets/QHrU5R2YxV6j0vFGDThc7hSgGKw.webp" className="absolute object-cover shadow-xl" style={{ bottom: '15%', right: '10%', width: '220px', height: '140px', borderRadius: '0px' }} />
+        <img ref={img1Ref} src="/assets/BM5DJRZcwLRhIfqMFOK4GeI.webp" alt="" className="absolute object-cover shadow-xl w-[30vw] h-[20vw] md:w-[220px] md:h-[140px] left-[5%] md:left-[15%]" style={{ top: '15%', borderRadius: '0px' }} />
+        <img ref={img2Ref} src="/assets/hoMkKeDJp1rMS99FfvGiuFk8Vsc.webp" alt="" className="absolute object-cover shadow-xl w-[35vw] h-[25vw] md:w-[240px] md:h-[180px] left-[5%] md:left-[10%]" style={{ bottom: '15%', borderRadius: '0px' }} />
+        <img ref={img3Ref} src="/assets/hhMQHZPK2Han8nGE8ZGJzzB2Mo.webp" alt="" className="absolute object-cover shadow-xl w-[35vw] h-[20vw] md:w-[240px] md:h-[140px] right-[5%] md:right-[15%]" style={{ top: '15%', borderRadius: '0px' }} />
+        <img ref={img4Ref} src="/assets/QHrU5R2YxV6j0vFGDThc7hSgGKw.webp" alt="" className="absolute object-cover shadow-xl w-[30vw] h-[20vw] md:w-[220px] md:h-[140px] right-[5%] md:right-[10%]" style={{ bottom: '15%', borderRadius: '0px' }} />
 
         {/* Center Reveal Image */}
         <div 
@@ -387,7 +387,7 @@ const DiscoverSpacesSection = () => {
             gsap.to(cursorRef.current, { opacity: 0, scale: 0.5, duration: 0.3, ease: "power2.in", overwrite: "auto" });
           }}
         >
-          <img ref={centerImgRef} src="/assets/OaySddwc0ovmBM0gb4ic04QX1Ls.jpeg" className="w-full h-full object-cover absolute inset-0 pointer-events-none" style={{ border: 'none', outline: 'none' }} />
+          <img ref={centerImgRef} src="/assets/OaySddwc0ovmBM0gb4ic04QX1Ls.jpeg" alt="Horizon Villa" className="w-full h-full object-cover absolute inset-0 pointer-events-none" style={{ border: 'none', outline: 'none' }} />
           
           {/* Overlay Content */}
           <div ref={overlayTextRef} className="relative z-30 flex flex-col items-center justify-end w-full h-full" style={{ padding: '40px', paddingBottom: '8%', background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%)' }}>
@@ -470,7 +470,7 @@ const FeaturesSection = () => {
       <div ref={headerRef} className="flex flex-col items-center text-center" style={{ maxWidth: '800px', marginBottom: '80px' }}>
 
         
-        <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '24px' }}>
+        <h2 className="text-4xl md:text-[56px]" style={{ fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '24px' }}>
           Why Thousands Trust Us to Find Their Next Home
         </h2>
         
@@ -679,7 +679,7 @@ const BlogsSection = () => {
         <div className="w-full flex flex-col md:flex-row justify-between items-end">
           
           <div ref={headerRef} className="flex flex-col" style={{ maxWidth: '600px' }}>
-            <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '16px' }}>
+            <h2 className="text-4xl md:text-[56px]" style={{ fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '16px' }}>
               Your Guide to Smart Home Buying
             </h2>
             <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, textTransform: 'none' }}>
@@ -823,7 +823,7 @@ const TestimonialsSection = () => {
     <section ref={sectionRef} className="w-full flex flex-col items-center overflow-hidden" style={{ backgroundColor: '#f9f9f9', padding: '120px 5%' }}>
       <div ref={headerRef} className="w-full max-w-[1000px] flex flex-col relative" style={{ marginBottom: '100px' }}>
 
-        <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '16px' }}>What Our Clients says</h2>
+        <h2 className="text-4xl md:text-[56px]" style={{ fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '16px' }}>What Our Clients says</h2>
         <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, maxWidth: '500px', textTransform: 'none' }}>More than listing, we deliver peace of mind,<br />smarter decisions, and smoother experiences.</p>
       </div>
 
@@ -857,10 +857,10 @@ const TestimonialsSection = () => {
           </div>
           
           <div className="flex items-center" style={{ gap: '16px', marginTop: '32px' }}>
-            <button onClick={handlePrev} className="flex items-center justify-center bg-[#191919] text-white hover:bg-black transition-colors" style={{ width: '48px', height: '48px', borderRadius: '50%' }}>
+            <button onClick={handlePrev} aria-label="Previous Testimonial" className="flex items-center justify-center bg-[#191919] text-white hover:bg-black transition-colors" style={{ width: '48px', height: '48px', borderRadius: '50%' }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
             </button>
-            <button onClick={handleNext} className="flex items-center justify-center bg-[#191919] text-white hover:bg-black transition-colors" style={{ width: '48px', height: '48px', borderRadius: '50%' }}>
+            <button onClick={handleNext} aria-label="Next Testimonial" className="flex items-center justify-center bg-[#191919] text-white hover:bg-black transition-colors" style={{ width: '48px', height: '48px', borderRadius: '50%' }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
             </button>
           </div>
@@ -942,7 +942,7 @@ export const FaqsSection = () => {
         <div ref={leftRef} className="w-full md:w-[45%] flex flex-col">
 
           
-          <h2 style={{ fontSize: '44px', fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '24px' }}>
+          <h2 className="text-4xl md:text-[44px]" style={{ fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '24px' }}>
             Got Questions? We've Got Answers
           </h2>
           
@@ -1020,7 +1020,7 @@ export const FooterSection = () => {
 
       {/* Top: Newsletter */}
       <div ref={topRef} className="relative z-10 w-full max-w-[800px] flex flex-col items-center text-center" style={{ marginTop: '40px' }}>
-        <h2 style={{ fontSize: '56px', fontWeight: 500, color: '#ffffff', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '20px' }}>
+        <h2 className="text-4xl md:text-[56px]" style={{ fontWeight: 500, color: '#ffffff', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '20px' }}>
           Join Our News Letter
         </h2>
         <p style={{ fontSize: '18px', color: '#e5e5e5', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px' }}>
@@ -1028,10 +1028,11 @@ export const FooterSection = () => {
         </p>
 
         {/* Form Container */}
-        <div className="flex items-center" style={{ gap: '16px' }}>
+        <div className="flex items-center flex-col md:flex-row" style={{ gap: '16px' }}>
           <input 
             type="email" 
             placeholder="Enter Your Email"
+            aria-label="Enter Your Email"
             className="outline-none placeholder-gray-300"
             style={{ 
               backgroundColor: 'rgba(0, 0, 0, 0.4)', 
@@ -1040,12 +1041,13 @@ export const FooterSection = () => {
               color: '#ffffff',
               padding: '16px 24px',
               borderRadius: '40px',
-              width: '340px',
+              width: '100%',
+              maxWidth: '340px',
               fontSize: '16px',
               fontFamily: '"Roboto", sans-serif'
             }}
           />
-          <button className="transition-transform hover:scale-105" style={{ backgroundColor: '#ffffff', color: '#191919', padding: '16px 36px', borderRadius: '40px', fontSize: '16px', fontWeight: 600, fontFamily: '"Roboto", sans-serif' }}>
+          <button className="transition-transform hover:scale-105 w-full md:w-auto" style={{ backgroundColor: '#ffffff', color: '#191919', padding: '16px 36px', borderRadius: '40px', fontSize: '16px', fontWeight: 600, fontFamily: '"Roboto", sans-serif' }}>
             Subscribe
           </button>
         </div>
@@ -1065,7 +1067,7 @@ export const FooterSection = () => {
         </div>
 
         {/* Right Side Links */}
-        <div className="flex" style={{ gap: '120px' }}>
+        <div className="flex flex-col md:flex-row gap-[60px] md:gap-[120px] mt-[40px] md:mt-0">
           
           <div className="flex flex-col">
             <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', fontFamily: '"Roboto", sans-serif', marginBottom: '32px' }}>

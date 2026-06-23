@@ -22,7 +22,7 @@ export default function ProjectsStrip() {
       <div className="flex flex-col items-center justify-center w-full px-4">
         <h1 
           className="text-center uppercase font-bold leading-[0.9] tracking-tighter text-[#1a1a1a] w-full" 
-          style={{ fontSize: "50px", fontFamily: "var(--font-poppins), 'Poppins', sans-serif" }}
+          style={{ fontSize: "36px", fontFamily: "var(--font-poppins), 'Poppins', sans-serif" }}
         >
           Explore Exclusive<br/>Luxury Properties<br/>Designed For You
         </h1>

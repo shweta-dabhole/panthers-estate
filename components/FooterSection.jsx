@@ -47,6 +47,7 @@ export default function FooterSection() {
           <input
             type="email"
             placeholder="Enter Your Email"
+            aria-label="Enter Your Email"
             className="outline-none placeholder-gray-300"
             style={{
               backgroundColor: 'rgba(0, 0, 0, 0.4)',

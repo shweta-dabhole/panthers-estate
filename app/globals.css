@@ -212,6 +212,11 @@ nav p {
   transition: opacity 0.3s ease;
   font-family: var(--font-poppins), sans-serif;
 }
+@media (max-width: 768px) {
+  .menu-links a {
+    font-size: 12vw;
+  }
+}
 
 .menu {
   text-align: right;
@@ -428,6 +433,21 @@ nav p {
   display: flex;
   flex-direction: column;
   gap: 2.5em;
+}
+
+@media (max-width: 768px) {
+  .menu-items,
+  .menu-footer {
+    padding: 1.5em;
+    gap: 1.5em;
+    flex-direction: column-reverse;
+  }
+  .menu-items .col-lg {
+    display: none;
+  }
+  .menu-items .col-sm {
+    padding: 0;
+  }
 }
 
 .menu-preview-img {
@@ -1136,7 +1156,10 @@ nav p#logo {
   }
 }
 /* T27 Animation Styles */
-.t27-copy { position: absolute; top: 50%; width: 100%; height: 100vh; display: flex; justify-content: space-around; color: #fff; text-transform: uppercase; font-size: 12px; pointer-events: none; z-index: 10; opacity: 0; }
+.t27-copy { position: absolute; top: 50%; width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: space-around; align-items: center; color: #fff; text-transform: uppercase; font-size: 12px; pointer-events: none; z-index: 10; opacity: 0; }
+@media (min-width: 768px) {
+  .t27-copy { flex-direction: row; justify-content: space-around; align-items: flex-start; }
+}
 .t27-blocks { position: absolute; width: 100%; height: 100vh; top: 0; left: 0; pointer-events: none; z-index: 50; }
 .t27-block { position: fixed; width: 50%; height: 100vh; z-index: 50; background: #fff; top: 0; }
 .t27-block-left { left: 0; }

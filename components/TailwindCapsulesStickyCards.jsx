@@ -284,7 +284,7 @@ export default function TailwindCapsulesStickyCards() {
   return (
     <div ref={containerRef} className="bg-[#F9F9F9] text-black font-sans overflow-x-hidden">
       <MenuOverlay isBlackText={true} />
-      <nav className="absolute top-0 w-full flex justify-between items-center z-50" style={{ padding: '2rem 4rem' }}>
+      <nav className="absolute top-0 w-full flex justify-between items-center z-50 px-6 py-6 md:px-16 md:py-8">
         <Link href="/" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#000', letterSpacing: '1px', textDecoration: 'none' }}>
           PANTHERS
         </Link>
@@ -292,9 +292,14 @@ export default function TailwindCapsulesStickyCards() {
           onClick={() => {
             window.dispatchEvent(new CustomEvent('panthers:toggleMenu'));
           }}
-          style={{ fontSize: '13px', fontWeight: 'bold', textTransform: 'uppercase', color: '#000', letterSpacing: '1px', cursor: 'pointer' }}
+          className="flex items-center gap-2"
+          style={{ cursor: 'pointer', color: '#000' }}
         >
-          MENU
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
         </div>
       </nav>
       <section className="relative flex flex-col gap-[25svh]">

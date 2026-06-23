@@ -2,9 +2,9 @@ import React from 'react';
 
 const images = [
   "/assets/stairs.png",
-  "/assets/ChatGPT Image Jun 11, 2026, 02_07_46 PM.png",
-  "/assets/ChatGPT Image Jun 11, 2026, 02_20_13 PM.png",
-  "/assets/ChatGPT Image Jun 11, 2026, 02_27_29 PM.png",
+  "/assets/insight1.png",
+  "/assets/insight2.png",
+  "/assets/insight3.png",
   "/assets/006860af-28a5-4018-a8fd-df7af6325db1.png"
 ];
 
