@@ -1,2 +1,0 @@
-import{t as e}from"./rolldown-runtime.BgUrT-U-.mjs";import{A as t,f as n,u as r,x as i}from"./react.Chv8kc2T.mjs";function a(e){return i((t,r)=>{let i=`${t.style?.backdropFilter||``} saturate(180%) brightness(150%) blur(10px)`.trim();return n(e,{ref:r,...t,style:{...t.style,backdropFilter:i}})})}var o=e((()=>{r(),t()}));export{a as n,o as t};
-//# sourceMappingURL=BackdropFilterSaturate.D6R627ns.mjs.map

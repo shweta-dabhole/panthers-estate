@@ -1,2 +1,0 @@
-import{t as e}from"./rolldown-runtime.BgUrT-U-.mjs";import{f as t,u as n}from"./react.Chv8kc2T.mjs";function r(e){return n=>t(e,{...n,style:{scrollbarWidth:`none`}})}var i=e((()=>{n()}));export{i as n,r as t};
-//# sourceMappingURL=NoScroll.VQDZzXBe.mjs.map
