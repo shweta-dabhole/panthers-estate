@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MenuOverlay from "@/components/MenuOverlay";
 import FAQAccordion from "@/components/FAQAccordion";
 import FooterSection from "@/components/FooterSection";
-import LuxuryHero from "@/components/LuxuryHero";
+import MorphogenesisHero from "@/components/MorphogenesisHero";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,27 +63,18 @@ export default function AboutUsPage() {
 
   return (
     <main ref={containerRef} className="bg-[#F9F9F9] text-[#0B0B0B] min-h-screen relative z-20 font-sans overflow-x-hidden">
-      <MenuOverlay isBlackText={true} />
+      <MenuOverlay isBlackText={false} />
 
 
       {/* NEW HERO SECTION */}
-      <LuxuryHero />
+      <MorphogenesisHero />
 
       {/* Container */}
       <div className="max-w-[1440px] mx-auto w-full px-6 md:px-16 lg:px-32 pb-32">
         
 
 
-        {/* Who Are We & Stats */}
-        <section className="flex flex-col items-center justify-center gap-16 mb-32 pt-16" style={{ marginTop: '9rem' }}>
-          <div className="flex flex-col items-center text-center max-w-[950px]">
-            <h2 className="text-5xl md:text-6xl font-medium leading-[1.15] tracking-tight text-center w-full text-[#111]" style={{ fontFamily: 'var(--font-sans), sans-serif', marginBottom: '40px' }}>Luxury Living, Designed for Life</h2>
-            <p className="text-xl md:text-[30px]" style={{ fontWeight: 400, color: '#191919', lineHeight: '1.5', margin: 0, opacity: 0.85 }}>
-              At Panthers, we believe a home is more than a space — it is where life’s most meaningful moments unfold. Our mission is to help you discover a residence that reflects your aspirations, values, and vision for the future. With trust, expertise, and attention to every detail, we create experiences that turn property journeys into lasting memories.
-            </p>
-          </div>
 
-        </section>
 
 
 

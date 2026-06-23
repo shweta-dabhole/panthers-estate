@@ -230,7 +230,7 @@ export default function FullScreenSliderCinema() {
         
         {/* Intro Process Text */}
         <div className="cg-process-intro absolute inset-0 flex items-center justify-center pointer-events-none p-4">
-          <h1 className="text-white text-center text-[28px] md:text-[40px] lg:text-[56px] font-medium uppercase tracking-widest font-['Poppins',sans-serif] max-w-5xl leading-tight">
+          <h1 className="text-white text-center text-[28px] md:text-[40px] lg:text-[56px] font-medium uppercase tracking-wider font-['Poppins',sans-serif] max-w-5xl leading-tight">
             THE PATH TO YOUR <br /> <span className="italic">DREAM HOME</span>
           </h1>
         </div>
