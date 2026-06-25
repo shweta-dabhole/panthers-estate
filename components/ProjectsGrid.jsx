@@ -293,8 +293,8 @@ export default function ProjectsGrid() {
         // Calculate the absolute initial strip position
         const stripWidth = (clientWidth - totalGaps) / numCards;
         const stripX = i * (stripWidth + stripGap);
-        // Move the strip downwards slightly to maintain a nice gap from the heading
-        const stripY = window.innerHeight * 0.75 - (stripHeight / 2);
+        // Move the strip upwards to reduce gap from the heading
+        const stripY = window.innerHeight * 0.70 - (stripHeight / 2);
         
         // Calculate placeholder top at scroll=0
         const pTopAtZero = pRect.top + scrollY;
@@ -351,11 +351,11 @@ export default function ProjectsGrid() {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        padding: '0 15vw',
+        padding: '6rem 15vw 0',
         boxSizing: 'border-box',
       }}>
         {/* Hero title stacked at top */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1, marginTop: '2rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1, marginTop: '4rem' }}>
           <h1 style={{
             textAlign: 'center',
             textTransform: 'uppercase',
