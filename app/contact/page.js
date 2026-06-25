@@ -14,7 +14,7 @@ export default function ContactPage() {
     <>
       <MenuOverlay isBlackText={true} />
       <Navbar />
-      <main className="bg-[#FFFFFF] text-[#0B0B0B] min-h-screen relative z-20 font-sans overflow-x-hidden" style={{ paddingTop: '5rem' }}>
+      <main className="bg-[#FFFFFF] text-[#0B0B0B] min-h-screen relative z-20 font-sans overflow-x-hidden" style={{ paddingTop: '8rem' }}>
         <div className="max-w-[1440px] mx-auto w-full" style={{ paddingLeft: '8rem', paddingRight: '8rem', paddingBottom: '8rem' }}>
         
         {/* Hero Section */}
