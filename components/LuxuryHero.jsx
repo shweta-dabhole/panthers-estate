@@ -1,11 +1,11 @@
-"use client";
+#1A1A1A"use client";
 
 import React from "react";
 import { motion } from "framer-motion";
 
 export default function LuxuryHero() {
   const headingText = "Where Luxury Meets \nYour Vision";
-  
+
   return (
     <section className="hero-expand-section relative w-full h-screen overflow-hidden bg-black flex items-center justify-center">
       {/* Overlay Header */}
@@ -13,7 +13,7 @@ export default function LuxuryHero() {
         <a href="/" className="pointer-events-auto" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#fff', letterSpacing: '1px', textDecoration: 'none' }}>
           PANTHERS
         </a>
-        <div 
+        <div
           onClick={() => {
             window.dispatchEvent(new CustomEvent('panthers:toggleMenu'));
           }}
@@ -40,7 +40,7 @@ export default function LuxuryHero() {
           repeatType: "reverse",
         }}
       >
-        <div 
+        <div
           className="absolute inset-0 w-full h-full bg-cover bg-center"
           style={{ backgroundImage: 'url("/assets/new villa.png")' }}
         />

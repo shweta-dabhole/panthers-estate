@@ -83,7 +83,7 @@ export default function MorphogenesisHero() {
     lenis.on("scroll", ScrollTrigger.update);
 
     const CONFIG = {
-      color: "#F9F9F9", // Matches AboutUs bg
+      color: "#FFFFFF", // Matches AboutUs bg
       spread: 0.5,
       speed: 2,
     };
@@ -228,24 +228,35 @@ export default function MorphogenesisHero() {
 
   return (
     <>
-      <section ref={containerRef} className="relative w-full h-[165svh] text-[#fec81d] bg-[#F9F9F9]" style={{ marginBottom: '-25svh' }}>
+      <section ref={containerRef} className="relative w-full h-[165svh] text-[#fec81d] bg-[#FFFFFF]" style={{ marginBottom: '-25svh' }}>
         {/* Overlay Header */}
         <div className="absolute top-0 left-0 w-full flex justify-between items-center z-[9999] pointer-events-none" style={{ padding: '2rem 4rem', backgroundColor: 'transparent', margin: 0, border: 'none' }}>
-          <a href="/" className="pointer-events-auto" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#C65A1E', letterSpacing: '1px', textDecoration: 'none' }}>
+          <a href="/" className="pointer-events-auto" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#E05A00', letterSpacing: '1px', textDecoration: 'none' }}>
             PANTHERS
           </a>
           <div 
             onClick={() => {
               if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('panthers:toggleMenu'));
             }}
-            className="flex items-center gap-2 pointer-events-auto"
-            style={{ cursor: 'pointer', color: '#C65A1E' }}
+            className="relative inline-flex items-center rounded-full border border-[#E05A00] group transition-all duration-300 pointer-events-auto cursor-pointer"
+            style={{ height: '48px', paddingLeft: '24px', paddingRight: '6px' }}
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="4" y1="12" x2="20" y2="12"></line>
-              <line x1="4" y1="6" x2="20" y2="6"></line>
-              <line x1="4" y1="18" x2="20" y2="18"></line>
-            </svg>
+            <span 
+              className="font-semibold text-[#E05A00]" 
+              style={{ fontSize: '15px', letterSpacing: '0.025em', fontFamily: "var(--font-poppins), 'Poppins', sans-serif", marginRight: '16px' }}
+            >
+              Menu
+            </span>
+            <div 
+              className="flex items-center justify-center rounded-full text-white transition-transform duration-300 group-hover:scale-105 flex-shrink-0"
+              style={{ width: '36px', height: '36px', backgroundColor: '#E05A00' }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="4" y1="12" x2="20" y2="12"></line>
+                <line x1="4" y1="6" x2="20" y2="6"></line>
+                <line x1="4" y1="18" x2="20" y2="18"></line>
+              </svg>
+            </div>
           </div>
         </div>
 

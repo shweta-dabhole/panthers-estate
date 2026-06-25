@@ -41,7 +41,7 @@ export default function ContactForm() {
         </p>
         <button
           onClick={() => setIsSubmitted(false)}
-          className="bg-[#0B0B0B] text-white font-semibold rounded-[16px] hover:bg-[#333333] transition-colors text-[1rem]"
+          className="bg-[#E05A00] text-white font-semibold rounded-[16px] hover:bg-[#C2410C] transition-colors text-[1rem]"
           style={{ padding: '16px 32px', marginTop: '32px' }}
         >
           Send Another Message
@@ -95,7 +95,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="bg-[#0B0B0B] text-white font-semibold rounded-[16px] hover:bg-[#333333] transition-colors text-[1rem] w-full disabled:opacity-70 flex items-center justify-center gap-2"
+          className="bg-[#E05A00] text-white font-semibold rounded-[16px] hover:bg-[#C2410C] transition-colors text-[1rem] w-full disabled:opacity-70 flex items-center justify-center gap-2"
           style={{ padding: '16px' }}
         >
           {isSubmitting ? (

@@ -13,24 +13,35 @@ export default function ContactPage() {
     <>
       <MenuOverlay isBlackText={true} />
       <nav className="absolute top-0 left-0 w-full flex justify-between items-center z-50 px-6 py-6 md:px-16 md:py-8">
-        <Link href="/" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#000', letterSpacing: '1px', textDecoration: 'none' }}>
+        <Link href="/" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#E05A00', letterSpacing: '1px', textDecoration: 'none' }}>
           PANTHERS
         </Link>
         <div 
           onClick={() => {
             window.dispatchEvent(new CustomEvent('panthers:toggleMenu'));
           }}
-          className="flex items-center gap-2"
-          style={{ cursor: 'pointer', color: '#000' }}
+          className="relative inline-flex items-center rounded-full border border-[#E05A00] group transition-all duration-300 pointer-events-auto cursor-pointer"
+          style={{ height: '48px', paddingLeft: '24px', paddingRight: '6px' }}
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="4" y1="12" x2="20" y2="12"></line>
-            <line x1="4" y1="6" x2="20" y2="6"></line>
-            <line x1="4" y1="18" x2="20" y2="18"></line>
-          </svg>
+          <span 
+            className="font-semibold text-[#E05A00]" 
+            style={{ fontSize: '15px', letterSpacing: '0.025em', fontFamily: "var(--font-poppins), 'Poppins', sans-serif", marginRight: '16px' }}
+          >
+            Menu
+          </span>
+          <div 
+            className="flex items-center justify-center rounded-full text-white transition-transform duration-300 group-hover:scale-105 flex-shrink-0"
+            style={{ width: '36px', height: '36px', backgroundColor: '#E05A00' }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="4" y1="12" x2="20" y2="12"></line>
+              <line x1="4" y1="6" x2="20" y2="6"></line>
+              <line x1="4" y1="18" x2="20" y2="18"></line>
+            </svg>
+          </div>
         </div>
       </nav>
-      <main className="bg-[#F9F9F9] text-[#0B0B0B] min-h-screen relative z-20 font-sans overflow-x-hidden" style={{ paddingTop: '5rem' }}>
+      <main className="bg-[#FFFFFF] text-[#0B0B0B] min-h-screen relative z-20 font-sans overflow-x-hidden" style={{ paddingTop: '5rem' }}>
         <div className="max-w-[1440px] mx-auto w-full" style={{ paddingLeft: '8rem', paddingRight: '8rem', paddingBottom: '8rem' }}>
         
         {/* Hero Section */}
@@ -69,7 +80,7 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-12 lg:mt-auto">
-              <div className="w-10 h-10 rounded-lg bg-[#111] border border-[#222] shadow-sm flex items-center justify-center" style={{ marginBottom: '24px' }}>
+              <div className="w-10 h-10 rounded-lg bg-[#E05A00] border border-transparent shadow-sm flex items-center justify-center" style={{ marginBottom: '24px' }}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
@@ -101,7 +112,7 @@ export default function ContactPage() {
             <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px', textTransform: 'none' }}>
               Everything you need to know about buying, selling, and renting with confidence.
             </p>
-            <button className="flex items-center justify-between self-start transition-all hover:bg-[#333]" style={{ backgroundColor: '#000000', color: '#fff', padding: '10px 10px 10px 32px', borderRadius: '50px', fontSize: '18px', fontWeight: 500, fontFamily: '"Roboto", sans-serif' }}>
+            <button className="flex items-center justify-between self-start transition-all hover:bg-[#C2410C]" style={{ backgroundColor: '#E05A00', color: '#fff', padding: '10px 10px 10px 32px', borderRadius: '50px', fontSize: '18px', fontWeight: 500, fontFamily: '"Roboto", sans-serif' }}>
               <span style={{ marginRight: '16px' }}>Get in Touch</span>
               <div className="flex items-center justify-center bg-white text-black" style={{ width: '44px', height: '44px', borderRadius: '50%' }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

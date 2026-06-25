@@ -18,7 +18,7 @@ const projectsData = [
 
 export default function ProjectsStrip() {
   return (
-    <section className="w-full bg-[#F9F9F9] pt-32 flex flex-col items-center justify-center relative z-20">
+    <section className="w-full bg-[#FFFFFF] pt-32 flex flex-col items-center justify-center relative z-20">
       <div className="flex flex-col items-center justify-center w-full px-4">
         <h1 
           className="text-center uppercase font-bold leading-[0.9] tracking-tighter text-[#1a1a1a] w-full" 
@@ -29,17 +29,17 @@ export default function ProjectsStrip() {
         <div className="flex justify-center w-full" style={{ marginTop: '4rem' }}>
           <Link 
             href="/projects" 
-            className="relative inline-flex items-center rounded-full border border-[#1a1a1a] group transition-all duration-300 hover:border-black whitespace-nowrap"
+            className="relative inline-flex items-center rounded-full border border-[#E05A00] group transition-all duration-300 hover:border-[#C2410C] whitespace-nowrap"
             style={{ height: '52px', paddingLeft: '32px', paddingRight: '6px' }}
           >
             <span 
-              className="font-semibold text-[#1a1a1a]" 
+              className="font-semibold text-[#E05A00]" 
               style={{ fontSize: '16px', letterSpacing: '0.025em', fontFamily: "var(--font-poppins), 'Poppins', sans-serif", marginRight: '24px' }}
             >
               View All
             </span>
             <div 
-              className="flex items-center justify-center bg-[#1a1a1a] rounded-full text-white transition-transform duration-300 group-hover:scale-105 flex-shrink-0"
+              className="flex items-center justify-center bg-[#E05A00] rounded-full text-white transition-transform duration-300 group-hover:scale-105 flex-shrink-0"
               style={{ width: '38px', height: '38px' }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

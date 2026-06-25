@@ -13,7 +13,7 @@ const duplicatedImages = [...images, ...images, ...images, ...images];
 
 const InsightsMarqueeSection = () => {
   return (
-    <section className="w-full pb-24 pt-0 overflow-hidden relative" style={{ backgroundColor: '#F9F9F9', fontFamily: '"Inter", sans-serif' }}>
+    <section className="w-full pb-24 pt-0 overflow-hidden relative" style={{ backgroundColor: '#FFFFFF', fontFamily: '"Inter", sans-serif' }}>
       
       {/* Marquee Row 1 (Scroll Left) */}
       <div className="w-full relative" style={{ marginBottom: '64px' }}>

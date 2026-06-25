@@ -465,7 +465,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="features" ref={sectionRef} className="w-full flex flex-col items-center relative z-10" style={{ backgroundColor: '#f9f9f9', padding: '200px 5% 120px 5%', marginTop: '-1px' }}>
+    <section id="features" ref={sectionRef} className="w-full flex flex-col items-center relative z-10" style={{ backgroundColor: '#FFFFFF', padding: '200px 5% 120px 5%', marginTop: '-1px' }}>
       {/* Header */}
       <div ref={headerRef} className="flex flex-col items-center text-center" style={{ maxWidth: '800px', marginBottom: '80px' }}>
 
@@ -669,7 +669,7 @@ const BlogsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="blog" className="w-full flex flex-col items-center" style={{ backgroundColor: '#f9f9f9', padding: '120px 5%' }}>
+    <section ref={sectionRef} id="blog" className="w-full flex flex-col items-center" style={{ backgroundColor: '#FFFFFF', padding: '120px 5%' }}>
       
       {/* Header Container */}
       <div className="w-full max-w-[1000px] flex flex-col relative" style={{ marginBottom: '80px' }}>
@@ -689,17 +689,17 @@ const BlogsSection = () => {
 
           {/* View All Button */}
           <button 
-            className="group flex items-center justify-center transition-all duration-300 hover:bg-black hover:text-white"
+            className="group flex items-center justify-center transition-all duration-300 hover:bg-[#E05A00] hover:text-white"
             style={{ 
               padding: '12px 24px', 
               borderRadius: '30px', 
-              border: '1px solid #191919',
+              border: '1px solid #E05A00',
               backgroundColor: 'transparent',
               marginTop: '24px'
             }}
           >
-            <span style={{ fontSize: '16px', fontWeight: 500, color: '#191919', fontFamily: '"Roboto", sans-serif', marginRight: '12px' }}>View All</span>
-            <div className="flex items-center justify-center bg-black group-hover:bg-white text-white group-hover:text-black transition-colors duration-300" style={{ width: '28px', height: '28px', borderRadius: '50%' }}>
+            <span style={{ fontSize: '16px', fontWeight: 500, color: '#E05A00', fontFamily: '"Roboto", sans-serif', marginRight: '12px' }}>View All</span>
+            <div className="flex items-center justify-center bg-[#E05A00] group-hover:bg-white text-white group-hover:text-[#E05A00] transition-colors duration-300" style={{ width: '28px', height: '28px', borderRadius: '50%' }}>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14"></path>
                 <path d="M12 5l7 7-7 7"></path>
@@ -820,7 +820,7 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full flex flex-col items-center overflow-hidden" style={{ backgroundColor: '#f9f9f9', padding: '120px 5%' }}>
+    <section ref={sectionRef} className="w-full flex flex-col items-center overflow-hidden" style={{ backgroundColor: '#FFFFFF', padding: '120px 5%' }}>
       <div ref={headerRef} className="w-full max-w-[1000px] flex flex-col relative" style={{ marginBottom: '100px' }}>
 
         <h2 className="text-4xl md:text-[56px]" style={{ fontWeight: 500, color: '#191919', fontFamily: 'var(--font-poppins), sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '16px' }}>What Our Clients says</h2>
@@ -935,7 +935,7 @@ export const FaqsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full flex flex-col items-center" style={{ backgroundColor: '#f9f9f9', padding: '120px 5%' }}>
+    <section ref={sectionRef} className="w-full flex flex-col items-center" style={{ backgroundColor: '#FFFFFF', padding: '120px 5%' }}>
       <div className="w-full max-w-[1000px] flex flex-col md:flex-row items-start justify-between" style={{ gap: '80px' }}>
         
         {/* Left Column */}
@@ -950,7 +950,7 @@ export const FaqsSection = () => {
             Everything you need to know about buying, selling, and renting with confidence.
           </p>
 
-          <button className="flex items-center justify-between self-start transition-all hover:bg-[#333]" style={{ backgroundColor: '#000000', color: '#fff', padding: '10px 10px 10px 32px', borderRadius: '50px', fontSize: '18px', fontWeight: 500, fontFamily: '"Roboto", sans-serif' }}>
+          <button className="flex items-center justify-between self-start transition-all hover:bg-[#C2410C]" style={{ backgroundColor: '#E05A00', color: '#fff', padding: '10px 10px 10px 32px', borderRadius: '50px', fontSize: '18px', fontWeight: 500, fontFamily: '"Roboto", sans-serif' }}>
             <span style={{ marginRight: '16px' }}>Get in Touch</span>
             <div className="flex items-center justify-center bg-white text-black" style={{ width: '44px', height: '44px', borderRadius: '50%' }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -1643,7 +1643,7 @@ export default function Home() {
           id="about"
           ref={aboutSectionRef}
           className="relative w-full flex flex-col items-center overflow-hidden"
-          style={{ paddingTop: '100px', paddingBottom: '100px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Roboto", sans-serif' }}
+          style={{ paddingTop: '100px', paddingBottom: '100px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#FFFFFF', fontFamily: '"Roboto", sans-serif' }}
         >
 
 
@@ -1665,7 +1665,7 @@ export default function Home() {
           id="properties"
           ref={featuredSectionRef}
           className="relative w-full flex flex-col items-center overflow-hidden"
-          style={{ paddingBottom: '100px', paddingTop: '200px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#f9f9f9', fontFamily: '"Roboto", sans-serif' }}
+          style={{ paddingBottom: '100px', paddingTop: '200px', paddingLeft: '5%', paddingRight: '5%', backgroundColor: '#FFFFFF', fontFamily: '"Roboto", sans-serif' }}
         >
           <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end" style={{ maxWidth: '1000px', marginBottom: '80px' }}>
             
@@ -1682,9 +1682,9 @@ export default function Home() {
 
             {/* Right Button */}
             <Link href="/projects" className="featured-header mt-8 md:mt-0 flex-none cursor-pointer group block">
-              <div className="flex items-center justify-between transition-all duration-300 hover:bg-[#ebebeb]" style={{ height: '48px', padding: '6px 6px 6px 24px', borderRadius: '229px', border: '1px solid #191919', backgroundColor: 'transparent' }}>
-                <span style={{ fontSize: '15px', fontWeight: 500, color: '#191919', marginRight: '20px' }}>View All</span>
-                <div className="flex items-center justify-center bg-[#191919] transition-colors duration-300" style={{ width: '36px', height: '36px', borderRadius: '50%' }}>
+              <div className="flex items-center justify-between transition-all duration-300 hover:bg-[#fff0e5]" style={{ height: '48px', padding: '6px 6px 6px 24px', borderRadius: '229px', border: '1px solid #E05A00', backgroundColor: 'transparent' }}>
+                <span style={{ fontSize: '15px', fontWeight: 500, color: '#E05A00', marginRight: '20px' }}>View All</span>
+                <div className="flex items-center justify-center bg-[#E05A00] transition-colors duration-300" style={{ width: '36px', height: '36px', borderRadius: '50%' }}>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="#fff">
                     <path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"></path>
                   </svg>

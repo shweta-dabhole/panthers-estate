@@ -282,7 +282,7 @@ export default function TailwindCapsulesStickyCards() {
   };
 
   return (
-    <div ref={containerRef} className="bg-[#F9F9F9] text-black font-sans overflow-x-hidden">
+    <div ref={containerRef} className="bg-[#FFFFFF] text-black font-sans overflow-x-hidden">
       <MenuOverlay isBlackText={true} />
       <nav className="absolute top-0 w-full flex justify-between items-center z-50 px-6 py-6 md:px-16 md:py-8">
         <Link href="/" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#000', letterSpacing: '1px', textDecoration: 'none' }}>

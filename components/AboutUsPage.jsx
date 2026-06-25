@@ -62,7 +62,7 @@ export default function AboutUsPage() {
   }, []);
 
   return (
-    <main ref={containerRef} className="bg-[#F9F9F9] text-[#0B0B0B] min-h-screen relative z-20 font-sans overflow-x-hidden">
+    <main ref={containerRef} className="bg-[#FFFFFF] text-[#0B0B0B] min-h-screen relative z-20 font-sans overflow-x-hidden">
       <MenuOverlay isBlackText={false} />
 
 
@@ -125,7 +125,7 @@ export default function AboutUsPage() {
               <p style={{ fontSize: '18px', color: '#757575', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px', textTransform: 'none' }}>
                 Everything you need to know about buying, selling, and renting with confidence.
               </p>
-              <a href="/contact" className="flex items-center justify-between self-start transition-all hover:bg-[#333]" style={{ backgroundColor: '#000000', color: '#fff', padding: '10px 10px 10px 32px', borderRadius: '50px', fontSize: '18px', fontWeight: 500, fontFamily: '"Roboto", sans-serif' }}>
+              <a href="/contact" className="flex items-center justify-between self-start transition-all hover:bg-[#C2410C]" style={{ backgroundColor: '#E05A00', color: '#fff', padding: '10px 10px 10px 32px', borderRadius: '50px', fontSize: '18px', fontWeight: 500, fontFamily: '"Roboto", sans-serif' }}>
                 <span style={{ marginRight: '16px' }}>Get in Touch</span>
                 <div className="flex items-center justify-center bg-white text-black" style={{ width: '44px', height: '44px', borderRadius: '50%' }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
