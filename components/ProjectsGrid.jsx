@@ -156,7 +156,7 @@ function ProjectCard({ project, index, total }) {
             top: 0, left: 0,
             width: '100%', height: '100%',
             overflow: 'hidden',
-            borderRadius: '16px', // Rounded corners to match screenshot
+            borderRadius: '0px', // Sharp corners in strip
             transformOrigin: 'top left',
             zIndex: 5,
           }}
@@ -195,14 +195,14 @@ function ProjectCard({ project, index, total }) {
         </div>
       </div>
 
-      {/* Label below image — fades in after reveal */}
+      {/* Label below image */}
       <div
         className="project-card-label"
         style={{
           display: 'flex', flexDirection: 'column', gap: '0.5rem',
           marginTop: '1.25rem',
           fontFamily: '"Roboto", sans-serif',
-          opacity: 0, // initially hidden
+          opacity: 0,
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -235,6 +235,7 @@ function ProjectCard({ project, index, total }) {
 export default function ProjectsGrid() {
   const [activeFilter, setActiveFilter] = useState("All");
   const gridRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   const filterOptions = [
     { id: "Residential", label: "Résidentiel" },
@@ -271,15 +272,15 @@ export default function ProjectsGrid() {
         scrollTrigger: {
           trigger: '.projects-page-wrapper',
           start: 'top top',
-          end: '+=1000', // Scroll distance for transition to complete
-          scrub: 1,
+          end: '+=200', // Short distance so it finishes while still on screen
+          scrub: 1,     // Scrub allows the animation to reverse when scrolling back up!
         }
       });
 
       const numCards = placeholders.length;
       const clientWidth = document.documentElement.clientWidth;
       // Define the strip at the bottom of the viewport
-      const stripHeight = window.innerHeight * 0.25; // 25vh height
+      const stripHeight = window.innerHeight * 0.28; // 28vh height
       const stripGap = 16; // 16px gap between images
       const totalGaps = numCards > 1 ? (numCards - 1) * stripGap : 0;
       
@@ -304,13 +305,14 @@ export default function ProjectsGrid() {
         const deltaX = stripX - pLeftAtZero;
         const deltaY = stripY - pTopAtZero;
 
+        // Use width/height to allow them to be tall rectangles in the strip!
         // Initial strip state
         gsap.set(aCard, {
           x: deltaX,
           y: deltaY,
           width: stripWidth,
           height: stripHeight,
-          borderRadius: 0,
+          borderRadius: 0, // No border radius in the strip
         });
 
         // Animate to natural grid state
@@ -321,24 +323,25 @@ export default function ProjectsGrid() {
           height: pRect.height,
           borderRadius: 4,
           ease: 'power1.inOut',
+          duration: 1,
         }, 0);
 
-        // Fade in labels
+        // Fade in labels flawlessly
         if (labels[i]) {
           tl.to(labels[i], {
             opacity: 1,
-            duration: 0.4,
-            ease: 'power2.in',
-          }, 0.6); // Starts later in the scrub
+            duration: 1, // Matches the image animation exactly
+            ease: 'power1.inOut',
+          }, 0); // Starts immediately with the image
         }
       });
-    }, gridRef);
+    }, wrapperRef);
 
     return () => ctx.revert();
   }, [activeFilter]);
 
   return (
-    <div className="projects-page-wrapper w-full bg-[#FFFFFF] select-none relative overflow-x-hidden" style={{ backgroundColor: '#FFFFFF' }}>
+    <div ref={wrapperRef} className="projects-page-wrapper w-full bg-[#FFFFFF] select-none relative overflow-x-hidden" style={{ backgroundColor: '#FFFFFF' }}>
       <MenuOverlay isBlackText={true} />
       <Navbar />
       {/* 2. Hero section — full viewport height, flex col centered */}
@@ -377,9 +380,7 @@ export default function ProjectsGrid() {
       </section>
 
       {/* 3. Project Grid */}
-      <div style={{ padding: '0 15vw 6.25rem', maxWidth: '1440px', margin: '0 auto' }}>
-
-
+      <div style={{ position: 'relative', zIndex: 20, padding: '4rem 15vw 6.25rem', maxWidth: '1440px', margin: '0 auto' }}>
         {/* Two-Column Aligned Grid */}
         <div ref={gridRef} style={{ display: 'flex', flexDirection: 'row', gap: '6rem', width: '100%', alignItems: 'flex-start' }}>
           {/* Left Column */}
