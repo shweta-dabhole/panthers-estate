@@ -63,7 +63,7 @@ export default function FooterSection() {
           />
           <button
             className="transition-transform hover:scale-105"
-            style={{ backgroundColor: '#ffffff', color: '#191919', padding: '16px 36px', borderRadius: '40px', fontSize: '16px', fontWeight: 600, fontFamily: '"Roboto", sans-serif' }}
+            style={{ backgroundColor: '#E05A00', color: '#ffffff', padding: '16px 36px', borderRadius: '40px', fontSize: '16px', fontWeight: 600, fontFamily: '"Roboto", sans-serif' }}
           >
             Subscribe
           </button>
@@ -75,12 +75,26 @@ export default function FooterSection() {
 
         {/* Left */}
         <div className="flex flex-col" style={{ maxWidth: '300px' }}>
-          <h3 style={{ fontSize: '32px', fontWeight: 600, color: '#ffffff', fontFamily: '"Outfit", sans-serif', marginBottom: '16px' }}>
+          <h3 style={{ fontSize: '32px', fontWeight: 600, color: '#E05A00', fontFamily: '"Outfit", sans-serif', marginBottom: '16px' }}>
             Panthers
           </h3>
-          <p style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, marginBottom: '24px' }}>
             Begin Your Journey Toward Your Dream Home Today.
           </p>
+          <div className="flex" style={{ gap: '16px' }}>
+            <a href="#" className="flex items-center justify-center rounded-full transition-colors duration-300 bg-white/5 border border-white/10 text-white hover:bg-[#E05A00] hover:border-[#E05A00]" style={{ width: '44px', height: '44px' }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+            <a href="#" className="flex items-center justify-center rounded-full transition-colors duration-300 bg-white/5 border border-white/10 text-white hover:bg-[#E05A00] hover:border-[#E05A00]" style={{ width: '44px', height: '44px' }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </a>
+            <a href="#" className="flex items-center justify-center rounded-full transition-colors duration-300 bg-white/5 border border-white/10 text-white hover:bg-[#E05A00] hover:border-[#E05A00]" style={{ width: '44px', height: '44px' }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+            </a>
+            <a href="#" className="flex items-center justify-center rounded-full transition-colors duration-300 bg-white/5 border border-white/10 text-white hover:bg-[#E05A00] hover:border-[#E05A00]" style={{ width: '44px', height: '44px' }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
         </div>
 
         {/* Right Links */}
@@ -93,8 +107,9 @@ export default function FooterSection() {
               {[
                 { name: 'Home', href: '/' },
                 { name: 'Projects', href: '/projects' },
+                { name: 'Process', href: '/process' },
                 { name: 'About', href: '/about-us' },
-                { name: 'Blogs', href: '/blogs' }
+                { name: 'Contact', href: '/contact' }
               ].map(link => (
                 <a key={link.name} href={link.href} style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
                   {link.name}

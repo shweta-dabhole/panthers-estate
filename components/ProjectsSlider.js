@@ -11,7 +11,7 @@ const projectsData = [
     location: "Levallois",
     tag: "Résidentiel",
     year: "2025",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     leftImg: "/assets/images/69a858ffb31f5a2c4b0240d9_MERSI%20x%20LEVALLOIS-9.webp",
     rightImg: "/assets/images/69a859206f8dac87c4c0b553_MERSI%20x%20LEVALLOIS-2%20(1).webp",
   },

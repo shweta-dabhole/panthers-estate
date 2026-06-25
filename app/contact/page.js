@@ -7,40 +7,13 @@ import MenuOverlay from "@/components/MenuOverlay";
 import FooterSection from "@/components/FooterSection";
 import ContactForm from "@/components/ContactForm";
 import FAQAccordion from "@/components/FAQAccordion";
+import Navbar from "@/components/Navbar";
 
 export default function ContactPage() {
   return (
     <>
       <MenuOverlay isBlackText={true} />
-      <nav className="absolute top-0 left-0 w-full flex justify-between items-center z-50 px-6 py-6 md:px-16 md:py-8">
-        <Link href="/" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#E05A00', letterSpacing: '1px', textDecoration: 'none' }}>
-          PANTHERS
-        </Link>
-        <div 
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent('panthers:toggleMenu'));
-          }}
-          className="relative inline-flex items-center rounded-full border border-[#E05A00] group transition-all duration-300 pointer-events-auto cursor-pointer"
-          style={{ height: '48px', paddingLeft: '24px', paddingRight: '6px' }}
-        >
-          <span 
-            className="font-semibold text-[#E05A00]" 
-            style={{ fontSize: '15px', letterSpacing: '0.025em', fontFamily: "var(--font-poppins), 'Poppins', sans-serif", marginRight: '16px' }}
-          >
-            Menu
-          </span>
-          <div 
-            className="flex items-center justify-center rounded-full text-white transition-transform duration-300 group-hover:scale-105 flex-shrink-0"
-            style={{ width: '36px', height: '36px', backgroundColor: '#E05A00' }}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="4" y1="12" x2="20" y2="12"></line>
-              <line x1="4" y1="6" x2="20" y2="6"></line>
-              <line x1="4" y1="18" x2="20" y2="18"></line>
-            </svg>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
       <main className="bg-[#FFFFFF] text-[#0B0B0B] min-h-screen relative z-20 font-sans overflow-x-hidden" style={{ paddingTop: '5rem' }}>
         <div className="max-w-[1440px] mx-auto w-full" style={{ paddingLeft: '8rem', paddingRight: '8rem', paddingBottom: '8rem' }}>
         

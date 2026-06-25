@@ -8,6 +8,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import MenuOverlay from "../components/MenuOverlay";
+import ProjectsGrid from "../components/ProjectsGrid";
+import FooterSection from "../components/FooterSection";
+import Navbar from "../components/Navbar";
 
 const SplitTextChars = ({ text }) => {
   return text.split('').map((char, index) => (
@@ -856,12 +859,12 @@ const TestimonialsSection = () => {
             ))}
           </div>
           
-          <div className="flex items-center" style={{ gap: '16px', marginTop: '32px' }}>
-            <button onClick={handlePrev} aria-label="Previous Testimonial" className="flex items-center justify-center bg-[#191919] text-white hover:bg-black transition-colors" style={{ width: '48px', height: '48px', borderRadius: '50%' }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+          <div className="flex gap-4 z-10" style={{ marginTop: '32px' }}>
+            <button onClick={handlePrev} aria-label="Previous Testimonial" className="flex items-center justify-center bg-[#E05A00] text-white hover:bg-[#C2410C] transition-colors" style={{ width: '48px', height: '48px', borderRadius: '50%' }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
-            <button onClick={handleNext} aria-label="Next Testimonial" className="flex items-center justify-center bg-[#191919] text-white hover:bg-black transition-colors" style={{ width: '48px', height: '48px', borderRadius: '50%' }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+            <button onClick={handleNext} aria-label="Next Testimonial" className="flex items-center justify-center bg-[#E05A00] text-white hover:bg-[#C2410C] transition-colors" style={{ width: '48px', height: '48px', borderRadius: '50%' }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
           </div>
         </div>
@@ -990,125 +993,7 @@ export const FaqsSection = () => {
   );
 };
 
-export const FooterSection = () => {
-  const sectionRef = useRef(null);
-  const topRef = useRef(null);
-  const bottomRef = useRef(null);
 
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.fromTo(topRef.current.children,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out", scrollTrigger: { trigger: sectionRef.current, start: "top 75%" } }
-      );
-      gsap.fromTo(bottomRef.current.children,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out", scrollTrigger: { trigger: sectionRef.current, start: "top 50%" } }
-      );
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
-
-  return (
-    <footer ref={sectionRef} className="w-full relative flex flex-col items-center overflow-hidden" style={{ minHeight: '700px', padding: '100px 5% 60px 5%' }}>
-      
-      {/* Background Image */}
-      <div className="absolute inset-0 w-full h-full z-0">
-        <img src="/assets/BBK7G2W0GpZei2zukI6jNqEI6X4.jpeg" alt="Footer Background" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#0a0a0a]"></div>
-      </div>
-
-      {/* Top: Newsletter */}
-      <div ref={topRef} className="relative z-10 w-full max-w-[800px] flex flex-col items-center text-center" style={{ marginTop: '40px' }}>
-        <h2 className="text-4xl md:text-[56px]" style={{ fontWeight: 500, color: '#ffffff', fontFamily: '"Outfit", sans-serif', lineHeight: 1.1, letterSpacing: '-1px', marginBottom: '20px' }}>
-          Join Our News Letter
-        </h2>
-        <p style={{ fontSize: '18px', color: '#e5e5e5', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6, marginBottom: '40px', maxWidth: '400px' }}>
-          Stay informed. Get the best local<br />real estate updates without the fluff.
-        </p>
-
-        {/* Form Container */}
-        <div className="flex items-center flex-col md:flex-row" style={{ gap: '16px' }}>
-          <input 
-            type="email" 
-            placeholder="Enter Your Email"
-            aria-label="Enter Your Email"
-            className="outline-none placeholder-gray-300"
-            style={{ 
-              backgroundColor: 'rgba(0, 0, 0, 0.4)', 
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              color: '#ffffff',
-              padding: '16px 24px',
-              borderRadius: '40px',
-              width: '100%',
-              maxWidth: '340px',
-              fontSize: '16px',
-              fontFamily: '"Roboto", sans-serif'
-            }}
-          />
-          <button className="transition-transform hover:scale-105 w-full md:w-auto" style={{ backgroundColor: '#ffffff', color: '#191919', padding: '16px 36px', borderRadius: '40px', fontSize: '16px', fontWeight: 600, fontFamily: '"Roboto", sans-serif' }}>
-            Subscribe
-          </button>
-        </div>
-      </div>
-
-      {/* Bottom: Footer Links */}
-      <div ref={bottomRef} className="relative z-10 w-full max-w-[1200px] flex flex-col md:flex-row justify-between items-start" style={{ marginTop: 'auto', paddingTop: '120px' }}>
-        
-        {/* Left Side */}
-        <div className="flex flex-col" style={{ maxWidth: '300px' }}>
-          <h3 style={{ fontSize: '32px', fontWeight: 600, color: '#ffffff', fontFamily: '"Outfit", sans-serif', marginBottom: '16px' }}>
-            Panthers
-          </h3>
-          <p style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', lineHeight: 1.6 }}>
-            Start your exciting journey to<br />homeownership right here.
-          </p>
-        </div>
-
-        {/* Right Side Links */}
-        <div className="flex flex-col md:flex-row gap-[60px] md:gap-[120px] mt-[40px] md:mt-0">
-          
-          <div className="flex flex-col">
-            <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', fontFamily: '"Roboto", sans-serif', marginBottom: '32px' }}>
-              Main Pages
-            </h4>
-            <div className="flex flex-col" style={{ gap: '20px' }}>
-              {[
-                { name: 'Home', href: '/' },
-                { name: 'Projects', href: '/projects' },
-                { name: 'About', href: '/about-us' },
-                { name: 'Blogs', href: '/blogs' }
-              ].map(link => (
-                <a key={link.name} href={link.href} style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
-                  {link.name}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex flex-col">
-            <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#ffffff', fontFamily: '"Roboto", sans-serif', marginBottom: '32px' }}>
-              Other pages
-            </h4>
-            <div className="flex flex-col" style={{ gap: '20px' }}>
-              {[
-                { name: '404', href: '/404' },
-                { name: 'Privacy Policy', href: '/privacy-policy' },
-                { name: 'Terms & Conditions', href: '/terms-conditions' }
-              ].map(link => (
-                <a key={link.name} href={link.href} style={{ fontSize: '16px', color: '#a3a3a3', fontFamily: '"Roboto", sans-serif', transition: 'color 0.3s' }} className="hover:text-white">
-                  {link.name}
-                </a>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </footer>
-  );
-};
 
 
 // --- NEW HERO SECTION --- //
@@ -1336,10 +1221,7 @@ const HeroSection = () => {
         <div className="tag tag-3 uppercase font-medium"><SplitTextWrapper text="Prime Locations" type="words" /></div>
       </div>
       <div className="hero-container container">
-        <nav className="absolute top-0 left-0 w-full z-10 text-white flex justify-between p-8">
-          <p id="logo" className="font-semibold text-xl">Panthers</p>
-          <p>Menu</p>
-        </nav>
+        <Navbar isWhiteText={true} />
         <div className="hero-img absolute w-full h-full inset-0">
           <img src="/assets/BBK7G2W0GpZei2zukI6jNqEI6X4.jpeg" alt="Panthers Hero" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black bg-opacity-30"></div>

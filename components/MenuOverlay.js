@@ -263,15 +263,21 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
 
       {/* Overlay Menu */}
       <div className="menu-overlay" ref={menuOverlayRef}>
-        <div 
-          onClick={toggleMenu}
-          className="absolute top-8 right-8 md:top-12 md:right-12 z-[120] cursor-pointer hover:opacity-70 transition-opacity"
-          style={{ width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.1)' }}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
+        {/* PANTHERS Logo and Close Button to match underlying page */}
+        <div className="absolute top-0 left-0 w-full flex justify-between items-center z-[120] pointer-events-none" style={{ padding: '2rem 4rem' }}>
+          <Link href="/" className="pointer-events-auto" onClick={(e) => handleNavClick(e, '/')} style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#E05A00', letterSpacing: '1px', textDecoration: 'none' }}>
+            PANTHERS
+          </Link>
+          <div 
+            onClick={toggleMenu}
+            className="pointer-events-auto cursor-pointer transition-transform duration-300 hover:scale-105"
+            style={{ width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '50%', backgroundColor: '#E05A00' }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </div>
         </div>
         <div className="menu-content" ref={menuContentRef}>
           <div className="menu-items">
@@ -297,16 +303,6 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
                 <div className="link" onMouseEnter={() => handleLinkHover('/assets/home%201.jpg')}>
                   <a data-taxi-ignore href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>Contact</a>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div className="menu-footer">
-            <div className="col-lg">
-              <div className="menu-socials">
-                <div className="social"><a href="#">Behance</a></div>
-                <div className="social"><a href="#">Dribbble</a></div>
-                <div className="social"><a href="#">LinkedIn</a></div>
-                <div className="social"><a href="#">Instagram</a></div>
               </div>
             </div>
           </div>

@@ -5,6 +5,7 @@ import gsap from "gsap";
 import Link from "next/link";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MenuOverlay from "./MenuOverlay";
+import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
 
 const projectsData = [
@@ -14,7 +15,7 @@ const projectsData = [
     location: "Levallois",
     filterName: "Residential",
     year: "2025",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     price: "$1,600,000", bedrooms: 5, bathrooms: 5, sqft: "4,500",
     img: "/assets/new villa.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png"
@@ -113,7 +114,7 @@ const projectsData = [
     location: "Levallois",
     filterName: "Residential",
     year: "2025",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     price: "$1,600,000", bedrooms: 5, bathrooms: 5, sqft: "4,500",
     img: "/assets/new villa 8.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png"
@@ -293,7 +294,7 @@ export default function ProjectsGrid() {
         const stripWidth = (clientWidth - totalGaps) / numCards;
         const stripX = i * (stripWidth + stripGap);
         // Move the strip downwards slightly to maintain a nice gap from the heading
-        const stripY = window.innerHeight * 0.65 - (stripHeight / 2);
+        const stripY = window.innerHeight * 0.75 - (stripHeight / 2);
         
         // Calculate placeholder top at scroll=0
         const pTopAtZero = pRect.top + scrollY;
@@ -337,50 +338,24 @@ export default function ProjectsGrid() {
   }, [activeFilter]);
 
   return (
-    <div className="projects-page-wrapper w-full bg-[#EDE7DE] select-none relative overflow-x-hidden" style={{ backgroundColor: '#EDE7DE' }}>
+    <div className="projects-page-wrapper w-full bg-[#FFFFFF] select-none relative overflow-x-hidden" style={{ backgroundColor: '#FFFFFF' }}>
       <MenuOverlay isBlackText={true} />
-      <nav className="absolute top-0 w-full flex justify-between items-center z-50" style={{ padding: '2rem 4rem' }}>
-        <Link href="/" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#E05A00', letterSpacing: '1px', textDecoration: 'none' }}>
-          PANTHERS
-        </Link>
-        <div 
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent('panthers:toggleMenu'));
-          }}
-          className="relative inline-flex items-center rounded-full border border-[#E05A00] group transition-all duration-300 pointer-events-auto cursor-pointer"
-          style={{ height: '48px', paddingLeft: '24px', paddingRight: '6px' }}
-        >
-          <span 
-            className="font-semibold text-[#E05A00]" 
-            style={{ fontSize: '15px', letterSpacing: '0.025em', fontFamily: "var(--font-poppins), 'Poppins', sans-serif", marginRight: '16px' }}
-          >
-            Menu
-          </span>
-          <div 
-            className="flex items-center justify-center rounded-full text-white transition-transform duration-300 group-hover:scale-105 flex-shrink-0"
-            style={{ width: '36px', height: '36px', backgroundColor: '#E05A00' }}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="4" y1="12" x2="20" y2="12"></line>
-              <line x1="4" y1="6" x2="20" y2="6"></line>
-              <line x1="4" y1="18" x2="20" y2="18"></line>
-            </svg>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
       {/* 2. Hero section — full viewport height, flex col centered */}
       <section style={{
+        position: 'relative',
         width: '100%',
-        minHeight: '100vh',
+        minHeight: '40vh',
+        backgroundColor: '#FFFFFF',
+        overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'stretch',
-        padding: '11.25rem 0.625rem 0.625rem',
+        justifyContent: 'center',
+        padding: '0 15vw',
         boxSizing: 'border-box',
       }}>
         {/* Hero title stacked at top */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', flex: 1, marginTop: '-4rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1, marginTop: '2rem' }}>
           <h1 style={{
             textAlign: 'center',
             textTransform: 'uppercase',

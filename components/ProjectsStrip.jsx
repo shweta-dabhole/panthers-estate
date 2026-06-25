@@ -21,8 +21,8 @@ export default function ProjectsStrip() {
     <section className="w-full bg-[#FFFFFF] pt-32 flex flex-col items-center justify-center relative z-20">
       <div className="flex flex-col items-center justify-center w-full px-4">
         <h1 
-          className="text-center uppercase font-bold leading-[0.9] tracking-tighter text-[#1a1a1a] w-full" 
-          style={{ fontSize: "36px", fontFamily: "var(--font-poppins), 'Poppins', sans-serif" }}
+          className="text-center uppercase font-bold leading-[0.9] tracking-tighter text-[#1a1a1a] w-full text-[32px] md:text-[48px] lg:text-[56px]" 
+          style={{ fontFamily: "var(--font-poppins), 'Poppins', sans-serif" }}
         >
           Explore Exclusive<br/>Luxury Properties<br/>Designed For You
         </h1>

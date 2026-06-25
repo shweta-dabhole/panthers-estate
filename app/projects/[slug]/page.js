@@ -5,6 +5,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import Navbar from "@/components/Navbar";
+import MenuOverlay from "@/components/MenuOverlay";
 
 const projectsData = [
   {
@@ -13,7 +15,7 @@ const projectsData = [
     location: "Levallois",
     filterName: "Residential",
     year: "2025",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     img: "/assets/new villa.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png",
     areaVal: "5000 SQ.FT",
@@ -51,7 +53,7 @@ const projectsData = [
     location: "Paris 8",
     filterName: "Hospitality",
     year: "2025",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     img: "/assets/new villa.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x MAURICE_-10.png",
     areaVal: "5000 SQ.FT",
@@ -89,7 +91,7 @@ const projectsData = [
     location: "Paris 8",
     filterName: "Residential",
     year: "2025",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     img: "/assets/new villa.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSIxBERRI-16 (1).png",
     areaVal: "5000 SQ.FT",
@@ -127,7 +129,7 @@ const projectsData = [
     location: "Paris 17",
     filterName: "Hospitality",
     year: "2025",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     img: "/assets/new villa.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_1.png",
     areaVal: "5000 SQ.FT",
@@ -165,7 +167,7 @@ const projectsData = [
     location: "Paris 7",
     filterName: "Residential",
     year: "2025",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     img: "/assets/new villa.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_2.png",
     areaVal: "5000 SQ.FT",
@@ -203,7 +205,7 @@ const projectsData = [
     location: "Paris 6",
     filterName: "Residential",
     year: "2025",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     img: "/assets/new villa.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L_3.png",
     areaVal: "5000 SQ.FT",
@@ -241,7 +243,7 @@ const projectsData = [
     location: "Levallois",
     filterName: "Retail",
     year: "2025",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     img: "/assets/new villa.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x AURÉLIEN COHEN-1 copie (1).png",
     areaVal: "5000 SQ.FT",
@@ -279,7 +281,7 @@ const projectsData = [
     location: "Paris 15",
     filterName: "Residential",
     year: "2025",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     img: "/assets/new villa.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/Cover L.png",
     areaVal: "5000 SQ.FT",
@@ -317,7 +319,7 @@ const projectsData = [
     location: "Paris 1",
     filterName: "Residential",
     year: "2024",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     img: "/assets/new villa.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/CC_MERSI x RUE DE LA PAIX-16.png",
     areaVal: "5000 SQ.FT",
@@ -355,7 +357,7 @@ const projectsData = [
     location: "Levallois",
     filterName: "Residential",
     year: "2025",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     img: "/assets/new villa 8.png",
     hoverImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png",
     areaVal: "5000 SQ.FT",
@@ -490,6 +492,8 @@ export default function ProjectDetail() {
 
   return (
     <div ref={wrapperRef} style={{ width: '100%' }}>
+    <Navbar />
+    <MenuOverlay isBlackText={false} />
     <div ref={containerRef} style={{ width: '100%', height: '100vh', backgroundColor: '#EDE7DE', overflow: 'hidden' }}>
       
       {/* THE ENTIRE PAGE IS ONE HORIZONTAL ROW */}
@@ -514,7 +518,7 @@ export default function ProjectDetail() {
             flexDirection: 'column',
             justifyContent: 'space-between',
             padding: '2.5rem',
-            color: '#1a1a1a',
+            color: '#ffffff',
             boxSizing: 'border-box',
             flexShrink: 0
           }}

@@ -12,7 +12,7 @@ const projectsData = [
     location: "Levallois",
     tag: "Résidentiel",
     year: "2025",
-    color: "hsla(16, 58.87%, 42.88%, 1.00)",
+    color: "#E05A00",
     slug: "velora",
     leftImg: "/mersi-scraped-site/www.mersi-architecture.com/assets/MERSI x LEVALLOIS-9.png",
     rightImg: "/assets/new villa.png",

@@ -2,31 +2,14 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Navbar from "./Navbar";
 
 export default function LuxuryHero() {
   const headingText = "Where Luxury Meets \nYour Vision";
 
   return (
     <section className="hero-expand-section relative w-full h-screen overflow-hidden bg-black flex items-center justify-center">
-      {/* Overlay Header */}
-      <div className="absolute top-0 left-0 w-full flex justify-between items-center z-[9999] pointer-events-none" style={{ padding: '2rem 4rem', backgroundColor: 'transparent', margin: 0, border: 'none' }}>
-        <a href="/" className="pointer-events-auto" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#fff', letterSpacing: '1px', textDecoration: 'none' }}>
-          PANTHERS
-        </a>
-        <div
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent('panthers:toggleMenu'));
-          }}
-          className="flex items-center gap-2 pointer-events-auto"
-          style={{ cursor: 'pointer', color: '#fff' }}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="4" y1="12" x2="20" y2="12"></line>
-            <line x1="4" y1="6" x2="20" y2="6"></line>
-            <line x1="4" y1="18" x2="20" y2="18"></line>
-          </svg>
-        </div>
-      </div>
+      <Navbar />
 
       {/* Background with Ken Burns Effect */}
       <motion.div

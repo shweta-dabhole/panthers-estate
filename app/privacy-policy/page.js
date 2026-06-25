@@ -5,7 +5,9 @@ import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import MenuOverlay from '../../components/MenuOverlay';
-import { FaqsSection, FooterSection } from '../page';
+import { FaqsSection } from '../page';
+import FooterSection from '../../components/FooterSection';
+import Navbar from '../../components/Navbar';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -55,35 +57,7 @@ export default function PrivacyPolicyPage() {
     <div className="min-h-screen bg-[#fafafa] text-[#191919] selection:bg-[#191919] selection:text-white">
       <MenuOverlay isBlackText={true} />
       
-      <nav className="absolute top-0 w-full flex justify-between items-center z-50 px-6 py-6 md:px-16 md:py-8">
-        <Link href="/" style={{ fontSize: '20px', fontWeight: '900', textTransform: 'uppercase', color: '#E05A00', letterSpacing: '1px', textDecoration: 'none' }}>
-          PANTHERS
-        </Link>
-        <div 
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent('panthers:toggleMenu'));
-          }}
-          className="relative inline-flex items-center rounded-full border border-[#E05A00] group transition-all duration-300 pointer-events-auto cursor-pointer"
-          style={{ height: '48px', paddingLeft: '24px', paddingRight: '6px' }}
-        >
-          <span 
-            className="font-semibold text-[#E05A00]" 
-            style={{ fontSize: '15px', letterSpacing: '0.025em', fontFamily: "var(--font-poppins), 'Poppins', sans-serif", marginRight: '16px' }}
-          >
-            Menu
-          </span>
-          <div 
-            className="flex items-center justify-center rounded-full text-white transition-transform duration-300 group-hover:scale-105 flex-shrink-0"
-            style={{ width: '36px', height: '36px', backgroundColor: '#E05A00' }}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="4" y1="12" x2="20" y2="12"></line>
-              <line x1="4" y1="6" x2="20" y2="6"></line>
-              <line x1="4" y1="18" x2="20" y2="18"></line>
-            </svg>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Content */}
       <main id="privacy-policy-main" ref={containerRef} className="w-full flex justify-center px-6 pt-8 pb-40 overflow-hidden">
