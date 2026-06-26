@@ -270,13 +270,24 @@ export default function MenuOverlay({ containerRef, navRef, isBlackText = false 
           </Link>
           <div 
             onClick={toggleMenu}
-            className="pointer-events-auto cursor-pointer transition-transform duration-300 hover:scale-105"
-            style={{ width: '40px', height: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '50%', backgroundColor: '#E05A00' }}
+            className={`relative inline-flex items-center rounded-full border group transition-all duration-300 cursor-pointer ${isMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
+            style={{ height: '36px', paddingLeft: '16px', paddingRight: '4px', borderColor: '#E05A00' }}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
+            <span 
+              className="font-semibold" 
+              style={{ fontSize: '13px', letterSpacing: '0.025em', fontFamily: "var(--font-poppins), 'Poppins', sans-serif", marginRight: '12px', color: '#E05A00' }}
+            >
+              Menu
+            </span>
+            <div 
+              className="flex items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-105 flex-shrink-0"
+              style={{ width: '28px', height: '28px', backgroundColor: '#E05A00', color: '#ffffff' }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
           </div>
         </div>
         <div className="menu-content" ref={menuContentRef}>

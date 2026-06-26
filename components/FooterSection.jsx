@@ -124,7 +124,6 @@ export default function FooterSection() {
             </h4>
             <div className="flex flex-col" style={{ gap: '20px' }}>
               {[
-                { name: '404', href: '/404' },
                 { name: 'Privacy Policy', href: '/privacy-policy' },
                 { name: 'Terms & Conditions', href: '/terms-conditions' }
               ].map(link => (

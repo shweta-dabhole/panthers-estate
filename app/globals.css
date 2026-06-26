@@ -392,7 +392,7 @@ nav p {
   width: 100vw;
   height: 100vh;
   background-color: #ffffff;
-  z-index: 15; /* Below nav (20) but above everything else */
+  z-index: 10000; /* Above nav (9999) and everything else */
   clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
   color: #191919;
   pointer-events: none;
@@ -513,6 +513,10 @@ nav p {
 .menu-socials .social a {
   color: #8f8f8f;
   font-size: 1rem;
+}
+
+.menu-overlay .menu-links .link a:hover {
+  color: #E05A00 !important;
 }
 
 .menu-socials .social a:hover {
